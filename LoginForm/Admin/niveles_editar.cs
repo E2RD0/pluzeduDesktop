@@ -57,6 +57,8 @@ namespace LoginForm.Admin
         private void niveles_editar_Load(object sender, EventArgs e)
         {
             txtNombreNivel.Text = nombre;
+
+            btnMin.Font = btnClose.Font = Tipografia.fonts.fontawesome12;
         }
 
         private void btnActualizar_Click_1(object sender, EventArgs e)

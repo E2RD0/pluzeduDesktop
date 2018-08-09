@@ -77,7 +77,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(47, 36);
             this.btnAgregar.TabIndex = 50;
-            this.btnAgregar.Text = "list-ul";
+            this.btnAgregar.Text = "";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click_1);
             // 
@@ -91,7 +91,7 @@
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(50, 36);
             this.btnActualizar.TabIndex = 49;
-            this.btnActualizar.Text = "edit";
+            this.btnActualizar.Text = "";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 

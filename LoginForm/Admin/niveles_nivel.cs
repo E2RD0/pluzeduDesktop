@@ -47,6 +47,8 @@ namespace LoginForm.Admin
             dgvUsuarios.DataSource = Database.funcionesCRUD.mostrarUsuariosNivel(tipoUsuario, idNivel);
             cbxTipo.SelectedValue = tipoUsuario; 
             dgvUsuarios.Columns[0].Visible = false;
+
+            btnActualizar.Font = btnAgregar.Font = Tipografia.fonts.fontawesome20;
         }
 
         private void btnAgregar_Click_1(object sender, EventArgs e)

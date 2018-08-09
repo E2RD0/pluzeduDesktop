@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
+using LoginForm.Tipografia;
 
 namespace LoginForm.Admin
 {
@@ -88,6 +89,9 @@ namespace LoginForm.Admin
             this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
             this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
             abrirFormEnPanel(new Admin.principal());
+
+            btnInicio.Font = btnConfiguracion.Font = btnConfigurarUsuarios.Font = btnNivel.Font = btnSignout.Font = Tipografia.fonts.fontawesome20;
+            btnMin.Font = btnClose.Font = Tipografia.fonts.fontawesome12;
         }
 
         private void btnSignout_Click(object sender, EventArgs e)

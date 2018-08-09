@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.pnlNiveles = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblIconAward = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlEstudiantes = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblIIconUserGraduate = new System.Windows.Forms.Label();
             this.pnlMaestros = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblIconChalkboardTeacher = new System.Windows.Forms.Label();
             this.pnlAdministradores = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblIconUser = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlNiveles.SuspendLayout();
             this.pnlEstudiantes.SuspendLayout();
@@ -49,7 +49,7 @@
             // pnlNiveles
             // 
             this.pnlNiveles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
-            this.pnlNiveles.Controls.Add(this.label2);
+            this.pnlNiveles.Controls.Add(this.lblIconAward);
             this.pnlNiveles.Controls.Add(this.label1);
             this.pnlNiveles.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlNiveles.ForeColor = System.Drawing.Color.White;
@@ -61,18 +61,18 @@
             this.pnlNiveles.MouseEnter += new System.EventHandler(this.label1_MouseEnter);
             this.pnlNiveles.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
             // 
-            // label2
+            // lblIconAward
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(55, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 83);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "award";
-            this.label2.Click += new System.EventHandler(this.pnlNiveles_Click);
-            this.label2.MouseEnter += new System.EventHandler(this.label1_MouseEnter);
-            this.label2.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.lblIconAward.AutoSize = true;
+            this.lblIconAward.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIconAward.Location = new System.Drawing.Point(55, 45);
+            this.lblIconAward.Name = "lblIconAward";
+            this.lblIconAward.Size = new System.Drawing.Size(95, 83);
+            this.lblIconAward.TabIndex = 1;
+            this.lblIconAward.Text = "";
+            this.lblIconAward.Click += new System.EventHandler(this.pnlNiveles_Click);
+            this.lblIconAward.MouseEnter += new System.EventHandler(this.label1_MouseEnter);
+            this.lblIconAward.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
             // 
             // label1
             // 
@@ -90,7 +90,7 @@
             // 
             this.pnlEstudiantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
             this.pnlEstudiantes.Controls.Add(this.label4);
-            this.pnlEstudiantes.Controls.Add(this.label3);
+            this.pnlEstudiantes.Controls.Add(this.lblIIconUserGraduate);
             this.pnlEstudiantes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlEstudiantes.ForeColor = System.Drawing.Color.White;
             this.pnlEstudiantes.Location = new System.Drawing.Point(365, 24);
@@ -113,24 +113,24 @@
             this.label4.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
             this.label4.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
             // 
-            // label3
+            // lblIIconUserGraduate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(50, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 83);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "user-graduate";
-            this.label3.Click += new System.EventHandler(this.pnlEstudiantes_Click);
-            this.label3.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
-            this.label3.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
+            this.lblIIconUserGraduate.AutoSize = true;
+            this.lblIIconUserGraduate.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIIconUserGraduate.Location = new System.Drawing.Point(50, 45);
+            this.lblIIconUserGraduate.Name = "lblIIconUserGraduate";
+            this.lblIIconUserGraduate.Size = new System.Drawing.Size(105, 83);
+            this.lblIIconUserGraduate.TabIndex = 3;
+            this.lblIIconUserGraduate.Text = "";
+            this.lblIIconUserGraduate.Click += new System.EventHandler(this.pnlEstudiantes_Click);
+            this.lblIIconUserGraduate.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
+            this.lblIIconUserGraduate.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
             // 
             // pnlMaestros
             // 
             this.pnlMaestros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
             this.pnlMaestros.Controls.Add(this.label6);
-            this.pnlMaestros.Controls.Add(this.label5);
+            this.pnlMaestros.Controls.Add(this.lblIconChalkboardTeacher);
             this.pnlMaestros.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlMaestros.ForeColor = System.Drawing.Color.White;
             this.pnlMaestros.Location = new System.Drawing.Point(630, 24);
@@ -153,23 +153,23 @@
             this.label6.MouseEnter += new System.EventHandler(this.pnlMaestros_MouseEnter);
             this.label6.MouseLeave += new System.EventHandler(this.label5_MouseLeave);
             // 
-            // label5
+            // lblIconChalkboardTeacher
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(35, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 83);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "chalkboard-teacher";
-            this.label5.Click += new System.EventHandler(this.pnlMaestros_Click);
-            this.label5.MouseEnter += new System.EventHandler(this.pnlMaestros_MouseEnter);
-            this.label5.MouseLeave += new System.EventHandler(this.label5_MouseLeave);
+            this.lblIconChalkboardTeacher.AutoSize = true;
+            this.lblIconChalkboardTeacher.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIconChalkboardTeacher.Location = new System.Drawing.Point(35, 45);
+            this.lblIconChalkboardTeacher.Name = "lblIconChalkboardTeacher";
+            this.lblIconChalkboardTeacher.Size = new System.Drawing.Size(135, 83);
+            this.lblIconChalkboardTeacher.TabIndex = 5;
+            this.lblIconChalkboardTeacher.Text = "";
+            this.lblIconChalkboardTeacher.Click += new System.EventHandler(this.pnlMaestros_Click);
+            this.lblIconChalkboardTeacher.MouseEnter += new System.EventHandler(this.pnlMaestros_MouseEnter);
+            this.lblIconChalkboardTeacher.MouseLeave += new System.EventHandler(this.label5_MouseLeave);
             // 
             // pnlAdministradores
             // 
             this.pnlAdministradores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
-            this.pnlAdministradores.Controls.Add(this.label7);
+            this.pnlAdministradores.Controls.Add(this.lblIconUser);
             this.pnlAdministradores.Controls.Add(this.label8);
             this.pnlAdministradores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlAdministradores.ForeColor = System.Drawing.Color.White;
@@ -181,18 +181,18 @@
             this.pnlAdministradores.MouseEnter += new System.EventHandler(this.pnlAdministradores_MouseEnter);
             this.pnlAdministradores.MouseLeave += new System.EventHandler(this.label8_MouseLeave);
             // 
-            // label7
+            // lblIconUser
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(50, 45);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 83);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "user";
-            this.label7.Click += new System.EventHandler(this.pnlAdministradores_Click);
-            this.label7.MouseEnter += new System.EventHandler(this.pnlAdministradores_MouseEnter);
-            this.label7.MouseLeave += new System.EventHandler(this.label8_MouseLeave);
+            this.lblIconUser.AutoSize = true;
+            this.lblIconUser.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIconUser.Location = new System.Drawing.Point(50, 45);
+            this.lblIconUser.Name = "lblIconUser";
+            this.lblIconUser.Size = new System.Drawing.Size(105, 83);
+            this.lblIconUser.TabIndex = 7;
+            this.lblIconUser.Text = "";
+            this.lblIconUser.Click += new System.EventHandler(this.pnlAdministradores_Click);
+            this.lblIconUser.MouseEnter += new System.EventHandler(this.pnlAdministradores_MouseEnter);
+            this.lblIconUser.MouseLeave += new System.EventHandler(this.label8_MouseLeave);
             // 
             // label8
             // 
@@ -218,6 +218,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "principal";
             this.Text = "principal";
+            this.Load += new System.EventHandler(this.principal_Load);
             this.pnlNiveles.ResumeLayout(false);
             this.pnlNiveles.PerformLayout();
             this.pnlEstudiantes.ResumeLayout(false);
@@ -233,16 +234,16 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlNiveles;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblIconAward;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlEstudiantes;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblIIconUserGraduate;
         private System.Windows.Forms.Panel pnlMaestros;
         private System.Windows.Forms.Panel pnlAdministradores;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblIconChalkboardTeacher;
+        private System.Windows.Forms.Label lblIconUser;
         private System.Windows.Forms.Label label8;
     }
 }

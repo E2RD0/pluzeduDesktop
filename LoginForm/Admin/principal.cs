@@ -88,5 +88,10 @@ namespace LoginForm.Admin
         {
             pnlAdministradores.BackColor = Color.FromArgb(67, 173, 221);
         }
+
+        private void principal_Load(object sender, EventArgs e)
+        {
+            lblIconAward.Font = lblIconChalkboardTeacher.Font = lblIconUser.Font = lblIIconUserGraduate.Font = Tipografia.fonts.fontawesome60;
+        }
     }
 }
