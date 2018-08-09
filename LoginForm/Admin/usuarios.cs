@@ -60,6 +60,8 @@ namespace LoginForm.Admin
                 cbxTipo.SelectedIndex = tipo;
             }
             mostrarUsuarios();
+
+            btnAgregar.Font = btnEditar.Font = btnEliminar.Font = Tipografia.fonts.fontawesome20;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

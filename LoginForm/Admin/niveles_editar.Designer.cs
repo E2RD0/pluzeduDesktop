@@ -64,7 +64,7 @@
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(30, 30);
             this.btnMin.TabIndex = 43;
-            this.btnMin.Text = "minus";
+            this.btnMin.Text = "";
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
@@ -78,7 +78,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(30, 30);
             this.btnClose.TabIndex = 42;
-            this.btnClose.Text = "times";
+            this.btnClose.Text = "";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
             // label9
