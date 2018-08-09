@@ -38,14 +38,14 @@ namespace LoginForm.Admin
                 btnEditar.FlatAppearance.BorderSize = 0;
                 btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
                 btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                btnEditar.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                btnEditar.Font = Tipografia.fonts.fontawesome16;
                 btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
                 btnEditar.Location = new System.Drawing.Point(135, 135);
                 btnEditar.Margin = new System.Windows.Forms.Padding(0);
                 btnEditar.Name = "btnEditar" + i;
                 btnEditar.Size = new System.Drawing.Size(45, 45);
                 btnEditar.TabIndex = 22 + i;
-                btnEditar.Text = "edit";
+                btnEditar.Text = "";
                 btnEditar.UseVisualStyleBackColor = false;
 
                 lblNombre.AutoSize = true;
@@ -70,14 +70,14 @@ namespace LoginForm.Admin
                 btnEliminar.FlatAppearance.BorderSize = 0;
                 btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
                 btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                btnEliminar.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                btnEliminar.Font = Tipografia.fonts.fontawesome16;
                 btnEliminar.ForeColor = System.Drawing.Color.Red;
                 btnEliminar.Location = new System.Drawing.Point(135, 0);
                 btnEliminar.Margin = new System.Windows.Forms.Padding(0);
                 btnEliminar.Name = "btnEliminar" + i;
                 btnEliminar.Size = new System.Drawing.Size(45, 45);
                 btnEliminar.TabIndex = 20;
-                btnEliminar.Text = "times-circle";
+                btnEliminar.Text = "";
                 btnEliminar.UseVisualStyleBackColor = false;
 
                 btnEliminar.Click += (s, ev) => {
@@ -125,6 +125,7 @@ namespace LoginForm.Admin
 
         private void niveles_Load(object sender, EventArgs e)
         {
+            btnAgregar.Font = Tipografia.fonts.fontawesome24;
             mostrarNiveles();
         }
 

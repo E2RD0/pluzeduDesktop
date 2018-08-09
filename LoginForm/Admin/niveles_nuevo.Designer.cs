@@ -63,7 +63,7 @@
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(30, 30);
             this.btnMin.TabIndex = 43;
-            this.btnMin.Text = "minus";
+            this.btnMin.Text = "";
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
@@ -77,7 +77,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(30, 30);
             this.btnClose.TabIndex = 42;
-            this.btnClose.Text = "times";
+            this.btnClose.Text = "";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -171,6 +171,7 @@
             this.Name = "niveles_nuevo";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.Text = "niveles_nuevo";
+            this.Load += new System.EventHandler(this.niveles_nuevo_Load);
             this.barra.ResumeLayout(false);
             this.barra.PerformLayout();
             this.panel1.ResumeLayout(false);

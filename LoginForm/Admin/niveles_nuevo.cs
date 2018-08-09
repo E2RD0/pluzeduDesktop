@@ -65,5 +65,10 @@ namespace LoginForm.Admin
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void niveles_nuevo_Load(object sender, EventArgs e)
+        {
+            btnMin.Font = btnClose.Font = Tipografia.fonts.fontawesome12;
+        }
     }
 }

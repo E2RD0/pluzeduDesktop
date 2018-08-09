@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
+
 namespace LoginForm
 {
     public partial class Form1 : Form
@@ -180,6 +181,8 @@ namespace LoginForm
         {
             txtUser.Text = "Usuario" + Convert.ToChar(0x00002063).ToString();
             txtPassword.Text = "Contraseña" + Convert.ToChar(0x00002063).ToString();
+            btnMin.Font = btnClose.Font = Tipografia.fonts.fontawesome12;
+            lblIconUser.Font = lblIconLock.Font = lblIconFolder.Font = lblIconGroup.Font = lblIconSend.Font = Tipografia.fonts.fontawesome14;
         }
 
         private void button1_Click(object sender, EventArgs e)

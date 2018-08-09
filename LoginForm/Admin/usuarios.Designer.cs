@@ -78,7 +78,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(50, 36);
             this.btnEliminar.TabIndex = 51;
-            this.btnEliminar.Text = "times-circle";
+            this.btnEliminar.Text = "";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -92,7 +92,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(47, 36);
             this.btnAgregar.TabIndex = 50;
-            this.btnAgregar.Text = "plus-circle";
+            this.btnAgregar.Text = "";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -106,7 +106,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(50, 36);
             this.btnEditar.TabIndex = 49;
-            this.btnEditar.Text = "edit";
+            this.btnEditar.Text = "";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
