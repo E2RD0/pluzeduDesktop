@@ -75,11 +75,12 @@ namespace LoginForm
         {
             Application.Run(new Inicio());
         }
-
+        public static class LogInfo { public static string userName; }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             try
             {
+                LogInfo.userName = txtUser.Text;
                 DataTable datosClave = new DataTable();
                 DataTable datosDefault = new DataTable();
                 string cmdhash = String.Format("SELECT id, clave FROM usuario WHERE username='{0}' OR email ='{0}'", txtUser.Text);

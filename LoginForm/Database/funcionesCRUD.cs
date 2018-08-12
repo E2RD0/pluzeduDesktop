@@ -112,5 +112,15 @@ namespace LoginForm.Database
             retorno = command.ExecuteNonQuery();
             return retorno;
         }
+        //MENSAJES
+        public static DataTable mostrarConversacion()
+        {
+            DataTable datos = new DataTable();
+            string instruccion = "SELECT ci.id_conversacion, texto, nombres, m.fechaenviado FROM conversacionintegrantes ci INNER JOIN mensaje m ON ci.id_conversacion = m.id_conversacion INNER JOIN usuario u ON u.id = m.id_autor WHERE id_usuario = 4";
+            MySqlCommand command = new MySqlCommand(instruccion, conexion.obtenerconexion());
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(datos);
+            return datos;
+        }
     }
 }
