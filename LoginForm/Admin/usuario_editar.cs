@@ -13,14 +13,14 @@ using System.Runtime.InteropServices;
 
 namespace LoginForm.Admin
 {
-    public partial class editar_usuario : Form
+    public partial class usuario_editar : Form
     {
         public int tipo { get; set; }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        public editar_usuario()
+        public usuario_editar()
         {
             InitializeComponent();
         }

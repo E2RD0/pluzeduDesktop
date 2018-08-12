@@ -1,6 +1,6 @@
 ﻿namespace LoginForm.Admin
 {
-    partial class editar_usuario
+    partial class usuario_editar
     {
         /// <summary>
         /// Required designer variable.
@@ -107,6 +107,7 @@
             this.txt_Id.ForeColor = System.Drawing.Color.White;
             this.txt_Id.Location = new System.Drawing.Point(26, 36);
             this.txt_Id.Name = "txt_Id";
+            this.txt_Id.ReadOnly = true;
             this.txt_Id.Size = new System.Drawing.Size(59, 23);
             this.txt_Id.TabIndex = 51;
             this.txt_Id.Visible = false;
@@ -189,7 +190,6 @@
             this.txt_Password.ForeColor = System.Drawing.Color.White;
             this.txt_Password.Location = new System.Drawing.Point(117, 201);
             this.txt_Password.Name = "txt_Password";
-            this.txt_Password.ReadOnly = true;
             this.txt_Password.Size = new System.Drawing.Size(378, 23);
             this.txt_Password.TabIndex = 44;
             // 
@@ -347,7 +347,7 @@
             this.barra.TabIndex = 17;
             this.barra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
             // 
-            // editar_usuario
+            // usuario_editar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -355,7 +355,7 @@
             this.ClientSize = new System.Drawing.Size(548, 333);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "editar_usuario";
+            this.Name = "usuario_editar";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "editar_usuario";

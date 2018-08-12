@@ -63,7 +63,7 @@ namespace LoginForm.Admin
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            editar_usuario exportar = new editar_usuario();
+            usuario_editar exportar = new usuario_editar();
             funcionesCRUD funciones = new funcionesCRUD();
             exportar.tipo = Convert.ToInt32(cbxTipo.SelectedValue);
             exportar.cbx_Tipo.DisplayMember = "nombre";

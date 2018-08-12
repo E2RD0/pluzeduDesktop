@@ -48,6 +48,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.barra = new LoginForm.GradientPanel();
             this.gradientPanel1 = new LoginForm.GradientPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblIconGroup = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblIconSend = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -122,15 +122,16 @@
             this.txtPassword.Size = new System.Drawing.Size(216, 23);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // lblIconLock
             // 
             this.lblIconLock.AutoSize = true;
-            this.lblIconLock.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconLock.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconLock.Location = new System.Drawing.Point(3, 65);
             this.lblIconLock.Name = "lblIconLock";
-            this.lblIconLock.Size = new System.Drawing.Size(26, 20);
+            this.lblIconLock.Size = new System.Drawing.Size(20, 24);
             this.lblIconLock.TabIndex = 2;
             this.lblIconLock.Text = "";
             // 
@@ -142,15 +143,16 @@
             this.txtUser.Size = new System.Drawing.Size(216, 23);
             this.txtUser.TabIndex = 1;
             this.txtUser.Enter += new System.EventHandler(this.txtUser_Enter);
+            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown);
             this.txtUser.Leave += new System.EventHandler(this.txtUser_Leave);
             // 
             // lblIconUser
             // 
             this.lblIconUser.AutoSize = true;
-            this.lblIconUser.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconUser.Location = new System.Drawing.Point(3, 10);
             this.lblIconUser.Name = "lblIconUser";
-            this.lblIconUser.Size = new System.Drawing.Size(26, 20);
+            this.lblIconUser.Size = new System.Drawing.Size(22, 24);
             this.lblIconUser.TabIndex = 0;
             this.lblIconUser.Text = "";
             // 
@@ -220,7 +222,7 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 12F, System.Drawing.FontStyle.Bold);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(290, 0);
             this.btnClose.Name = "btnClose";
@@ -236,7 +238,7 @@
             this.btnMin.FlatAppearance.BorderSize = 0;
             this.btnMin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMin.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnMin.ForeColor = System.Drawing.Color.White;
             this.btnMin.Location = new System.Drawing.Point(260, 0);
             this.btnMin.Name = "btnMin";
@@ -250,7 +252,7 @@
             // 
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 12F, System.Drawing.FontStyle.Bold);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(940, 0);
             this.button2.Name = "button2";
@@ -263,7 +265,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 12F, System.Drawing.FontStyle.Bold);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(970, 0);
             this.button3.Name = "button3";
@@ -299,6 +301,16 @@
             this.gradientPanel1.Size = new System.Drawing.Size(680, 520);
             this.gradientPanel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(54, 92);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(304, 86);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -315,11 +327,11 @@
             // 
             this.lblIconGroup.AutoSize = true;
             this.lblIconGroup.BackColor = System.Drawing.Color.Transparent;
-            this.lblIconGroup.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconGroup.ForeColor = System.Drawing.Color.White;
             this.lblIconGroup.Location = new System.Drawing.Point(50, 405);
             this.lblIconGroup.Name = "lblIconGroup";
-            this.lblIconGroup.Size = new System.Drawing.Size(33, 20);
+            this.lblIconGroup.Size = new System.Drawing.Size(21, 24);
             this.lblIconGroup.TabIndex = 7;
             this.lblIconGroup.Text = "";
             // 
@@ -339,11 +351,11 @@
             // 
             this.lblIconFolder.AutoSize = true;
             this.lblIconFolder.BackColor = System.Drawing.Color.Transparent;
-            this.lblIconFolder.Font = new System.Drawing.Font("Font Awesome 5 Free Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconFolder.ForeColor = System.Drawing.Color.White;
             this.lblIconFolder.Location = new System.Drawing.Point(50, 355);
             this.lblIconFolder.Name = "lblIconFolder";
-            this.lblIconFolder.Size = new System.Drawing.Size(28, 19);
+            this.lblIconFolder.Size = new System.Drawing.Size(20, 24);
             this.lblIconFolder.TabIndex = 5;
             this.lblIconFolder.Text = "";
             // 
@@ -363,11 +375,11 @@
             // 
             this.lblIconSend.AutoSize = true;
             this.lblIconSend.BackColor = System.Drawing.Color.Transparent;
-            this.lblIconSend.Font = new System.Drawing.Font("Font Awesome 5 Free Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconSend.ForeColor = System.Drawing.Color.White;
             this.lblIconSend.Location = new System.Drawing.Point(50, 305);
             this.lblIconSend.Name = "lblIconSend";
-            this.lblIconSend.Size = new System.Drawing.Size(28, 19);
+            this.lblIconSend.Size = new System.Drawing.Size(20, 24);
             this.lblIconSend.TabIndex = 3;
             this.lblIconSend.Text = "";
             // 
@@ -382,16 +394,6 @@
             this.label2.Size = new System.Drawing.Size(498, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Comunicación para la educación hecha simple.";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(54, 92);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(304, 86);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 

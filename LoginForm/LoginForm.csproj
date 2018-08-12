@@ -57,11 +57,11 @@
     <Compile Include="Admin\configuracion.Designer.cs">
       <DependentUpon>configuracion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\editar_usuario.cs">
+    <Compile Include="Admin\usuario_editar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\editar_usuario.Designer.cs">
-      <DependentUpon>editar_usuario.cs</DependentUpon>
+    <Compile Include="Admin\usuario_editar.Designer.cs">
+      <DependentUpon>usuario_editar.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\niveles.cs">
       <SubType>Form</SubType>
@@ -151,8 +151,8 @@
     <EmbeddedResource Include="Admin\configuracion.resx">
       <DependentUpon>configuracion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\editar_usuario.resx">
-      <DependentUpon>editar_usuario.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\usuario_editar.resx">
+      <DependentUpon>usuario_editar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\niveles.resx">
       <DependentUpon>niveles.cs</DependentUpon>

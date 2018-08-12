@@ -53,6 +53,7 @@ namespace LoginForm.Admin
                 lblNombre.ForeColor = System.Drawing.Color.White;
                 lblNombre.Location = new System.Drawing.Point(8, 69);
                 lblNombre.Name = "lblNombre" + i;
+                lblNombre.MaximumSize = new System.Drawing.Size(150, 0);
                 lblNombre.Size = new System.Drawing.Size(161, 44);
                 lblNombre.TabIndex = 21 + i;
                 lblNombre.Text = nombre;
