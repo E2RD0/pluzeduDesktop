@@ -45,13 +45,12 @@
             // 
             // barra
             // 
-            this.barra.BackColor = System.Drawing.Color.SteelBlue;
+            this.barra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.barra.Controls.Add(this.btnMin);
             this.barra.Controls.Add(this.btnClose);
-            this.barra.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barra.Location = new System.Drawing.Point(0, 0);
+            this.barra.Location = new System.Drawing.Point(80, 0);
             this.barra.Name = "barra";
-            this.barra.Size = new System.Drawing.Size(1000, 30);
+            this.barra.Size = new System.Drawing.Size(920, 30);
             this.barra.TabIndex = 13;
             this.barra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
             // 
@@ -117,9 +116,9 @@
             this.pnlNav.Controls.Add(this.btnConfigurarUsuarios);
             this.pnlNav.Controls.Add(this.btnInicio);
             this.pnlNav.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNav.Location = new System.Drawing.Point(0, 30);
+            this.pnlNav.Location = new System.Drawing.Point(0, 0);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(80, 520);
+            this.pnlNav.Size = new System.Drawing.Size(80, 550);
             this.pnlNav.TabIndex = 14;
             // 
             // btnNivel
@@ -131,7 +130,7 @@
             this.btnNivel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNivel.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNivel.ForeColor = System.Drawing.Color.White;
-            this.btnNivel.Location = new System.Drawing.Point(0, 160);
+            this.btnNivel.Location = new System.Drawing.Point(0, 190);
             this.btnNivel.Margin = new System.Windows.Forms.Padding(0);
             this.btnNivel.Name = "btnNivel";
             this.btnNivel.Size = new System.Drawing.Size(80, 60);
@@ -149,7 +148,7 @@
             this.btnSignout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignout.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnSignout.Location = new System.Drawing.Point(0, 460);
+            this.btnSignout.Location = new System.Drawing.Point(0, 490);
             this.btnSignout.Margin = new System.Windows.Forms.Padding(0);
             this.btnSignout.Name = "btnSignout";
             this.btnSignout.Size = new System.Drawing.Size(80, 60);
@@ -167,7 +166,7 @@
             this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfiguracion.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfiguracion.ForeColor = System.Drawing.Color.White;
-            this.btnConfiguracion.Location = new System.Drawing.Point(0, 280);
+            this.btnConfiguracion.Location = new System.Drawing.Point(0, 310);
             this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(0);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.Size = new System.Drawing.Size(80, 60);
@@ -185,7 +184,7 @@
             this.btnConfigurarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfigurarUsuarios.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfigurarUsuarios.ForeColor = System.Drawing.Color.White;
-            this.btnConfigurarUsuarios.Location = new System.Drawing.Point(0, 220);
+            this.btnConfigurarUsuarios.Location = new System.Drawing.Point(0, 250);
             this.btnConfigurarUsuarios.Margin = new System.Windows.Forms.Padding(0);
             this.btnConfigurarUsuarios.Name = "btnConfigurarUsuarios";
             this.btnConfigurarUsuarios.Size = new System.Drawing.Size(80, 60);
@@ -203,7 +202,7 @@
             this.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInicio.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.ForeColor = System.Drawing.Color.White;
-            this.btnInicio.Location = new System.Drawing.Point(0, 100);
+            this.btnInicio.Location = new System.Drawing.Point(0, 130);
             this.btnInicio.Margin = new System.Windows.Forms.Padding(0);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(80, 60);

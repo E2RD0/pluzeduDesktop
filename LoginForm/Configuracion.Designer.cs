@@ -230,7 +230,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 25);
             this.label4.TabIndex = 21;
-            this.label4.Text = "edit";
+            this.label4.Text = "";
             // 
             // label5
             // 
@@ -241,7 +241,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 25);
             this.label5.TabIndex = 22;
-            this.label5.Text = "edit";
+            this.label5.Text = "";
             // 
             // button1
             // 
@@ -277,6 +277,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Configuracion";
             this.Text = "Configuracion";
+            this.Load += new System.EventHandler(this.Configuracion_Load);
             this.pnlNav.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

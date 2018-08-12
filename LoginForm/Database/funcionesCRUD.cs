@@ -60,6 +60,15 @@ namespace LoginForm.Database
             adapter.Fill(datos);
             return datos;
         }
+        public static DataTable datosUsuario(int idUsuario)
+        {
+            DataTable datosUsuario = new DataTable();
+            string instrucciones = String.Format("SELECT id, nombres, apellidos FROM usuario WHERE id = {0}", idUsuario);
+            MySqlCommand usuarioComando = new MySqlCommand(instrucciones, Database.conexion.obtenerconexion());
+            MySqlDataAdapter usuarioAdapter = new MySqlDataAdapter(usuarioComando);
+            usuarioAdapter.Fill(datosUsuario);
+            return datosUsuario;
+        }
         //FIN NIVELES
 
         //USUARIOS

@@ -16,9 +16,6 @@ namespace LoginForm.Admin
         {
             InitializeComponent();
         }
-
-
-
         private void pnlEstudiantes_Click(object sender, EventArgs e)
         {
             Admin.usuarios usuarios = new Admin.usuarios();
@@ -26,7 +23,6 @@ namespace LoginForm.Admin
             usuarios.tipo = 2;
             (Application.OpenForms["menu"] as menu).abrirFormEnPanel(usuarios);
         }
-
         private void pnlMaestros_Click(object sender, EventArgs e)
         {
             Admin.usuarios usuarios = new Admin.usuarios();
@@ -34,7 +30,6 @@ namespace LoginForm.Admin
             usuarios.tipo = 1;
             (Application.OpenForms["menu"] as menu).abrirFormEnPanel(usuarios);
         }
-
         private void pnlAdministradores_Click(object sender, EventArgs e)
         {
             Admin.usuarios usuarios = new Admin.usuarios();
@@ -42,7 +37,6 @@ namespace LoginForm.Admin
             usuarios.tipo = 0;
             (Application.OpenForms["menu"] as menu).abrirFormEnPanel(usuarios);
         }
-
         private void pnlNiveles_Click(object sender, EventArgs e)
         {
             Admin.niveles niveles = new Admin.niveles();

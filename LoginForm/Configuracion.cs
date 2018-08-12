@@ -16,5 +16,10 @@ namespace LoginForm
         {
             InitializeComponent();
         }
+
+        private void Configuracion_Load(object sender, EventArgs e)
+        {
+            label4.Font = label5.Font = Tipografia.fonts.fontawesome20;
+        }
     }
 }

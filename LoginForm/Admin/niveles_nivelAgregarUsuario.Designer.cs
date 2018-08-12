@@ -41,10 +41,11 @@
             // 
             // clbUsuarios
             // 
+            this.clbUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.clbUsuarios.FormattingEnabled = true;
             this.clbUsuarios.Location = new System.Drawing.Point(67, 81);
             this.clbUsuarios.Name = "clbUsuarios";
-            this.clbUsuarios.Size = new System.Drawing.Size(793, 361);
+            this.clbUsuarios.Size = new System.Drawing.Size(793, 357);
             this.clbUsuarios.TabIndex = 0;
             // 
             // btnCancelar
@@ -129,7 +130,7 @@
             this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Size = new System.Drawing.Size(539, 32);
+            this.shapeContainer1.Size = new System.Drawing.Size(709, 32);
             this.shapeContainer1.TabIndex = 4;
             this.shapeContainer1.TabStop = false;
             // 
