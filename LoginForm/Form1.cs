@@ -76,18 +76,19 @@ namespace LoginForm
             Application.Run(new Inicio());
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void ingresar()
         {
             try
             {
                 DataTable datosClave = new DataTable();
                 DataTable datosDefault = new DataTable();
-                string cmdhash = String.Format("SELECT id, clave FROM usuario WHERE username='{0}' OR email ='{0}'", txtUser.Text);
-                string cmdDefault = "SELECT COLUMN_DEFAULT FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA ='pluzedu' AND TABLE_NAME = 'usuario' AND COLUMN_NAME = 'clave';";
-                MySqlCommand comandoHash = new MySqlCommand(cmdhash, Database.conexion.obtenerconexion());
+                MySqlCommand comandoHash = new MySqlCommand("SELECT id, clave FROM usuario WHERE username=@User OR email=@User", Database.conexion.obtenerconexion());
+                comandoHash.Parameters.Add("@User", MySqlDbType.VarChar).Value = txtUser.Text;
+
                 MySqlDataAdapter adapterHash = new MySqlDataAdapter(comandoHash);
                 adapterHash.Fill(datosClave);
 
+                string cmdDefault = "SELECT COLUMN_DEFAULT FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA ='pluzedu' AND TABLE_NAME = 'usuario' AND COLUMN_NAME = 'clave';";
                 MySqlCommand comandoDefault = new MySqlCommand(cmdDefault, Database.conexion.obtenerconexion());
                 MySqlDataAdapter adapterDefault = new MySqlDataAdapter(comandoDefault);
                 adapterDefault.Fill(datosDefault);
@@ -177,6 +178,11 @@ namespace LoginForm
             }
         }
 
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            ingresar();
+        }
+
         private void Form1_Load_1(object sender, EventArgs e)
         {
             txtUser.Text = "Usuario" + Convert.ToChar(0x00002063).ToString();
@@ -198,6 +204,22 @@ namespace LoginForm
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ingresar();
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ingresar();
+            }
         }
     }
 }

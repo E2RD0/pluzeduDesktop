@@ -68,7 +68,7 @@ namespace LoginForm.Admin
         {
             try
             {
-                editar_usuario agregar = new editar_usuario();
+                usuario_editar agregar = new usuario_editar();
                 funcionesCRUD funciones = new funcionesCRUD();
                 agregar.button1.Text = "Agregar";
                 agregar.label9.Text = "Agregar Usuario";
@@ -98,7 +98,7 @@ namespace LoginForm.Admin
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            editar_usuario exportar = new editar_usuario();
+            usuario_editar exportar = new usuario_editar();
             funcionesCRUD funciones = new funcionesCRUD();
             exportar.tipo = Convert.ToInt32(cbxTipo.SelectedValue);
             exportar.cbx_Tipo.DisplayMember = "nombre";

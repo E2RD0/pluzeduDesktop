@@ -23,14 +23,17 @@ namespace LoginForm.Database
         public static int agregarNivel(constructor nivel)
         {
             int retorno;
-            MySqlCommand comando = new MySqlCommand(String.Format("INSERT INTO nivel(id, nombre) VALUES('{0}', '{1}')", nivel.idNivel, nivel.nombreNivel), conexion.obtenerconexion());
+            MySqlCommand comando = new MySqlCommand("INSERT INTO nivel(nombre) VALUES(@nombreNivel)", conexion.obtenerconexion());
+            comando.Parameters.Add("@nombreNivel", MySqlDbType.VarChar).Value = nivel.nombreNivel;
             retorno = comando.ExecuteNonQuery();
             return retorno;
         }
         public static int actualizarNivel(constructor nivel, int id)
         {
             int retorno;
-            MySqlCommand comando = new MySqlCommand(String.Format("UPDATE nivel SET nombre = '{0}' WHERE id={1}", nivel.nombreNivel, id), conexion.obtenerconexion());
+            MySqlCommand comando = new MySqlCommand("UPDATE nivel SET nombre=@nombreNivel WHERE id=@idNivel", conexion.obtenerconexion());
+            comando.Parameters.Add("@nombreNivel", MySqlDbType.VarChar).Value = nivel.nombreNivel;
+            comando.Parameters.Add("@idNivel", MySqlDbType.Int32).Value = id;
             retorno = comando.ExecuteNonQuery();
             return retorno;
         }
@@ -44,7 +47,6 @@ namespace LoginForm.Database
         public static DataTable mostrarUsuariosNivel(int tipo, int nivel)
         {
             DataTable datos = new DataTable();
-            //string instrucciones = "SELECT u.id AS ID, u.nombres AS Nombres, u.apellidos AS Apellidos, u.username AS Usuario, u.email AS Email, u.clave AS Clave, u.codigo AS Codigo, t.nombre AS Tipo, e.nombre AS Estado FROM usuario u, usuarioestado e, usuariotipo t WHERE u.id_usuariotipo=t.id AND u.id_usuarioestado=e.id";
             string instrucciones = String.Format("SELECT u.id AS ID, u.nombres AS Nombres, u.apellidos AS Apellidos, u.username AS Usuario, u.email AS Email, u.clave AS Clave, u.codigo AS Codigo, t.nombre AS Tipo, e.nombre AS Estado FROM usuario u INNER JOIN usuarioestado e ON u.id_usuarioestado = e.id INNER JOIN usuariotipo t ON u.id_usuariotipo = t.id INNER JOIN nivelesusuario n ON u.id = n.id_usuario WHERE u.id_usuariotipo = {0} AND n.id_nivel = {1};", tipo, nivel);
             MySqlCommand comando = new MySqlCommand(instrucciones, conexion.obtenerconexion());
             MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
@@ -66,7 +68,6 @@ namespace LoginForm.Database
         public static DataTable mostrarUsuarios(int tipo)
         {
             DataTable datos = new DataTable();
-            //string instrucciones = "SELECT u.id AS ID, u.nombres AS Nombres, u.apellidos AS Apellidos, u.username AS Usuario, u.email AS Email, u.clave AS Clave, u.codigo AS Codigo, t.nombre AS Tipo, e.nombre AS Estado FROM usuario u, usuarioestado e, usuariotipo t WHERE u.id_usuariotipo=t.id AND u.id_usuarioestado=e.id";
             string instrucciones = "SELECT u.id AS ID, u.nombres AS Nombres, u.apellidos AS Apellidos, u.username AS Usuario, u.email AS Email, u.clave AS Clave, u.codigo AS Codigo, t.nombre AS Tipo, e.nombre AS Estado FROM ((usuario u INNER JOIN usuarioestado e ON u.id_usuarioestado = e.id) INNER JOIN usuariotipo t ON u.id_usuariotipo = t.id) WHERE u.id_usuariotipo = " + tipo;
             MySqlCommand comando = new MySqlCommand(instrucciones, conexion.obtenerconexion());
             MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
@@ -91,24 +92,41 @@ namespace LoginForm.Database
             adapter.Fill(datos);
             return datos;
         }
-        public static int agregarUsuarios(constructor agregar)
+        public static int agregarUsuarios(constructor usuario)
         {
-            int retorno = 0;
-            MySqlCommand command = new MySqlCommand(string.Format("INSERT INTO usuario(nombres, apellidos, username, email, clave, codigo, id_usuariotipo, id_usuarioestado) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", agregar.nombresUsuario, agregar.apellidosUsuario, agregar.usernameUsuario, agregar.emailUsuario, agregar.claveUsuario, agregar.codigoUsuario, agregar.id_usuariotipoUsuario, agregar.id_usuarioestadoUsuario), conexion.obtenerconexion());
+            int retorno;
+            MySqlCommand command = new MySqlCommand("INSERT INTO usuario(nombres, apellidos, username, email, clave, codigo, id_usuariotipo, id_usuarioestado) VALUES (@nombresUsuario, @apellidosUsuario, @usernameUsuario, @emailUsuario, @claveUsuario, @codigoUsuario, @idTipoUsuario, @idEstadoUsuario)", conexion.obtenerconexion());
+            command.Parameters.Add("@nombresUsuario", MySqlDbType.VarChar).Value = usuario.nombresUsuario;
+            command.Parameters.Add("@apellidosUsuario", MySqlDbType.VarChar).Value = usuario.apellidosUsuario;
+            command.Parameters.Add("@usernameUsuario", MySqlDbType.VarChar).Value = usuario.usernameUsuario;
+            command.Parameters.Add("@emailUsuario", MySqlDbType.VarChar).Value = usuario.emailUsuario;
+            command.Parameters.Add("@claveUsuario", MySqlDbType.VarChar).Value = usuario.claveUsuario;
+            command.Parameters.Add("@codigoUsuario", MySqlDbType.Int32).Value = usuario.codigoUsuario;
+            command.Parameters.Add("@idTipoUsuario", MySqlDbType.Int32).Value = usuario.id_usuariotipoUsuario;
+            command.Parameters.Add("@idEstadoUsuario", MySqlDbType.Int32).Value = usuario.id_usuarioestadoUsuario;
             retorno = command.ExecuteNonQuery();
             return retorno;
         }
         public static int eliminarUsuarios(int id)
         {
-            int retorno = 0;
+            int retorno;
             MySqlCommand command = new MySqlCommand(string.Format("DELETE FROM usuario WHERE id='{0}'", id), conexion.obtenerconexion());
             retorno = command.ExecuteNonQuery();
             return retorno;
         }
-        public static int update(constructor actu)
+        public static int update(constructor usuario)
         {
-            int retorno = 0;
-            MySqlCommand command = new MySqlCommand(string.Format("UPDATE usuario SET nombres='{0}', apellidos='{1}', username='{2}', email='{3}', clave='{4}', codigo='{5}', id_usuariotipo='{6}', id_usuarioestado='{7}' WHERE id='{8}'", actu.nombresUsuario, actu.apellidosUsuario, actu.usernameUsuario, actu.emailUsuario, actu.claveUsuario, actu.codigoUsuario, actu.id_usuariotipoUsuario, actu.id_usuarioestadoUsuario, actu.idUsuario), conexion.obtenerconexion());
+            int retorno;
+            MySqlCommand command = new MySqlCommand("UPDATE usuario SET nombres=@nombresUsuario, apellidos=@apellidosUsuario, username=@usernameUsuario, email=@emailUsuario, clave=@claveUsuario, codigo=@codigoUsuario, id_usuariotipo=@idTipoUsuario, id_usuarioestado=@idEstadoUsuario WHERE id=@idUsuario", conexion.obtenerconexion());
+            command.Parameters.Add("@nombresUsuario", MySqlDbType.VarChar).Value = usuario.nombresUsuario;
+            command.Parameters.Add("@apellidosUsuario", MySqlDbType.VarChar).Value = usuario.apellidosUsuario;
+            command.Parameters.Add("@usernameUsuario", MySqlDbType.VarChar).Value = usuario.usernameUsuario;
+            command.Parameters.Add("@emailUsuario", MySqlDbType.VarChar).Value = usuario.emailUsuario;
+            command.Parameters.Add("@claveUsuario", MySqlDbType.VarChar).Value = usuario.claveUsuario;
+            command.Parameters.Add("@codigoUsuario", MySqlDbType.Int32).Value = usuario.codigoUsuario;
+            command.Parameters.Add("@idTipoUsuario", MySqlDbType.Int32).Value = usuario.id_usuariotipoUsuario;
+            command.Parameters.Add("@idEstadoUsuario", MySqlDbType.Int32).Value = usuario.id_usuarioestadoUsuario;
+            command.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = usuario.idUsuario;
             retorno = command.ExecuteNonQuery();
             return retorno;
         }
