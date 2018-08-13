@@ -29,6 +29,7 @@ namespace LoginForm.User
             {
                 int idConversacion;
                 bool esGrupoConversacion;
+                string nombreUsuarioConversacion = "";
                 string tituloConversacion = "";
                 string ultimoMensaje;
                 Panel pnlConversacion = new Panel();
@@ -42,7 +43,7 @@ namespace LoginForm.User
 
                 if (esGrupoConversacion)
                 {
-                    tituloConversacion = Convert.ToString(conversaciones.Rows[i].ItemArray[1]);
+                    tituloConversacion = nombreUsuarioConversacion = Convert.ToString(conversaciones.Rows[i].ItemArray[1]);
                 }
 
                 else if (!esGrupoConversacion)
@@ -58,6 +59,7 @@ namespace LoginForm.User
                         if (idUsuarioConversacion != idUsuarioActual)
                         {
                             tituloConversacion = Convert.ToString(nombreConversacion.Rows[j].ItemArray[1]);
+                            nombreUsuarioConversacion = Convert.ToString(nombreConversacion.Rows[j].ItemArray[1]) +" " + Convert.ToString(nombreConversacion.Rows[j].ItemArray[2]);
                         }
                     }
                 }
@@ -132,7 +134,10 @@ namespace LoginForm.User
                     {
                         conversacion.BackColor = Color.Transparent;
                     }
+                    lblNombreInfo.Text = nombreUsuarioConversacion;
+                    lblNombreConversacion.Text = nombreUsuarioConversacion;
                     pnlConversacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+                    txtMensaje.Focus();
                 }
                 pnlConversacion.Click += pnlConversacionMostrar;
                 lblNombre.Click += pnlConversacionMostrar;
@@ -274,8 +279,9 @@ namespace LoginForm.User
         {
             mostrarConversaciones();
             //mostrarMensajes();
-
-            lblIconArchivos.Font = lblIconEmojis.Font = Tipografia.fonts.fontawesome20;
+            lblIconArchivos.Font = lblIconEmojis.Font = lblIconInfo.Font = Tipografia.fonts.fontawesome20;
+            lblIconPlus.Font = lblIconSearch.Font = btnIconPlus.Font = btnIconRegresar.Font =  Tipografia.fonts.fontawesome14;
+            txtMensaje.Focus();
         }
 
         private void lblEnviar_Click(object sender, EventArgs e)
@@ -286,6 +292,33 @@ namespace LoginForm.User
                 mostrarMensajes(idConversacionActual);
                 txtMensaje.Text = "";
             }
+        }
+
+        private void lblIconInfo_Click(object sender, EventArgs e)
+        {
+            pnlInfo.Visible = true;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            pnlInfo.Visible = false;
+        }
+
+        private void lblIconSearch_Click(object sender, EventArgs e)
+        {
+            pnlBuscar.Visible = true;
+            txtBuscar.Focus();
+        }
+
+        private void lblIconPlus_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            pnlBuscar.Visible = false;
+            txtMensaje.Focus();
         }
     }
 }
