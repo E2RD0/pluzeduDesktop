@@ -130,5 +130,36 @@ namespace LoginForm.Database
             retorno = command.ExecuteNonQuery();
             return retorno;
         }
+
+        //FIN USUARIOS
+
+        //MENSAJES
+
+        public static DataTable mostrarConversaciones(int idUsuario)
+        {
+            DataTable datos = new DataTable();
+            MySqlCommand comando = new MySqlCommand("SELECT c.id, c.titulo, c.es_grupo FROM conversacion c INNER JOIN conversacionintegrantes ci ON ci.id_conversacion = c.id WHERE ci.id_usuario = @idUsuario;", conexion.obtenerconexion());
+            comando.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = idUsuario;
+            MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
+            adapter.Fill(datos);
+            return datos;
+        }
+        public static DataTable mostrarMensajes(int idConversacion)
+        {            
+            DataTable datos = new DataTable();
+            MySqlCommand comando = new MySqlCommand("SELECT texto, fechaenviado, id_autor FROM mensaje WHERE id_conversacion = @idConversacion ORDER BY fechaenviado ASC;", conexion.obtenerconexion());
+            comando.Parameters.Add("@idConversacion", MySqlDbType.Int32).Value = idConversacion;
+            MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
+            adapter.Fill(datos);
+            return datos;
+        }
+        public static int enviarMensaje(int idConversacion, string texto, int idAutor)
+        {
+            MySqlCommand command = new MySqlCommand("INSERT INTO mensaje(id_conversacion, texto, id_autor, fechaenviado) VALUES(@id_conversacion, @texto, @id_autor, SYSDATE() );", conexion.obtenerconexion());
+            command.Parameters.Add("@id_conversacion", MySqlDbType.Int32).Value = idConversacion;
+            command.Parameters.Add("@texto", MySqlDbType.Text).Value = texto;
+            command.Parameters.Add("@id_autor", MySqlDbType.Int32).Value = idAutor;
+            return command.ExecuteNonQuery();
+        }
     }
 }
