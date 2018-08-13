@@ -69,6 +69,15 @@ namespace LoginForm.Database
             usuarioAdapter.Fill(datosUsuario);
             return datosUsuario;
         }
+        public static DataTable datosSecciones(int idUsuario)
+        {
+            DataTable datosUsuario = new DataTable();
+            string instrucciones = String.Format("SELECT n.nombre FROM nivelesusuario nu INNER JOIN nivel n ON n.id = nu.id_nivel INNER JOIN usuario u ON u.id = nu.id_usuario WHERE nu.id_usuario = '{0}';", idUsuario);
+            MySqlCommand usuarioComando = new MySqlCommand(instrucciones, Database.conexion.obtenerconexion());
+            MySqlDataAdapter usuarioAdapter = new MySqlDataAdapter(usuarioComando);
+            usuarioAdapter.Fill(datosUsuario);
+            return datosUsuario;
+        }
         //FIN NIVELES
 
         //USUARIOS

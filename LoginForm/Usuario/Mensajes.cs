@@ -59,6 +59,21 @@ namespace LoginForm
             int idUsuario = 8;
             labelNombre.Text = Convert.ToString(funcionesCRUD.datosUsuario(idUsuario).Rows[0].ItemArray[1]) + " " + Convert.ToString
                 (funcionesCRUD.datosUsuario(idUsuario).Rows[0].ItemArray[2]);
+            int idUsuario2 = 12;
+            //while(Convert.ToInt32(funcionesCRUD.datosSecciones(idUsuario2).) >= 1)
+            for (int i = 0; i < 1; i++)
+            {
+                if (labelSecciones.Text == null)
+                {
+                    labelSecciones.Text = Convert.ToString(funcionesCRUD.datosSecciones(idUsuario2).Rows[0].ItemArray[0]);
+                }
+                else
+                {
+                    int idos = 1;
+                    labelSecciones.Text = labelSecciones.Text +", "+ Convert.ToString(funcionesCRUD.datosSecciones(idUsuario2).Rows[0].ItemArray[idos]);
+                    idos++;
+                }
+            }
 
             btnCerrar.Font = btnInformacion.Font = btnInformacion.Font = btnAgrega2.Font = btnArchivos.Font = 
                 btnEmoticon.Font = btnLeave.Font = btnAgregar.Font = Tipografia.fonts.fontawesome20;
