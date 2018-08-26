@@ -156,6 +156,7 @@ namespace LoginForm
                                 th.SetApartmentState(ApartmentState.STA);
                                 th.Start();
                             }
+                            Admin.configuracion.idUserActual = idUsuario;
                         }
                         else
                         {

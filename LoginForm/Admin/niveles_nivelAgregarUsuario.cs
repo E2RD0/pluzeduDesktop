@@ -77,7 +77,7 @@ namespace LoginForm.Admin
             InitializeComponent();
         }
 
-            private void niveles_nivelAgregarUsuario_Load(object sender, EventArgs e)
+        private void niveles_nivelAgregarUsuario_Load(object sender, EventArgs e)
         {
             mostrarNiveles();
         }

@@ -130,5 +130,42 @@ namespace LoginForm.Database
             retorno = command.ExecuteNonQuery();
             return retorno;
         }
+        public static DataTable infoUsuarios(int id)
+        {
+            DataTable datos = new DataTable();
+            string instrucciones = "SELECT username, email, clave FROM usuario WHERE id = " + id;
+            MySqlCommand comando = new MySqlCommand(instrucciones, conexion.obtenerconexion());
+            MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
+            adapter.Fill(datos);
+            return datos;
+        }
+        public static int updateemail(constructor usuario)
+        {
+            int retorno;
+            MySqlCommand command = new MySqlCommand("UPDATE usuario SET email=@emailUsuario WHERE id=@idUsuario", conexion.obtenerconexion());
+            command.Parameters.Add("@emailUsuario", MySqlDbType.VarChar).Value = usuario.emailUsuario;
+            command.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = usuario.idUsuario;
+            retorno = command.ExecuteNonQuery();
+            return retorno;
+        }
+        public static int updatecontra(constructor usuario)
+        {
+            int retorno;
+            MySqlCommand command = new MySqlCommand("UPDATE usuario SET clave=@claveUsuario WHERE id=@idUsuario", conexion.obtenerconexion());
+            command.Parameters.Add("@claveUsuario", MySqlDbType.VarChar).Value = usuario.claveUsuario;
+            command.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = usuario.idUsuario;
+            retorno = command.ExecuteNonQuery();
+            return retorno;
+        }
+        public static int updateconfig(constructor usuario)
+        {
+            int retorno;
+            MySqlCommand command = new MySqlCommand("UPDATE usuario SET email=@emailUsuario, clave=@claveUsuario WHERE id=@idUsuario", conexion.obtenerconexion());
+            command.Parameters.Add("@emailUsuario", MySqlDbType.VarChar).Value = usuario.emailUsuario;
+            command.Parameters.Add("@claveUsuario", MySqlDbType.VarChar).Value = usuario.claveUsuario;
+            command.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = usuario.idUsuario;
+            retorno = command.ExecuteNonQuery();
+            return retorno;
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace LoginForm.Database
             string server = "127.0.0.1";
             string database = "pluzedu";
             string Uid = "root";
-            string pwd = "";
+            string pwd = "root123";
             MySqlConnection con = new MySqlConnection("server=" + server + "; database=" + database + "; Uid=" + Uid + "; pwd=" + pwd);
             try
             {
