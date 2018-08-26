@@ -73,7 +73,7 @@ namespace LoginForm
         }
         private void abrirUsuario(object obj)
         {
-            Application.Run(new Inicio());
+            Application.Run(new User.menuUsuario());
         }
 
         private void ingresar()
@@ -152,6 +152,7 @@ namespace LoginForm
                             else if (usuario.id_usuariotipoUsuario == 2 || usuario.id_usuariotipoUsuario == 3)
                             {
                                 this.Close();
+                                User.mensajes.idUsuarioActual = idUsuario;
                                 th = new Thread(abrirUsuario);
                                 th.SetApartmentState(ApartmentState.STA);
                                 th.Start();
