@@ -64,7 +64,7 @@ namespace LoginForm.Database
         }
         //FIN NIVELES
 
-        //USUARIOS
+        //ADMINISTRADOR
         public static DataTable mostrarUsuarios(int tipo)
         {
             DataTable datos = new DataTable();
@@ -130,8 +130,28 @@ namespace LoginForm.Database
             retorno = command.ExecuteNonQuery();
             return retorno;
         }
+        //FIN ADMINISTRADOR
 
-        //FIN USUARIOS
+        //USUARIO
+        public static DataTable nivelUsuario(int user)
+        {
+            DataTable datos = new DataTable();
+            string instruccion = String.Format("SELECT n.id_nivel, u.id, nombre FROM nivelesusuario n INNER JOIN usuario u ON u.id=n.id_usuario INNER JOIN nivel ni ON ni.id = n.id_nivel WHERE u.id = {0}", user);
+            MySqlCommand command = new MySqlCommand(instruccion, conexion.obtenerconexion());
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(datos);
+            return datos;
+        }
+        public static DataTable mostrarContactos(int tipo, int nivel, int id)
+        {
+            DataTable datos = new DataTable();
+            string instruccion = String.Format("SELECT u.id, u.nombres, u.apellidos FROM usuario u INNER JOIN usuarioestado e ON u.id_usuarioestado = e.id INNER JOIN usuariotipo t ON u.id_usuariotipo = t.id INNER JOIN nivelesusuario n ON u.id = n.id_usuario WHERE u.id_usuariotipo = {0} AND n.id_nivel = {1} AND u.id <> {2} ORDER BY u.nombres ASC", tipo, nivel, id);
+            MySqlCommand command = new MySqlCommand(instruccion, conexion.obtenerconexion());
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(datos);
+            return datos;
+        }
+        //FIN USUARIO
 
         //MENSAJES
 

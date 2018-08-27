@@ -13,8 +13,8 @@ namespace LoginForm.User
 {
     public partial class mensajes : Form
     {
-        public static int idUsuarioActual { get; set; }
-        public static int idConversacionActual { get; set; }
+        private int idUsuarioActual = Database.usuarioActual.idUsuario;
+        private static int idConversacionActual { get; set; }
         public mensajes()
         {
             InitializeComponent();

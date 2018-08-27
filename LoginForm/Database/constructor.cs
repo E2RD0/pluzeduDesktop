@@ -8,6 +8,7 @@ namespace LoginForm.Database
 {
     class constructor
     {
+        //CONSTRUCTOR USUARIO
         public int idUsuario { get; set; }
         public string nombresUsuario { get; set; }
         public string apellidosUsuario { get; set; }
@@ -18,6 +19,7 @@ namespace LoginForm.Database
         public int id_usuariotipoUsuario { get; set; }
         public int id_usuarioestadoUsuario { get; set; }
 
+        //CONSTRUCTOR NIVEL
         public int idNivel { get; set; }
         public string nombreNivel { get; set; }
     }

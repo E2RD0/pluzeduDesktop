@@ -127,32 +127,28 @@ namespace LoginForm
                         MySqlCommand usuarioComando = new MySqlCommand(instrucciones, Database.conexion.obtenerconexion());
                         MySqlDataAdapter usuarioAdapter = new MySqlDataAdapter(usuarioComando);
                         usuarioAdapter.Fill(datosUsuario);
-                        Database.constructor usuario = new Database.constructor();
-                        usuario.idUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[0]);
-                        usuario.nombresUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[1]);
-                        usuario.apellidosUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[2]);
-                        usuario.usernameUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[3]);
-                        if (datosUsuario.Rows[0].ItemArray[4] != DBNull.Value)
-                            usuario.emailUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[4]);
-                        if (datosUsuario.Rows[0].ItemArray[5] != DBNull.Value)
-                            usuario.claveUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[5]);
+                        Database.usuarioActual.idUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[0]);
+                        Database.usuarioActual.nombresUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[1]);
+                        Database.usuarioActual.apellidosUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[2]);
+                        Database.usuarioActual.usernameUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[3]);
+                        Database.usuarioActual.emailUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[4]);
+                        Database.usuarioActual.claveUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[5]);
                         if (datosUsuario.Rows[0].ItemArray[6] != System.DBNull.Value)
-                            usuario.codigoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[6]);
-                        usuario.id_usuariotipoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[7]);
-                        usuario.id_usuarioestadoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[8]);
-                        if (usuario.id_usuarioestadoUsuario == 1)
+                            Database.usuarioActual.codigoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[6]);
+                        Database.usuarioActual.id_usuariotipoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[7]);
+                        Database.usuarioActual.id_usuarioestadoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[8]);
+                        if (Database.usuarioActual.id_usuarioestadoUsuario == 1)
                         {
-                            if (usuario.id_usuariotipoUsuario == 1)
+                            if (Database.usuarioActual.id_usuariotipoUsuario == 1)
                             {
                                 this.Close();
                                 th = new Thread(abrirAdmin);
                                 th.SetApartmentState(ApartmentState.STA);
                                 th.Start();
                             }
-                            else if (usuario.id_usuariotipoUsuario == 2 || usuario.id_usuariotipoUsuario == 3)
+                            else if (Database.usuarioActual.id_usuariotipoUsuario == 2 || Database.usuarioActual.id_usuariotipoUsuario == 3)
                             {
                                 this.Close();
-                                User.mensajes.idUsuarioActual = idUsuario;
                                 th = new Thread(abrirUsuario);
                                 th.SetApartmentState(ApartmentState.STA);
                                 th.Start();
