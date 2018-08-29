@@ -28,60 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtClaveNueva = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblClave = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnEditarClave = new System.Windows.Forms.Button();
+            this.btnEditarEmail = new System.Windows.Forms.Button();
+            this.txtClaveRepetir = new System.Windows.Forms.TextBox();
+            this.lblRepetirClave = new System.Windows.Forms.Label();
+            this.btnEditarUsuario = new System.Windows.Forms.Button();
+            this.lblEmailValidacion = new System.Windows.Forms.Label();
+            this.lblValidacionClave = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label5
+            // txtClaveNueva
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label5.Location = new System.Drawing.Point(816, 214);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 25);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "edit";
+            this.txtClaveNueva.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtClaveNueva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtClaveNueva.Location = new System.Drawing.Point(464, 214);
+            this.txtClaveNueva.Name = "txtClaveNueva";
+            this.txtClaveNueva.ReadOnly = true;
+            this.txtClaveNueva.Size = new System.Drawing.Size(346, 26);
+            this.txtClaveNueva.TabIndex = 28;
+            this.txtClaveNueva.Text = "Cambiar contraseña";
+            this.txtClaveNueva.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtClaveNueva_KeyUp);
             // 
-            // label4
+            // txtEmail
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label4.Location = new System.Drawing.Point(816, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 25);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "edit";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.textBox3.Location = new System.Drawing.Point(464, 214);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(346, 26);
-            this.textBox3.TabIndex = 28;
-            this.textBox3.Text = "Último cambio: Hace 3 meses";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.textBox2.Location = new System.Drawing.Point(464, 149);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(346, 26);
-            this.textBox2.TabIndex = 27;
-            this.textBox2.Text = "eduardodavidestrada1@gmail.com";
+            this.txtEmail.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtEmail.Location = new System.Drawing.Point(464, 149);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(346, 26);
+            this.txtEmail.TabIndex = 27;
+            this.txtEmail.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyUp);
             // 
             // txtUsuario
             // 
@@ -92,18 +76,17 @@
             this.txtUsuario.ReadOnly = true;
             this.txtUsuario.Size = new System.Drawing.Size(346, 26);
             this.txtUsuario.TabIndex = 26;
-            this.txtUsuario.Text = "itr.eduardodavidestrada";
             // 
-            // label3
+            // lblClave
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Work Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(66, 214);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 23);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Contraseña:";
+            this.lblClave.AutoSize = true;
+            this.lblClave.Font = new System.Drawing.Font("Work Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClave.ForeColor = System.Drawing.Color.Black;
+            this.lblClave.Location = new System.Drawing.Point(66, 214);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(124, 23);
+            this.lblClave.TabIndex = 25;
+            this.lblClave.Text = "Contraseña:";
             // 
             // label2
             // 
@@ -127,51 +110,149 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Usuario:";
             // 
-            // button1
+            // btnGuardar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(70, 469);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 28);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(70, 469);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(108, 28);
+            this.btnGuardar.TabIndex = 31;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnEditarClave
+            // 
+            this.btnEditarClave.FlatAppearance.BorderSize = 0;
+            this.btnEditarClave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnEditarClave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarClave.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarClave.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarClave.Location = new System.Drawing.Point(813, 208);
+            this.btnEditarClave.Name = "btnEditarClave";
+            this.btnEditarClave.Size = new System.Drawing.Size(47, 37);
+            this.btnEditarClave.TabIndex = 35;
+            this.btnEditarClave.Text = "";
+            this.btnEditarClave.UseVisualStyleBackColor = true;
+            this.btnEditarClave.Click += new System.EventHandler(this.btnEditarClave_Click);
+            // 
+            // btnEditarEmail
+            // 
+            this.btnEditarEmail.FlatAppearance.BorderSize = 0;
+            this.btnEditarEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnEditarEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarEmail.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarEmail.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarEmail.Location = new System.Drawing.Point(813, 144);
+            this.btnEditarEmail.Name = "btnEditarEmail";
+            this.btnEditarEmail.Size = new System.Drawing.Size(47, 37);
+            this.btnEditarEmail.TabIndex = 34;
+            this.btnEditarEmail.Text = "";
+            this.btnEditarEmail.UseVisualStyleBackColor = true;
+            this.btnEditarEmail.Click += new System.EventHandler(this.btnEditarEmail_Click);
+            // 
+            // txtClaveRepetir
+            // 
+            this.txtClaveRepetir.BackColor = System.Drawing.Color.White;
+            this.txtClaveRepetir.ForeColor = System.Drawing.Color.Black;
+            this.txtClaveRepetir.Location = new System.Drawing.Point(464, 257);
+            this.txtClaveRepetir.Name = "txtClaveRepetir";
+            this.txtClaveRepetir.Size = new System.Drawing.Size(346, 26);
+            this.txtClaveRepetir.TabIndex = 37;
+            this.txtClaveRepetir.UseSystemPasswordChar = true;
+            this.txtClaveRepetir.Visible = false;
+            this.txtClaveRepetir.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtClaveRepetir_KeyUp);
+            // 
+            // lblRepetirClave
+            // 
+            this.lblRepetirClave.AutoSize = true;
+            this.lblRepetirClave.Font = new System.Drawing.Font("Work Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRepetirClave.ForeColor = System.Drawing.Color.Black;
+            this.lblRepetirClave.Location = new System.Drawing.Point(66, 257);
+            this.lblRepetirClave.Name = "lblRepetirClave";
+            this.lblRepetirClave.Size = new System.Drawing.Size(198, 23);
+            this.lblRepetirClave.TabIndex = 36;
+            this.lblRepetirClave.Text = "Repetir Contraseña:";
+            this.lblRepetirClave.Visible = false;
+            // 
+            // btnEditarUsuario
+            // 
+            this.btnEditarUsuario.FlatAppearance.BorderSize = 0;
+            this.btnEditarUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnEditarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarUsuario.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarUsuario.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarUsuario.Location = new System.Drawing.Point(813, 81);
+            this.btnEditarUsuario.Name = "btnEditarUsuario";
+            this.btnEditarUsuario.Size = new System.Drawing.Size(47, 37);
+            this.btnEditarUsuario.TabIndex = 40;
+            this.btnEditarUsuario.Text = "";
+            this.btnEditarUsuario.UseVisualStyleBackColor = true;
+            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
+            // 
+            // lblEmailValidacion
+            // 
+            this.lblEmailValidacion.AutoSize = true;
+            this.lblEmailValidacion.ForeColor = System.Drawing.Color.Red;
+            this.lblEmailValidacion.Location = new System.Drawing.Point(464, 182);
+            this.lblEmailValidacion.Name = "lblEmailValidacion";
+            this.lblEmailValidacion.Size = new System.Drawing.Size(0, 19);
+            this.lblEmailValidacion.TabIndex = 41;
+            // 
+            // lblValidacionClave
+            // 
+            this.lblValidacionClave.AutoSize = true;
+            this.lblValidacionClave.ForeColor = System.Drawing.Color.Red;
+            this.lblValidacionClave.Location = new System.Drawing.Point(464, 286);
+            this.lblValidacionClave.Name = "lblValidacionClave";
+            this.lblValidacionClave.Size = new System.Drawing.Size(0, 19);
+            this.lblValidacionClave.TabIndex = 42;
             // 
             // configuracion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(920, 520);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lblValidacionClave);
+            this.Controls.Add(this.lblEmailValidacion);
+            this.Controls.Add(this.btnEditarUsuario);
+            this.Controls.Add(this.txtClaveRepetir);
+            this.Controls.Add(this.lblRepetirClave);
+            this.Controls.Add(this.btnEditarClave);
+            this.Controls.Add(this.btnEditarEmail);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.txtClaveNueva);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblClave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Work Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "configuracion";
             this.Text = "configuracion";
+            this.Load += new System.EventHandler(this.configuracion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtClaveNueva;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblClave;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnEditarClave;
+        private System.Windows.Forms.Button btnEditarEmail;
+        private System.Windows.Forms.TextBox txtClaveRepetir;
+        private System.Windows.Forms.Label lblRepetirClave;
+        private System.Windows.Forms.Button btnEditarUsuario;
+        private System.Windows.Forms.Label lblEmailValidacion;
+        private System.Windows.Forms.Label lblValidacionClave;
     }
 }

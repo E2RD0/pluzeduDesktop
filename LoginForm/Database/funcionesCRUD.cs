@@ -64,6 +64,54 @@ namespace LoginForm.Database
         }
         //FIN NIVELES
 
+        //USUARIOGENERAL - ADMIN Y USUARIO
+        public static void datosUsuarioActual(int idUsuario)
+        {
+            DataTable datosUsuario = new DataTable();
+            string instrucciones = String.Format("SELECT id, nombres, apellidos, username, email, clave, codigo, id_usuariotipo, id_usuarioestado FROM usuario WHERE id = {0}", idUsuario);
+            MySqlCommand usuarioComando = new MySqlCommand(instrucciones, Database.conexion.obtenerconexion());
+            MySqlDataAdapter usuarioAdapter = new MySqlDataAdapter(usuarioComando);
+            usuarioAdapter.Fill(datosUsuario);
+            Database.usuarioActual.idUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[0]);
+            Database.usuarioActual.nombresUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[1]);
+            Database.usuarioActual.apellidosUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[2]);
+            Database.usuarioActual.usernameUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[3]);
+            Database.usuarioActual.emailUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[4]);
+            Database.usuarioActual.claveUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[5]);
+            if (datosUsuario.Rows[0].ItemArray[6] != System.DBNull.Value)
+                Database.usuarioActual.codigoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[6]);
+            Database.usuarioActual.id_usuariotipoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[7]);
+            Database.usuarioActual.id_usuarioestadoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[8]);
+        }
+        public static int actualizarCorreo(int idUsuario, string emailUsuario)
+        {
+            int retorno;
+            MySqlCommand command = new MySqlCommand("UPDATE usuario SET email=@emailUsuario WHERE id=@idUsuario", conexion.obtenerconexion());
+            command.Parameters.Add("@emailUsuario", MySqlDbType.VarChar).Value = emailUsuario;
+            command.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = idUsuario;
+            retorno = command.ExecuteNonQuery();
+            return retorno;
+        }
+        public static int actualizarClave(int idUsuario, string claveUsuario)
+        {
+            int retorno;
+            MySqlCommand command = new MySqlCommand("UPDATE usuario SET clave=@claveUsuario WHERE id=@idUsuario", conexion.obtenerconexion());
+            command.Parameters.Add("@claveUsuario", MySqlDbType.VarChar).Value = claveUsuario;
+            command.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = idUsuario;
+            retorno = command.ExecuteNonQuery();
+            return retorno;
+        }
+        public static int actualizarUsername(constructor usuario)
+        {
+            int retorno;
+            MySqlCommand command = new MySqlCommand("UPDATE usuario SET username=@usernameUsuario WHERE id=@idUsuario", conexion.obtenerconexion());
+            command.Parameters.Add("@usernameUsuario", MySqlDbType.VarChar).Value = usuario.usernameUsuario;
+            command.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = usuario.idUsuario;
+            retorno = command.ExecuteNonQuery();
+            return retorno;
+        }
+        //FIN USUARIOGENERAL - ADMIN Y USUARIO
+
         //ADMINISTRADOR
         public static DataTable mostrarUsuarios(int tipo)
         {

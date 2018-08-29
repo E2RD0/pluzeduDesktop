@@ -122,21 +122,7 @@ namespace LoginForm
 
                     if (ingreso == true)
                     {
-                        DataTable datosUsuario = new DataTable();
-                        string instrucciones = String.Format("SELECT id, nombres, apellidos, username, email, clave, codigo, id_usuariotipo, id_usuarioestado FROM usuario WHERE id = {0}", idUsuario);
-                        MySqlCommand usuarioComando = new MySqlCommand(instrucciones, Database.conexion.obtenerconexion());
-                        MySqlDataAdapter usuarioAdapter = new MySqlDataAdapter(usuarioComando);
-                        usuarioAdapter.Fill(datosUsuario);
-                        Database.usuarioActual.idUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[0]);
-                        Database.usuarioActual.nombresUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[1]);
-                        Database.usuarioActual.apellidosUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[2]);
-                        Database.usuarioActual.usernameUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[3]);
-                        Database.usuarioActual.emailUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[4]);
-                        Database.usuarioActual.claveUsuario = Convert.ToString(datosUsuario.Rows[0].ItemArray[5]);
-                        if (datosUsuario.Rows[0].ItemArray[6] != System.DBNull.Value)
-                            Database.usuarioActual.codigoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[6]);
-                        Database.usuarioActual.id_usuariotipoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[7]);
-                        Database.usuarioActual.id_usuarioestadoUsuario = Convert.ToInt32(datosUsuario.Rows[0].ItemArray[8]);
+                        Database.funcionesCRUD.datosUsuarioActual(idUsuario);
                         if (Database.usuarioActual.id_usuarioestadoUsuario == 1)
                         {
                             if (Database.usuarioActual.id_usuariotipoUsuario == 1)
