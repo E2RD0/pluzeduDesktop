@@ -111,6 +111,7 @@ namespace LoginForm.User
                     lblIconChat.Text = "";
 
                     flowLayoutPanel1.Controls.Add(pnlContacto);
+
                 }
             }
 

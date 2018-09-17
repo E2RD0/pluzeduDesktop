@@ -37,6 +37,14 @@ namespace LoginForm.Admin
         {
             InitializeComponent();
         }
+        public void cargarImagenPerfil()
+        {
+            var result = Database.archivos.recibirImg(Database.DBfunciones.urlImagenPerfil(Database.usuarioActual.idUsuario));
+            result.ContinueWith(task =>
+            {
+                cpbxFoto.Image = task.Result;
+            });
+        }
 
         private void barra_MouseDown(object sender, MouseEventArgs e)
         {
@@ -78,12 +86,13 @@ namespace LoginForm.Admin
             this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
             this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
             Admin.usuarios usuarios = new Admin.usuarios();
-            usuarios.tipo = 1;
+            usuarios.tipo = 0;
             abrirFormEnPanel(usuarios);
         }
 
         private void menu_Load(object sender, EventArgs e)
         {
+            cargarImagenPerfil();
             this.btnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
             this.btnNivel.BackColor = System.Drawing.Color.Transparent;
             this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;

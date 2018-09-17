@@ -33,6 +33,14 @@ namespace LoginForm.User
             this.panelContenedor.Tag = fh;
             fh.Show();
         }
+        public void cargarImagenPerfil()
+        {
+            var result = Database.archivos.recibirImg(Database.DBfunciones.urlImagenPerfil(Database.usuarioActual.idUsuario));
+            result.ContinueWith(task =>
+            {
+                cpbxFoto.Image = task.Result;
+            });
+        }
         public menuUsuario()
         {
             InitializeComponent();
@@ -72,6 +80,7 @@ namespace LoginForm.User
 
         private void menu_Load(object sender, EventArgs e)
         {
+            cargarImagenPerfil();
             this.btnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
             this.btnDirectorio.BackColor = System.Drawing.Color.Transparent;
             this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;

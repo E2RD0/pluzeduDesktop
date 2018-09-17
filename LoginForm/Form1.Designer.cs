@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.login = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label11 = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,7 +47,25 @@
             this.btnMin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.recovery = new System.Windows.Forms.Panel();
+            this.btnCambiar = new System.Windows.Forms.Button();
+            this.lblContraseñaConfirmacion = new System.Windows.Forms.Label();
+            this.lblRepite = new System.Windows.Forms.Label();
+            this.pnlContra = new System.Windows.Forms.Panel();
+            this.txtContrarep = new System.Windows.Forms.TextBox();
+            this.lblIcon2 = new System.Windows.Forms.Label();
+            this.btnComprobar = new System.Windows.Forms.Button();
+            this.lblEmailValidacion = new System.Windows.Forms.Label();
+            this.btnCancelRecovery = new System.Windows.Forms.Button();
+            this.lblCorreo = new System.Windows.Forms.Label();
+            this.btnSendRec = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.lblIcon = new System.Windows.Forms.Label();
             this.barra = new LoginForm.GradientPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.gradientPanel1 = new LoginForm.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,25 +75,43 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblIconSend = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2.SuspendLayout();
+            this.login.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.recovery.SuspendLayout();
+            this.pnlContra.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.barra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // login
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.btnIngresar);
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(680, 30);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(320, 520);
-            this.panel2.TabIndex = 2;
+            this.login.BackColor = System.Drawing.Color.White;
+            this.login.Controls.Add(this.linkLabel1);
+            this.login.Controls.Add(this.label11);
+            this.login.Controls.Add(this.btnIngresar);
+            this.login.Controls.Add(this.panel1);
+            this.login.Controls.Add(this.button1);
+            this.login.Location = new System.Drawing.Point(680, 30);
+            this.login.Name = "login";
+            this.login.Size = new System.Drawing.Size(320, 520);
+            this.login.TabIndex = 2;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.SystemColors.AppWorkspace;
+            this.linkLabel1.Location = new System.Drawing.Point(22, 323);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(221, 23);
+            this.linkLabel1.TabIndex = 4;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Recuperar Contraseña";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label11
             // 
@@ -128,10 +165,10 @@
             // lblIconLock
             // 
             this.lblIconLock.AutoSize = true;
-            this.lblIconLock.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconLock.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconLock.Location = new System.Drawing.Point(3, 65);
             this.lblIconLock.Name = "lblIconLock";
-            this.lblIconLock.Size = new System.Drawing.Size(20, 24);
+            this.lblIconLock.Size = new System.Drawing.Size(26, 20);
             this.lblIconLock.TabIndex = 2;
             this.lblIconLock.Text = "";
             // 
@@ -149,10 +186,10 @@
             // lblIconUser
             // 
             this.lblIconUser.AutoSize = true;
-            this.lblIconUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconUser.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconUser.Location = new System.Drawing.Point(3, 10);
             this.lblIconUser.Name = "lblIconUser";
-            this.lblIconUser.Size = new System.Drawing.Size(22, 24);
+            this.lblIconUser.Size = new System.Drawing.Size(26, 20);
             this.lblIconUser.TabIndex = 0;
             this.lblIconUser.Text = "";
             // 
@@ -222,7 +259,7 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnClose.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(290, 0);
             this.btnClose.Name = "btnClose";
@@ -238,7 +275,7 @@
             this.btnMin.FlatAppearance.BorderSize = 0;
             this.btnMin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnMin.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMin.ForeColor = System.Drawing.Color.White;
             this.btnMin.Location = new System.Drawing.Point(260, 0);
             this.btnMin.Name = "btnMin";
@@ -274,15 +311,237 @@
             this.button3.Text = "";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // recovery
+            // 
+            this.recovery.BackColor = System.Drawing.Color.White;
+            this.recovery.Controls.Add(this.btnCambiar);
+            this.recovery.Controls.Add(this.lblContraseñaConfirmacion);
+            this.recovery.Controls.Add(this.lblRepite);
+            this.recovery.Controls.Add(this.pnlContra);
+            this.recovery.Controls.Add(this.btnComprobar);
+            this.recovery.Controls.Add(this.lblEmailValidacion);
+            this.recovery.Controls.Add(this.btnCancelRecovery);
+            this.recovery.Controls.Add(this.lblCorreo);
+            this.recovery.Controls.Add(this.btnSendRec);
+            this.recovery.Controls.Add(this.panel6);
+            this.recovery.Location = new System.Drawing.Point(655, 30);
+            this.recovery.Name = "recovery";
+            this.recovery.Size = new System.Drawing.Size(345, 520);
+            this.recovery.TabIndex = 5;
+            this.recovery.Visible = false;
+            // 
+            // btnCambiar
+            // 
+            this.btnCambiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.btnCambiar.FlatAppearance.BorderSize = 0;
+            this.btnCambiar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.btnCambiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.btnCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCambiar.Location = new System.Drawing.Point(209, 380);
+            this.btnCambiar.Name = "btnCambiar";
+            this.btnCambiar.Size = new System.Drawing.Size(99, 35);
+            this.btnCambiar.TabIndex = 47;
+            this.btnCambiar.Text = "Cambiar";
+            this.btnCambiar.UseVisualStyleBackColor = false;
+            this.btnCambiar.Visible = false;
+            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
+            // 
+            // lblContraseñaConfirmacion
+            // 
+            this.lblContraseñaConfirmacion.AutoSize = true;
+            this.lblContraseñaConfirmacion.Font = new System.Drawing.Font("Work Sans", 12.25F);
+            this.lblContraseñaConfirmacion.ForeColor = System.Drawing.Color.Red;
+            this.lblContraseñaConfirmacion.Location = new System.Drawing.Point(32, 352);
+            this.lblContraseñaConfirmacion.Name = "lblContraseñaConfirmacion";
+            this.lblContraseñaConfirmacion.Size = new System.Drawing.Size(0, 20);
+            this.lblContraseñaConfirmacion.TabIndex = 46;
+            this.lblContraseñaConfirmacion.Visible = false;
+            // 
+            // lblRepite
+            // 
+            this.lblRepite.AutoSize = true;
+            this.lblRepite.Location = new System.Drawing.Point(35, 271);
+            this.lblRepite.Name = "lblRepite";
+            this.lblRepite.Size = new System.Drawing.Size(220, 23);
+            this.lblRepite.TabIndex = 45;
+            this.lblRepite.Text = "Repite tu contraseña: ";
+            this.lblRepite.Visible = false;
+            // 
+            // pnlContra
+            // 
+            this.pnlContra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlContra.Controls.Add(this.txtContrarep);
+            this.pnlContra.Controls.Add(this.lblIcon2);
+            this.pnlContra.Location = new System.Drawing.Point(32, 297);
+            this.pnlContra.Name = "pnlContra";
+            this.pnlContra.Size = new System.Drawing.Size(286, 46);
+            this.pnlContra.TabIndex = 44;
+            this.pnlContra.Visible = false;
+            // 
+            // txtContrarep
+            // 
+            this.txtContrarep.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtContrarep.Location = new System.Drawing.Point(35, 10);
+            this.txtContrarep.Name = "txtContrarep";
+            this.txtContrarep.Size = new System.Drawing.Size(228, 23);
+            this.txtContrarep.TabIndex = 1;
+            this.txtContrarep.Visible = false;
+            // 
+            // lblIcon2
+            // 
+            this.lblIcon2.AutoSize = true;
+            this.lblIcon2.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIcon2.Location = new System.Drawing.Point(3, 13);
+            this.lblIcon2.Name = "lblIcon2";
+            this.lblIcon2.Size = new System.Drawing.Size(26, 20);
+            this.lblIcon2.TabIndex = 0;
+            this.lblIcon2.Text = "";
+            // 
+            // btnComprobar
+            // 
+            this.btnComprobar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.btnComprobar.FlatAppearance.BorderSize = 0;
+            this.btnComprobar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.btnComprobar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.btnComprobar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComprobar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnComprobar.Location = new System.Drawing.Point(183, 323);
+            this.btnComprobar.Name = "btnComprobar";
+            this.btnComprobar.Size = new System.Drawing.Size(125, 35);
+            this.btnComprobar.TabIndex = 43;
+            this.btnComprobar.Text = "Comprobar";
+            this.btnComprobar.UseVisualStyleBackColor = false;
+            this.btnComprobar.Visible = false;
+            this.btnComprobar.Click += new System.EventHandler(this.btnComprobar_Click);
+            // 
+            // lblEmailValidacion
+            // 
+            this.lblEmailValidacion.AutoSize = true;
+            this.lblEmailValidacion.Font = new System.Drawing.Font("Work Sans", 12.25F);
+            this.lblEmailValidacion.ForeColor = System.Drawing.Color.Red;
+            this.lblEmailValidacion.Location = new System.Drawing.Point(32, 250);
+            this.lblEmailValidacion.Name = "lblEmailValidacion";
+            this.lblEmailValidacion.Size = new System.Drawing.Size(0, 20);
+            this.lblEmailValidacion.TabIndex = 42;
+            // 
+            // btnCancelRecovery
+            // 
+            this.btnCancelRecovery.BackColor = System.Drawing.Color.Gray;
+            this.btnCancelRecovery.FlatAppearance.BorderSize = 0;
+            this.btnCancelRecovery.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnCancelRecovery.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnCancelRecovery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelRecovery.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelRecovery.Location = new System.Drawing.Point(81, 282);
+            this.btnCancelRecovery.Name = "btnCancelRecovery";
+            this.btnCancelRecovery.Size = new System.Drawing.Size(122, 35);
+            this.btnCancelRecovery.TabIndex = 5;
+            this.btnCancelRecovery.Text = "Cancelar";
+            this.btnCancelRecovery.UseVisualStyleBackColor = false;
+            this.btnCancelRecovery.Click += new System.EventHandler(this.btnCancelRecovery_Click);
+            // 
+            // lblCorreo
+            // 
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Location = new System.Drawing.Point(30, 169);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(291, 23);
+            this.lblCorreo.TabIndex = 3;
+            this.lblCorreo.Text = "Ingresa tu correo eléctronico:";
+            // 
+            // btnSendRec
+            // 
+            this.btnSendRec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.btnSendRec.FlatAppearance.BorderSize = 0;
+            this.btnSendRec.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.btnSendRec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.btnSendRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendRec.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSendRec.Location = new System.Drawing.Point(209, 282);
+            this.btnSendRec.Name = "btnSendRec";
+            this.btnSendRec.Size = new System.Drawing.Size(99, 35);
+            this.btnSendRec.TabIndex = 2;
+            this.btnSendRec.Text = "Enviar";
+            this.btnSendRec.UseVisualStyleBackColor = false;
+            this.btnSendRec.Click += new System.EventHandler(this.btnSendRec_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.txtCorreo);
+            this.panel6.Controls.Add(this.lblIcon);
+            this.panel6.Location = new System.Drawing.Point(34, 195);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(284, 46);
+            this.panel6.TabIndex = 1;
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCorreo.Location = new System.Drawing.Point(35, 10);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(228, 23);
+            this.txtCorreo.TabIndex = 1;
+            // 
+            // lblIcon
+            // 
+            this.lblIcon.AutoSize = true;
+            this.lblIcon.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIcon.Location = new System.Drawing.Point(3, 13);
+            this.lblIcon.Name = "lblIcon";
+            this.lblIcon.Size = new System.Drawing.Size(28, 20);
+            this.lblIcon.TabIndex = 0;
+            this.lblIcon.Text = "";
+            // 
             // barra
             // 
             this.barra.ColorLeft = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
             this.barra.ColorRight = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.barra.Controls.Add(this.pictureBox2);
+            this.barra.Controls.Add(this.label1);
+            this.barra.Controls.Add(this.label3);
             this.barra.Location = new System.Drawing.Point(0, 0);
             this.barra.Name = "barra";
             this.barra.Size = new System.Drawing.Size(680, 30);
             this.barra.TabIndex = 9;
             this.barra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(13, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 25);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 48;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(44, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 20);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "|";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(60, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 24);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Pluzedu";
+            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
             // 
             // gradientPanel1
             // 
@@ -327,11 +586,11 @@
             // 
             this.lblIconGroup.AutoSize = true;
             this.lblIconGroup.BackColor = System.Drawing.Color.Transparent;
-            this.lblIconGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconGroup.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconGroup.ForeColor = System.Drawing.Color.White;
             this.lblIconGroup.Location = new System.Drawing.Point(50, 405);
             this.lblIconGroup.Name = "lblIconGroup";
-            this.lblIconGroup.Size = new System.Drawing.Size(21, 24);
+            this.lblIconGroup.Size = new System.Drawing.Size(33, 20);
             this.lblIconGroup.TabIndex = 7;
             this.lblIconGroup.Text = "";
             // 
@@ -351,11 +610,11 @@
             // 
             this.lblIconFolder.AutoSize = true;
             this.lblIconFolder.BackColor = System.Drawing.Color.Transparent;
-            this.lblIconFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconFolder.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconFolder.ForeColor = System.Drawing.Color.White;
             this.lblIconFolder.Location = new System.Drawing.Point(50, 355);
             this.lblIconFolder.Name = "lblIconFolder";
-            this.lblIconFolder.Size = new System.Drawing.Size(20, 24);
+            this.lblIconFolder.Size = new System.Drawing.Size(28, 20);
             this.lblIconFolder.TabIndex = 5;
             this.lblIconFolder.Text = "";
             // 
@@ -375,11 +634,11 @@
             // 
             this.lblIconSend.AutoSize = true;
             this.lblIconSend.BackColor = System.Drawing.Color.Transparent;
-            this.lblIconSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconSend.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconSend.ForeColor = System.Drawing.Color.White;
             this.lblIconSend.Location = new System.Drawing.Point(50, 305);
             this.lblIconSend.Name = "lblIconSend";
-            this.lblIconSend.Size = new System.Drawing.Size(20, 24);
+            this.lblIconSend.Size = new System.Drawing.Size(28, 20);
             this.lblIconSend.TabIndex = 3;
             this.lblIconSend.Text = "";
             // 
@@ -400,22 +659,33 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1000, 550);
+            this.Controls.Add(this.recovery);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.login);
             this.Controls.Add(this.gradientPanel1);
             this.Font = new System.Drawing.Font("Work Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar sesión";
             this.Load += new System.EventHandler(this.Form1_Load_1);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.login.ResumeLayout(false);
+            this.login.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.recovery.ResumeLayout(false);
+            this.recovery.PerformLayout();
+            this.pnlContra.ResumeLayout(false);
+            this.pnlContra.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.barra.ResumeLayout(false);
+            this.barra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -433,7 +703,7 @@
         private System.Windows.Forms.Label lblIconFolder;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblIconGroup;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel login;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtUser;
@@ -452,6 +722,25 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Panel recovery;
+        private System.Windows.Forms.Label lblCorreo;
+        private System.Windows.Forms.Button btnSendRec;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Label lblIcon;
+        private System.Windows.Forms.Button btnCancelRecovery;
+        private System.Windows.Forms.Label lblEmailValidacion;
+        private System.Windows.Forms.Button btnComprobar;
+        private System.Windows.Forms.Label lblContraseñaConfirmacion;
+        private System.Windows.Forms.Label lblRepite;
+        private System.Windows.Forms.Panel pnlContra;
+        private System.Windows.Forms.TextBox txtContrarep;
+        private System.Windows.Forms.Label lblIcon2;
+        private System.Windows.Forms.Button btnCambiar;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

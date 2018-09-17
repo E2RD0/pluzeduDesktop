@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using LoginForm.Database;
 using System.Drawing;
 using System.Net.Mail;
+using System.IO;
 
 namespace LoginForm.Admin
 {
@@ -12,11 +13,11 @@ namespace LoginForm.Admin
         string usernameUsuario;
         string emailUsuario;
         string hashUsuario;
-        bool validacionCorreo = false;
-        bool validacionUsuario = false;
-        bool validacionClave = false;
-        string hashNuevo;
-
+        string nombreCompletoUsuario;
+        bool validacionCorreo = true;
+        bool validacionUsuario = true;
+        bool validacionClave = true;
+        string claveDefinitiva = "";
         public void Reload()
         {
             configuracion configuracion = new configuracion();
@@ -30,16 +31,29 @@ namespace LoginForm.Admin
             usernameUsuario = Database.usuarioActual.usernameUsuario;
             emailUsuario = Database.usuarioActual.emailUsuario;
             hashUsuario = Database.usuarioActual.claveUsuario;
+            nombreCompletoUsuario = Database.usuarioActual.nombresUsuario + " " + Database.usuarioActual.apellidosUsuario;
         }
         public configuracion()
         {
             InitializeComponent();
         }
+        private void cargarImagenPerfil()
+        {
+            var result = archivos.recibirImg(DBfunciones.urlImagenPerfil(Database.usuarioActual.idUsuario));
+            result.ContinueWith(task =>
+            {
+                pbxPerfil.Image = task.Result;
+            });
+            btnEditarFoto.Visible = true;
+        }
         private void configuracion_Load(object sender, EventArgs e)
         {
             Datos();
+            lblNombreCompleto.Text = Database.usuarioActual.nombresUsuario + " " +  Database.usuarioActual.apellidosUsuario;
+            lblNombreCompleto.Location = new Point((this.Width - lblNombreCompleto.Width) / 2, 132);
             txtUsuario.Text = usernameUsuario;
             txtEmail.Text = emailUsuario;
+            cargarImagenPerfil();
         }
         private bool emailEsValido(string email)
         {
@@ -89,154 +103,63 @@ namespace LoginForm.Admin
             string emailNuevo = txtEmail.Text;
             string usernameNuevo = txtUsuario.Text;
 
-            if(emailUsuario == emailNuevo)
+            if (emailUsuario == emailNuevo)
             {
                 validacionCorreo = true;
             }
-            if(usernameUsuario == usernameNuevo)
+            if (usernameUsuario == usernameNuevo)
+            {
+                validacionUsuario = true;
+            }
+            if (!string.IsNullOrEmpty(usernameNuevo.Trim()))
             {
                 validacionUsuario = true;
             }
             if (validacionUsuario == true && validacionCorreo == true && validacionClave == true)
             {
-                if(emailUsuario != emailNuevo) { }
-                if (usernameUsuario != usernameNuevo) { }
+                if (emailUsuario == emailNuevo && usernameUsuario == usernameNuevo && (hashing.ValidatePassword(claveDefinitiva, hashUsuario) || claveDefinitiva == ""))
+                {
+                    MessageBox.Show("Debes de cambiar algun dato.");
+                }
+                else
+                {
+                    configuracion_autenticacion autenticacion = new Admin.configuracion_autenticacion();
+                    autenticacion.StartPosition = FormStartPosition.CenterScreen;
+                    if (autenticacion.ShowDialog(this) == DialogResult.OK)
+                    {
+                        if (hashing.ValidatePassword(autenticacion.txtClave.Text, hashUsuario))
+                        {
+                            if (emailUsuario != emailNuevo)
+                            {
+                                funcionesCRUD.actualizarCorreo(idUsuario, emailNuevo);
+                            }
+                            if (usernameUsuario != usernameNuevo)
+                            {
+                                funcionesCRUD.actualizarUsername(idUsuario, usernameNuevo);
+                            }
+                            if (!string.IsNullOrEmpty(claveDefinitiva.Trim()))
+                            {
+                                funcionesCRUD.actualizarClave(idUsuario, hashing.HashPassword(claveDefinitiva));
+                            }
+                            MessageBox.Show("Datos actualizados correctamente.");
+                            Reload();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Clave Incorrecta.");
+                        }
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Alguno de los campos no tiene el formato adecuado.");
             }
-            
-            //Reload();
         }
-
-        /*private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            
-
-
-           /* string hashNuevo;
-            string usuarioNuevo;
-            try
-            {
-                string email = null;
-                string contra = null;
-                if (txtEmail.ReadOnly == false && txtClaveNueva.ReadOnly == true)
-                {
-                    if (string.IsNullOrEmpty(txtEmail.Text.Trim()))
-                    {
-                        MessageBox.Show("Uno de los campos requeridos esta vacio, por favor verifique los campos ingresados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (txtEmail.Text.EndsWith("@gmail.com") || txtEmail.Text.EndsWith("@yahoo.com") || txtEmail.Text.EndsWith("@hotmail.com") || txtEmail.Text.EndsWith("@outlook.com"))
-                        {
-                            email = txtEmail.Text;
-                            constructor acorreo = new constructor();
-                            acorreo.idUsuario = idUserActual;
-                            acorreo.emailUsuario = email;
-                            int cor = funcionesCRUD.updateemail(acorreo);
-                            if (cor > 0)
-                            {
-                                MessageBox.Show("El correo se actualizo correctamente.", "Usuario actualizado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("El correo no se actualizo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("La direccion de correo no es valida, por favor ingrese una correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                else if (txtEmail.ReadOnly == true && txtClaveNueva.ReadOnly == false)
-                {
-                    if (string.IsNullOrEmpty(txtClaveNueva.Text.Trim()) || string.IsNullOrEmpty(txtClaveRepetir.Text.Trim()) || string.IsNullOrEmpty(txtContraRepetir.Text.Trim()))
-                    {
-                        MessageBox.Show("Uno de los campos requeridos esta vacio, por favor verifique los campos ingresados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        bool si = hashing.ValidatePassword(txtClaveNueva.Text, hash);
-                        if (si == true)
-                        {
-                            if (txtClaveRepetir.Text == txtContraRepetir.Text)
-                            {
-                                contra = hashing.HashPassword(txtClaveRepetir.Text);
-                                constructor acontra = new constructor();
-                                acontra.idUsuario = idUserActual;
-                                acontra.claveUsuario = contra;
-                                int contr = funcionesCRUD.updatecontra(acontra);
-                                if (contr > 0)
-                                {
-                                    MessageBox.Show("La contraseña se actualizo correctamente.", "Usuario actualizado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("La contraseña no se actualizo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Las contraseñas ingresadas no son iguales, por favor verifiquelas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("La contraseña ingresada es errónea, por favor verifíque la contraseña.", "Advertencía", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                else if (txtEmail.ReadOnly == false && txtClaveNueva.ReadOnly == false)
-                {
-                    if (string.IsNullOrWhiteSpace(txtClaveNueva.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
-                    {
-                        MessageBox.Show("Uno de los campos requeridos esta vacio, por favor verifique los campos ingresados.", "Advertencía", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (hashing.ValidatePassword(txtClaveNueva.Text, hash))
-                    {
-                        if (txtClaveRepetir.Text != txtContraRepetir.Text && string.IsNullOrEmpty(txtEmail.Text.Trim()))
-                        {
-                            MessageBox.Show("Uno de los campos requeridos esta erroneo, por favor verifique los campos ingresados.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            contra = hashing.HashPassword(txtClaveRepetir.Text);
-                            if (txtEmail.Text.EndsWith("@gmail.com") || txtEmail.Text.EndsWith("@yahoo.com") || txtEmail.Text.EndsWith("@hotmail.com") || txtEmail.Text.EndsWith("@outlook.com"))
-                            {
-                                email = txtEmail.Text;
-                                constructor send = new constructor();
-                                send.idUsuario = idUserActual;
-                                send.emailUsuario = email;
-                                send.claveUsuario = contra;
-                                int actualizar = funcionesCRUD.updateconfig(send);
-                                if (actualizar > 0)
-                                {
-                                    MessageBox.Show("El usuario se actualizo correctamente.", "Usuario actualizado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("El usuario no se actualizo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("La direccion de correo no es valida, por favor ingrese una correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception eActu)
-            {
-                MessageBox.Show("El usuario no se actualizo: " + eActu.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-    }*/
 
         private void btnEditarEmail_Click(object sender, EventArgs e)
         {
+            validacionCorreo = false;
             txtEmail.ForeColor = Color.Black;
             txtEmail.BackColor = Color.White;
             txtEmail.ReadOnly = false;
@@ -244,6 +167,7 @@ namespace LoginForm.Admin
         }
         private void btnEditarClave_Click(object sender, EventArgs e)
         {
+            validacionClave = false;
             txtClaveNueva.Text = "";
             txtClaveNueva.ReadOnly = false;
             txtClaveNueva.UseSystemPasswordChar = true;
@@ -257,7 +181,18 @@ namespace LoginForm.Admin
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-
+            if (Database.usuarioActual.id_usuariotipoUsuario == 1)
+            {
+                txtUsuario.ForeColor = Color.Black;
+                txtUsuario.BackColor = Color.White;
+                txtUsuario.ReadOnly = false;
+                txtUsuario.Focus();
+                validacionUsuario = false;
+            }
+            else
+            {
+                MessageBox.Show("Debes ser un administrador para poder cambiar tu usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtEmail_KeyUp(object sender, KeyEventArgs e)
@@ -292,6 +227,7 @@ namespace LoginForm.Admin
                 {
                     lblValidacionClave.Text = "";
                     validacionClave = true;
+                    claveDefinitiva = claveRepetir;
                 }
                 else
                 {
@@ -327,6 +263,37 @@ namespace LoginForm.Admin
             {
                 lblValidacionClave.Text = "Debes de completar ambos campos.";
                 validacionClave = false;
+            }
+        }
+
+        private void btnEditarFoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog open = new OpenFileDialog();
+                open.Filter = "Imagenes|*.png;*.jpg;*.jpeg;*.gif;";
+                if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string fileLocation = open.FileName;
+                    long fileSize = new FileInfo(open.FileName).Length;
+                    if (fileSize > 5000000)
+                    {
+                        MessageBox.Show("La imagen es muy pesada, intentalo de nuevo.");
+                    }
+                    else
+                    {
+                        Stream imgStream = ImageResize.Crop(Image.FromFile(@fileLocation), 300, 300, ImageResize.AnchorPosition.Center);
+                        archivos.subirImagen(imgStream, Database.usuarioActual.idUsuario);
+                        cargarImagenPerfil();
+                        (Application.OpenForms["menu"] as menu).cargarImagenPerfil();
+                    }
+
+
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(Convert.ToString(error.Message));
             }
         }
     }

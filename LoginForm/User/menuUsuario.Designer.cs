@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menuUsuario));
             this.barra = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnMin = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -38,13 +42,19 @@
             this.btnSignout = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
+            this.cpbxFoto = new LoginForm.circlepbx();
             this.barra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlNav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // barra
             // 
-            this.barra.BackColor = System.Drawing.Color.SteelBlue;
+            this.barra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.barra.Controls.Add(this.pictureBox1);
+            this.barra.Controls.Add(this.label2);
+            this.barra.Controls.Add(this.label1);
             this.barra.Controls.Add(this.btnMin);
             this.barra.Controls.Add(this.btnClose);
             this.barra.Dock = System.Windows.Forms.DockStyle.Top;
@@ -54,13 +64,52 @@
             this.barra.TabIndex = 13;
             this.barra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(13, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(44, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 20);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "|";
+            this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(60, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 24);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Pluzedu";
+            this.label1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            // 
             // btnMin
             // 
             this.btnMin.FlatAppearance.BorderSize = 0;
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnMin.ForeColor = System.Drawing.Color.White;
-            this.btnMin.Location = new System.Drawing.Point(940, 0);
+            this.btnMin.Location = new System.Drawing.Point(940, 1);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(30, 30);
             this.btnMin.TabIndex = 45;
@@ -74,7 +123,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(970, 0);
+            this.btnClose.Location = new System.Drawing.Point(970, 1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(30, 30);
             this.btnClose.TabIndex = 44;
@@ -110,6 +159,7 @@
             // 
             this.pnlNav.ColorLeft = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.pnlNav.ColorRight = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.pnlNav.Controls.Add(this.cpbxFoto);
             this.pnlNav.Controls.Add(this.btnDirectorio);
             this.pnlNav.Controls.Add(this.btnSignout);
             this.pnlNav.Controls.Add(this.btnConfiguracion);
@@ -129,7 +179,7 @@
             this.btnDirectorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDirectorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDirectorio.ForeColor = System.Drawing.Color.White;
-            this.btnDirectorio.Location = new System.Drawing.Point(0, 196);
+            this.btnDirectorio.Location = new System.Drawing.Point(0, 197);
             this.btnDirectorio.Margin = new System.Windows.Forms.Padding(0);
             this.btnDirectorio.Name = "btnDirectorio";
             this.btnDirectorio.Size = new System.Drawing.Size(80, 60);
@@ -147,7 +197,7 @@
             this.btnSignout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignout.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.btnSignout.Location = new System.Drawing.Point(0, 460);
+            this.btnSignout.Location = new System.Drawing.Point(0, 461);
             this.btnSignout.Margin = new System.Windows.Forms.Padding(0);
             this.btnSignout.Name = "btnSignout";
             this.btnSignout.Size = new System.Drawing.Size(80, 60);
@@ -165,7 +215,7 @@
             this.btnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfiguracion.ForeColor = System.Drawing.Color.White;
-            this.btnConfiguracion.Location = new System.Drawing.Point(0, 256);
+            this.btnConfiguracion.Location = new System.Drawing.Point(0, 257);
             this.btnConfiguracion.Margin = new System.Windows.Forms.Padding(0);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.Size = new System.Drawing.Size(80, 60);
@@ -183,7 +233,7 @@
             this.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.ForeColor = System.Drawing.Color.White;
-            this.btnInicio.Location = new System.Drawing.Point(0, 136);
+            this.btnInicio.Location = new System.Drawing.Point(0, 137);
             this.btnInicio.Margin = new System.Windows.Forms.Padding(0);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(80, 60);
@@ -191,6 +241,16 @@
             this.btnInicio.Text = "";
             this.btnInicio.UseVisualStyleBackColor = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
+            // 
+            // cpbxFoto
+            // 
+            this.cpbxFoto.BackColor = System.Drawing.Color.Silver;
+            this.cpbxFoto.Location = new System.Drawing.Point(10, 28);
+            this.cpbxFoto.Name = "cpbxFoto";
+            this.cpbxFoto.Size = new System.Drawing.Size(60, 60);
+            this.cpbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cpbxFoto.TabIndex = 25;
+            this.cpbxFoto.TabStop = false;
             // 
             // menuUsuario
             // 
@@ -202,12 +262,16 @@
             this.Controls.Add(this.pnlNav);
             this.Controls.Add(this.barra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "menuUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Niveles";
             this.Load += new System.EventHandler(this.menu_Load);
             this.barra.ResumeLayout(false);
+            this.barra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlNav.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cpbxFoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,5 +287,9 @@
         private System.Windows.Forms.Button btnMin;
         private System.Windows.Forms.Button btnClose;
         public System.Windows.Forms.Panel panelContenedor;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
+        private circlepbx cpbxFoto;
     }
 }

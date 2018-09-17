@@ -39,6 +39,9 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,12 @@
     </Compile>
     <Compile Include="Admin\configuracion.Designer.cs">
       <DependentUpon>configuracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\configuracion_autenticacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\configuracion_autenticacion.Designer.cs">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\usuario_editar.cs">
       <SubType>Form</SubType>
@@ -105,12 +114,16 @@
     <Compile Include="Admin\principal.Designer.cs">
       <DependentUpon>principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configuracion.cs">
+    <Compile Include="cambiarClave.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Configuracion.Designer.cs">
-      <DependentUpon>Configuracion.cs</DependentUpon>
+    <Compile Include="cambiarClave.Designer.cs">
+      <DependentUpon>cambiarClave.cs</DependentUpon>
     </Compile>
+    <Compile Include="circlepbx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database\archivos.cs" />
     <Compile Include="Database\conexion.cs" />
     <Compile Include="Database\constructor.cs" />
     <Compile Include="Database\funcionesCRUD.cs" />
@@ -127,12 +140,6 @@
     </Compile>
     <Compile Include="GradientUpBottom.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Inicio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inicio.Designer.cs">
-      <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\menu.cs">
       <SubType>Form</SubType>
@@ -155,6 +162,12 @@
     <Compile Include="User\configuracion.Designer.cs">
       <DependentUpon>configuracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\configuracion_autenticacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\configuracion_autenticacion.Designer.cs">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\directorio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +188,9 @@
     </Compile>
     <EmbeddedResource Include="Admin\configuracion.resx">
       <DependentUpon>configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\configuracion_autenticacion.resx">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\usuario_editar.resx">
       <DependentUpon>usuario_editar.cs</DependentUpon>
@@ -200,14 +216,11 @@
     <EmbeddedResource Include="Admin\principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Configuracion.resx">
-      <DependentUpon>Configuracion.cs</DependentUpon>
+    <EmbeddedResource Include="cambiarClave.resx">
+      <DependentUpon>cambiarClave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\menu.resx">
       <DependentUpon>menu.cs</DependentUpon>
@@ -225,6 +238,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="User\configuracion_autenticacion.resx">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User\directorio.resx">
       <DependentUpon>directorio.cs</DependentUpon>
     </EmbeddedResource>

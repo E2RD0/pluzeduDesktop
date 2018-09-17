@@ -12,6 +12,17 @@ namespace LoginForm.Admin
 {
     public partial class niveles : Form
     {
+        //INICIALIZAR FORM
+        public niveles()
+        {
+            InitializeComponent();
+        }
+        private void niveles_Load(object sender, EventArgs e)
+        {
+            btnAgregar.Font = Tipografia.fonts.fontawesome24;
+            mostrarNiveles();
+        }
+        //MOSTRAR NIVELES
         public void mostrarNiveles()
         {
             DataTable niveles = Database.funcionesCRUD.mostrarNiveles();
@@ -85,7 +96,7 @@ namespace LoginForm.Admin
                     if (MessageBox.Show("¿Seguro que quiere eliminar a " + nombre + "?", "Eliminar nivel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         int retorno = Database.funcionesCRUD.eliminarNivel(id);
-                        if(retorno < 1)
+                        if (retorno < 1)
                         {
                             MessageBox.Show("El nivel no pudo ser eliminado");
                         }
@@ -102,7 +113,7 @@ namespace LoginForm.Admin
                 };
                 pnlNivel.Click += (s, ev) =>
                 {
-                    Admin.niveles_nivel nivel= new Admin.niveles_nivel();
+                    Admin.niveles_nivel nivel = new Admin.niveles_nivel();
                     nivel.idNivel = id;
                     nivel.tipoUsuario = 2;
                     nivel.nombreNivel = nombre;
@@ -118,18 +129,7 @@ namespace LoginForm.Admin
 
             }
         }
-
-        public niveles()
-        {
-            InitializeComponent();
-        }
-
-        private void niveles_Load(object sender, EventArgs e)
-        {
-            btnAgregar.Font = Tipografia.fonts.fontawesome24;
-            mostrarNiveles();
-        }
-
+        //AGREGAR NIVELES
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             niveles_nuevo nuevo = new niveles_nuevo();

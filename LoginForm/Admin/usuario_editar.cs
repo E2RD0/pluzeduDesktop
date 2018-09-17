@@ -26,46 +26,41 @@ namespace LoginForm.Admin
         }
         public void Editar()
         {
-            if (string.IsNullOrEmpty(txt_Nombres.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_Apellidos.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_Usuario.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_Email.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_Password.Text.Trim()) ||
-                string.IsNullOrEmpty(txt_Codigo.Text.Trim()) ||
-                string.IsNullOrEmpty(cbx_Estado.Text) ||
-                string.IsNullOrEmpty(cbx_Tipo.Text))
+
+            try
             {
-                MessageBox.Show("Uno o varios campos requeridos estan vacios.", "Campos vacios", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                try
+                constructor update = new constructor();
+                update.idUsuario = Convert.ToInt32(txt_Id.Text);
+                update.nombresUsuario = txt_Nombres.Text;
+                update.apellidosUsuario = txt_Apellidos.Text;
+                update.usernameUsuario = txt_Usuario.Text;
+                update.emailUsuario = txt_Email.Text;
+                if (string.IsNullOrEmpty(txt_Password.Text.Trim()))
                 {
-                    constructor update = new constructor();
-                    update.idUsuario = Convert.ToInt32(txt_Id.Text);
-                    update.nombresUsuario = txt_Nombres.Text;
-                    update.apellidosUsuario = txt_Apellidos.Text;
-                    update.usernameUsuario = txt_Usuario.Text;
-                    update.emailUsuario = txt_Email.Text;
+                    update.claveUsuario = Database.usuarioActual.claveUsuario;
+                }
+                else
+                {
                     update.claveUsuario = hashing.HashPassword(txt_Password.Text);
-                    update.codigoUsuario = Convert.ToInt32(txt_Codigo.Text);
-                    update.id_usuarioestadoUsuario = Convert.ToInt32(cbx_Estado.SelectedValue);
-                    update.id_usuariotipoUsuario = Convert.ToInt32(cbx_Tipo.SelectedValue);
-                    int datos = funcionesCRUD.update(update);
-                    if (datos > 0)
-                    {
-                        MessageBox.Show("El usuario se actualizo correctamente.", "Usuario actualizado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("El usuario no se actualizo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
-                catch (Exception eActu)
+                update.codigoUsuario = Convert.ToInt32(txt_Codigo.Text);
+                update.id_usuarioestadoUsuario = Convert.ToInt32(cbx_Estado.SelectedValue);
+                update.id_usuariotipoUsuario = Convert.ToInt32(cbx_Tipo.SelectedValue);
+                int datos = funcionesCRUD.update(update);
+                if (datos > 0)
                 {
-                    MessageBox.Show("El usuario no se actualizo: " + eActu.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El usuario se actualizo correctamente.", "Usuario actualizado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no se actualizo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            catch (Exception eActu)
+            {
+                MessageBox.Show("El usuario no se actualizo: " + eActu.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         public void Agregar()
         {
@@ -118,8 +113,21 @@ namespace LoginForm.Admin
             }
             else
             {
-                Editar();
-                this.Close();
+                if (string.IsNullOrEmpty(txt_Nombres.Text.Trim()) ||
+                    string.IsNullOrEmpty(txt_Apellidos.Text.Trim()) ||
+                    string.IsNullOrEmpty(txt_Usuario.Text.Trim()) ||
+                    string.IsNullOrEmpty(txt_Email.Text.Trim()) ||
+                    string.IsNullOrEmpty(txt_Codigo.Text.Trim()) ||
+                    string.IsNullOrEmpty(cbx_Estado.Text) ||
+                    string.IsNullOrEmpty(cbx_Tipo.Text))
+                {
+                    MessageBox.Show("Uno o varios campos requeridos estan vacios.", "Campos vacios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Editar();
+                    this.Close();
+                }
             }
         }
 

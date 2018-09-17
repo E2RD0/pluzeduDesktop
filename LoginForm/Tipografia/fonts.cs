@@ -31,6 +31,7 @@ namespace LoginForm.Tipografia
             return myFont;
         }
         public static Font fontawesome60 = getFont(60.0F);
+        public static Font fontawesome30 = getFont(30.0F);
         public static Font fontawesome24 = getFont(24.25F);
         public static Font fontawesome20 = getFont(20.25F);
         public static Font fontawesome16 = getFont(15.75F);

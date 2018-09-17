@@ -64,10 +64,10 @@
             // lblIconAward
             // 
             this.lblIconAward.AutoSize = true;
-            this.lblIconAward.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIconAward.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconAward.Location = new System.Drawing.Point(55, 45);
             this.lblIconAward.Name = "lblIconAward";
-            this.lblIconAward.Size = new System.Drawing.Size(80, 91);
+            this.lblIconAward.Size = new System.Drawing.Size(95, 83);
             this.lblIconAward.TabIndex = 1;
             this.lblIconAward.Text = "";
             this.lblIconAward.Click += new System.EventHandler(this.pnlNiveles_Click);
@@ -116,10 +116,10 @@
             // lblIIconUserGraduate
             // 
             this.lblIIconUserGraduate.AutoSize = true;
-            this.lblIIconUserGraduate.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIIconUserGraduate.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIIconUserGraduate.Location = new System.Drawing.Point(50, 45);
             this.lblIIconUserGraduate.Name = "lblIIconUserGraduate";
-            this.lblIIconUserGraduate.Size = new System.Drawing.Size(80, 91);
+            this.lblIIconUserGraduate.Size = new System.Drawing.Size(105, 83);
             this.lblIIconUserGraduate.TabIndex = 3;
             this.lblIIconUserGraduate.Text = "";
             this.lblIIconUserGraduate.Click += new System.EventHandler(this.pnlEstudiantes_Click);
@@ -156,10 +156,10 @@
             // lblIconChalkboardTeacher
             // 
             this.lblIconChalkboardTeacher.AutoSize = true;
-            this.lblIconChalkboardTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIconChalkboardTeacher.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconChalkboardTeacher.Location = new System.Drawing.Point(35, 45);
             this.lblIconChalkboardTeacher.Name = "lblIconChalkboardTeacher";
-            this.lblIconChalkboardTeacher.Size = new System.Drawing.Size(80, 91);
+            this.lblIconChalkboardTeacher.Size = new System.Drawing.Size(135, 83);
             this.lblIconChalkboardTeacher.TabIndex = 5;
             this.lblIconChalkboardTeacher.Text = "";
             this.lblIconChalkboardTeacher.Click += new System.EventHandler(this.pnlMaestros_Click);
@@ -184,10 +184,10 @@
             // lblIconUser
             // 
             this.lblIconUser.AutoSize = true;
-            this.lblIconUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Bold);
+            this.lblIconUser.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIconUser.Location = new System.Drawing.Point(50, 45);
             this.lblIconUser.Name = "lblIconUser";
-            this.lblIconUser.Size = new System.Drawing.Size(91, 91);
+            this.lblIconUser.Size = new System.Drawing.Size(105, 83);
             this.lblIconUser.TabIndex = 7;
             this.lblIconUser.Text = "";
             this.lblIconUser.Click += new System.EventHandler(this.pnlAdministradores_Click);

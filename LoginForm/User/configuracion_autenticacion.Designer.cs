@@ -1,6 +1,6 @@
-﻿namespace LoginForm.Admin
+﻿namespace LoginForm.User
 {
-    partial class niveles_nuevo
+    partial class configuracion_autenticacion
     {
         /// <summary>
         /// Required designer variable.
@@ -33,17 +33,18 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNombreNivel = new System.Windows.Forms.TextBox();
+            this.txtClaveUser = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.barra.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barra
             // 
-            this.barra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.barra.BackColor = System.Drawing.Color.SteelBlue;
             this.barra.Controls.Add(this.btnMin);
             this.barra.Controls.Add(this.btnClose);
             this.barra.Controls.Add(this.label9);
@@ -79,7 +80,6 @@
             this.btnClose.TabIndex = 42;
             this.btnClose.Text = "";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label9
             // 
@@ -88,9 +88,9 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label9.Location = new System.Drawing.Point(3, 4);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 19);
+            this.label9.Size = new System.Drawing.Size(120, 19);
             this.label9.TabIndex = 41;
-            this.label9.Text = "Nuevo Nivel";
+            this.label9.Text = "Autenticación";
             // 
             // label1
             // 
@@ -99,22 +99,24 @@
             this.label1.Font = new System.Drawing.Font("Work Sans", 12F);
             this.label1.Location = new System.Drawing.Point(13, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 19);
+            this.label1.Size = new System.Drawing.Size(104, 19);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Nombre: ";
+            this.label1.Text = "Contraseña:";
             // 
-            // txtNombreNivel
+            // txtClaveUser
             // 
-            this.txtNombreNivel.Location = new System.Drawing.Point(99, 56);
-            this.txtNombreNivel.Name = "txtNombreNivel";
-            this.txtNombreNivel.Size = new System.Drawing.Size(489, 26);
-            this.txtNombreNivel.TabIndex = 14;
+            this.txtClaveUser.Location = new System.Drawing.Point(123, 56);
+            this.txtClaveUser.Name = "txtClaveUser";
+            this.txtClaveUser.Size = new System.Drawing.Size(465, 26);
+            this.txtClaveUser.TabIndex = 14;
+            this.txtClaveUser.UseSystemPasswordChar = true;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.btnCancelar);
-            this.panel1.Controls.Add(this.btnAgregar);
+            this.panel1.Controls.Add(this.btnActualizar);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
@@ -131,47 +133,56 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(481, 111);
+            this.btnCancelar.Location = new System.Drawing.Point(483, 112);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(106, 38);
-            this.btnCancelar.TabIndex = 37;
+            this.btnCancelar.TabIndex = 35;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
-            // btnAgregar
+            // btnActualizar
             // 
-            this.btnAgregar.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.btnAgregar.Location = new System.Drawing.Point(362, 111);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(106, 38);
-            this.btnAgregar.TabIndex = 36;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnActualizar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnActualizar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Location = new System.Drawing.Point(364, 112);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(106, 38);
+            this.btnActualizar.TabIndex = 34;
+            this.btnActualizar.Text = "Aceptar";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click_1);
             // 
-            // niveles_nuevo
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(598, 158);
+            this.panel2.TabIndex = 36;
+            // 
+            // configuracion_autenticacion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(600, 160);
-            this.Controls.Add(this.txtNombreNivel);
+            this.Controls.Add(this.txtClaveUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.barra);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Work Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "niveles_nuevo";
+            this.Name = "configuracion_autenticacion";
             this.Padding = new System.Windows.Forms.Padding(1);
-            this.Text = "niveles_nuevo";
-            this.Load += new System.EventHandler(this.niveles_nuevo_Load);
+            this.Text = "niveles_editar";
+            this.Load += new System.EventHandler(this.niveles_editar_Load);
             this.barra.ResumeLayout(false);
             this.barra.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -187,9 +198,10 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNombreNivel;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnCancelar;
-        public System.Windows.Forms.Button btnAgregar;
+        public System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.TextBox txtClaveUser;
     }
 }

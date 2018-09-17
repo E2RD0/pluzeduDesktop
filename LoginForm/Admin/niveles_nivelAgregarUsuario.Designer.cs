@@ -92,7 +92,6 @@
             this.label1.Size = new System.Drawing.Size(80, 21);
             this.label1.TabIndex = 36;
             this.label1.Text = "Buscar: ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -111,25 +110,27 @@
             this.txtUser.Font = new System.Drawing.Font("Work Sans", 13F);
             this.txtUser.Location = new System.Drawing.Point(37, 6);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(499, 21);
+            this.txtUser.Size = new System.Drawing.Size(669, 21);
             this.txtUser.TabIndex = 1;
+            this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label9.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 7);
+            this.label9.Location = new System.Drawing.Point(4, 7);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 20);
             this.label9.TabIndex = 0;
-            this.label9.Text = "search";
+            this.label9.Text = "";
             // 
             // shapeContainer1
             // 
             this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Size = new System.Drawing.Size(539, 32);
+            this.shapeContainer1.Size = new System.Drawing.Size(709, 32);
             this.shapeContainer1.TabIndex = 4;
             this.shapeContainer1.TabStop = false;
             // 

@@ -13,7 +13,7 @@ namespace LoginForm.Database
         public static MySqlConnection obtenerconexion()
         {
             string server = "127.0.0.1";
-            string database = "pluzedu";
+            string database = "pluzeduv2.0";
             string Uid = "root";
             string pwd = "";
             MySqlConnection con = new MySqlConnection("server=" + server + "; database=" + database + "; Uid=" + Uid + "; pwd=" + pwd);
