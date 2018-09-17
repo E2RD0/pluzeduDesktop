@@ -93,5 +93,16 @@ namespace LoginForm.Admin
         {
             lblIconAward.Font = lblIconChalkboardTeacher.Font = lblIconUser.Font = lblIIconUserGraduate.Font = Tipografia.fonts.fontawesome60;
         }
+
+        private void pnlEstudiantes_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlGraficas_Click(object sender, EventArgs e)
+        {
+            Admin.graficas graficas = new Admin.graficas();
+            (Application.OpenForms["menu"] as menu).abrirFormEnPanel(graficas);
+        }
     }
 }

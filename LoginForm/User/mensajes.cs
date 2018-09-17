@@ -68,11 +68,7 @@ namespace LoginForm.User
                 }
                 else if (!esGrupoConversacion)
                 {
-                    DataTable nombreConversacion = new DataTable();
-                    MySqlCommand command = new MySqlCommand("SELECT u.id, u.nombres, u.apellidos FROM usuario u INNER JOIN conversacionintegrantes ci ON ci.id_usuario = u.id WHERE ci.id_conversacion = @idConversacion;", Database.conexion.obtenerconexion());
-                    command.Parameters.Add("@idConversacion", MySqlDbType.Int32).Value = Convert.ToInt32(conversaciones.Rows[i].ItemArray[0]);
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                    adapter.Fill(nombreConversacion);
+                    DataTable nombreConversacion = Database.funcionesCRUD.datosUsuarioConversacion(idConversacion);
                     for (int j = 0; j < nombreConversacion.Rows.Count; j++)
                     {
                         int idUsuarioConversacion = Convert.ToInt32(nombreConversacion.Rows[j].ItemArray[0]);
@@ -97,18 +93,27 @@ namespace LoginForm.User
                     }
                 }
                 DataTable ultimo = Database.funcionesCRUD.ultimoMensaje(idConversacion);
-                bool es_grupo = Convert.ToBoolean(ultimo.Rows[0].ItemArray[2]);
-                if (es_grupo)
+                if (ultimo.Rows.Count > 0)
                 {
-                    ultimoMensaje = archivos.nombreOriginalArchivo(Convert.ToString(ultimo.Rows[0].ItemArray[0]));
+                    bool es_archivo = Convert.ToBoolean(ultimo.Rows[0].ItemArray[2]);
+                    if (es_archivo)
+                    {
+                        ultimoMensaje = archivos.nombreOriginalArchivo(Convert.ToString(ultimo.Rows[0].ItemArray[0]));
+                    }
+                    else
+                    {
+                        ultimoMensaje = Convert.ToString(ultimo.Rows[0].ItemArray[0]);
+                    }
+                    DateTimeOffset fechaUltimoDate = new DateTimeOffset(Convert.ToDateTime(ultimo.Rows[0].ItemArray[1]), new TimeSpan(-6, 0, 0));
+                    fechaUltimoDate.ToLocalTime();
+                    fechaUltimo = fechaUltimoDate.ToString("h:mm tt");
                 }
                 else
                 {
-                    ultimoMensaje = Convert.ToString(ultimo.Rows[0].ItemArray[0]);
+                    ultimoMensaje = "¡Envía tu primer mensaje!";
+                    fechaUltimo = "";
                 }
-                DateTimeOffset fechaUltimoDate = new DateTimeOffset(Convert.ToDateTime(ultimo.Rows[0].ItemArray[1]), new TimeSpan(-6, 0, 0));
-                fechaUltimoDate.ToLocalTime();
-                fechaUltimo = fechaUltimoDate.ToString("h:mm tt");
+                
                 // 
                 // pnlConversacion
                 // 
@@ -613,7 +618,26 @@ namespace LoginForm.User
                 if (CCI > 0)
                 {
                     idConInd = funcionesCRUD.conversacionIndivExiste(idUsuarioActual, idSegundo);
+                    DataTable nombreConversacion = Database.funcionesCRUD.datosUsuarioConversacion(idConInd);
+                    for (int j = 0; j < nombreConversacion.Rows.Count; j++)
+                    {
+                        int idUsuarioConversacion = Convert.ToInt32(nombreConversacion.Rows[j].ItemArray[0]);
+                        if (idUsuarioConversacion != idUsuarioActual)
+                        {
+                            string nombreUsuarioConversacion = Convert.ToString(nombreConversacion.Rows[j].ItemArray[1]) + " " + Convert.ToString(nombreConversacion.Rows[j].ItemArray[2]);
+                            lblNombreInfo.Text = nombreUsuarioConversacion;
+                            lblNombreConversacion.Text = nombreUsuarioConversacion;
+                        }
+
+                    }
                     mostrarMensajes(idConInd);
+                    idConversacionActual = idConInd;
+                    foreach (Control conversacion in flpConversaciones.Controls)
+                    {
+                        conversacion.BackColor = Color.Transparent;
+                    }
+                    //pnlConversacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+                    txtMensaje.Focus();
                 }
                 else
                 {
@@ -623,6 +647,26 @@ namespace LoginForm.User
             else if (idConInd > 0)
             {
                 mostrarMensajes(idConInd);
+                DataTable nombreConversacion = Database.funcionesCRUD.datosUsuarioConversacion(idConInd);
+                for (int j = 0; j < nombreConversacion.Rows.Count; j++)
+                {
+                    int idUsuarioConversacion = Convert.ToInt32(nombreConversacion.Rows[j].ItemArray[0]);
+                    if (idUsuarioConversacion != idUsuarioActual)
+                    {
+                        string nombreUsuarioConversacion = Convert.ToString(nombreConversacion.Rows[j].ItemArray[1]) + " " + Convert.ToString(nombreConversacion.Rows[j].ItemArray[2]);
+                        lblNombreInfo.Text = nombreUsuarioConversacion;
+                        lblNombreConversacion.Text = nombreUsuarioConversacion;
+                    }
+
+                }
+                mostrarMensajes(idConInd);
+                idConversacionActual = idConInd;
+                foreach (Control conversacion in flpConversaciones.Controls)
+                {
+                    conversacion.BackColor = Color.Transparent;
+                }
+                //pnlConversacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+                txtMensaje.Focus();
             }
             if (pnlBuscar.Visible == true && pnlAgregar.Visible == false)
             {
@@ -762,147 +806,183 @@ namespace LoginForm.User
         private void Buscar()
         {
             string busquedatxt;
-            DataTable niveles = Database.funcionesCRUD.nivelUsuario(idUsuarioActual);
-            int Nivel = Convert.ToInt32(niveles.Rows[0].ItemArray[0]);
             if (pnlBuscar.Visible == true && pnlAgregar.Visible == false) { flpBusqueda.Controls.Clear(); busquedatxt = txtBuscar.Text; } else { flpAgregar.Controls.Clear(); busquedatxt = txtAgregar.Text; }
             if (!string.IsNullOrEmpty(busquedatxt.Trim()))
             {
-                DataTable busqueda = funcionesCRUD.buscarContactos(Nivel, idUsuarioActual, busquedatxt);
-                for (int i = 0; i < busqueda.Rows.Count; i++)
+                DataTable niveles = Database.funcionesCRUD.nivelUsuario(idUsuarioActual);
+                for (int o = 0; o < niveles.Rows.Count; o++)
                 {
-                    if (busqueda.Rows.Count > 0)
+                    Label lblNivel = new Label();
+                    string nombreNivel = Convert.ToString(niveles.Rows[o].ItemArray[2]);
+                    lblNivel.AutoSize = true;
+                    lblNivel.BackColor = System.Drawing.Color.Transparent;
+                    lblNivel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    lblNivel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+                    lblNivel.Location = new System.Drawing.Point(14, 8);
+                    /*lblNivel.Margin = new System.Windows.Forms.Padding(0, 0, 700, 0);*/
+                    lblNivel.Name = "lblNivel" + o;
+                    lblNivel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+                    lblNivel.TabIndex = 0 + o;
+                    //lblNivel.Text = nombreNivel;
+
+                    if (pnlBuscar.Visible == true && pnlAgregar.Visible == false) { flpBusqueda.Controls.Add(lblNivel); } else { flpAgregar.Controls.Add(lblNivel); }
+
+                    int Nivel = Convert.ToInt32(niveles.Rows[o].ItemArray[0]);
+                    DataTable busqueda = funcionesCRUD.buscarContactos(Nivel, idUsuarioActual, busquedatxt);
+                    for (int i = 0; i < busqueda.Rows.Count; i++)
                     {
-                        //deletethis n = new deletethis();
-                        //n.dataGridView1.DataSource = busqueda;
-                        //n.Show();
-                        id2 = Convert.ToInt32(busqueda.Rows[i].ItemArray[2]);
-                        string nombre = Convert.ToString(busqueda.Rows[i].ItemArray[0]) + " " + Convert.ToString(busqueda.Rows[i].ItemArray[1]);
-                        Panel pnlName = new System.Windows.Forms.Panel();
-                        circlepbx fotoPerfil = new circlepbx();
-                        Label lblName = new System.Windows.Forms.Label();
-                        Label lblNameIdentificador = new System.Windows.Forms.Label();
-                        Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-                        Microsoft.VisualBasic.PowerPacks.LineShape lsName = new Microsoft.VisualBasic.PowerPacks.LineShape();
-                        // 
-                        // pnlName
-                        // 
-                        pnlName.BackColor = System.Drawing.Color.Transparent;
-                        pnlName.Controls.Add(fotoPerfil);
-                        pnlName.Controls.Add(lblName);
-                        pnlName.Controls.Add(shapeContainer2);
-                        pnlName.Controls.Add(lblNameIdentificador);
-                        pnlName.Location = new System.Drawing.Point(14, 215);
-                        pnlName.Margin = new System.Windows.Forms.Padding(0);
-                        pnlName.Name = "pnlName" + i;
-                        pnlName.Size = new System.Drawing.Size(266, 63);
-                        pnlName.TabIndex = 0;
-                        pnlName.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
-                        pnlName.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
-                        pnlName.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
-                        pnlName.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
-                        // 
-                        // pbName
-                        // 
-                        var result = Database.archivos.recibirImg(Database.DBfunciones.urlImagenPerfil(id2));
-                        result.ContinueWith(task =>
                         {
-                            fotoPerfil.Image = task.Result;
-                        });
-                        fotoPerfil.SizeMode = PictureBoxSizeMode.StretchImage;
-                        fotoPerfil.BackColor = System.Drawing.SystemColors.Control;
-                        fotoPerfil.Location = new System.Drawing.Point(11, 8);
-                        fotoPerfil.Name = "pbName" + i;
-                        fotoPerfil.Size = new System.Drawing.Size(50, 50);
-                        fotoPerfil.TabIndex = 0;
-                        fotoPerfil.TabStop = false;
-                        fotoPerfil.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
-                        fotoPerfil.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
-                        fotoPerfil.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
-                        fotoPerfil.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
-                        // 
-                        // lblName
-                        // 
-                        lblName.AutoSize = true;
-                        lblName.BackColor = System.Drawing.Color.Transparent;
-                        lblName.Location = new System.Drawing.Point(81, 12);
-                        lblName.MaximumSize = new System.Drawing.Size(175, 0);
-                        lblName.Name = "lblName" + i;
-                        lblName.Size = new System.Drawing.Size(153, 38);
-                        lblName.TabIndex = 0;
-                        lblName.Text = nombre;
-                        lblName.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
-                        lblName.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
-                        lblName.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
-                        lblName.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
-                        // 
-                        // shapeContainer2
-                        // 
-                        shapeContainer2.Location = new System.Drawing.Point(0, 0);
-                        shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-                        shapeContainer2.Name = "shapeContainer2" + i;
-                        shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {lsName});
-                        shapeContainer2.Size = new System.Drawing.Size(266, 63);
-                        shapeContainer2.TabIndex = 1;
-                        shapeContainer2.TabStop = false;
-                        // 
-                        // lsName
-                        // 
-                        lsName.BorderColor = System.Drawing.Color.DarkGray;
-                        lsName.Name = "lsName" + i;
-                        lsName.SelectionColor = System.Drawing.Color.Transparent;
-                        lsName.X1 = 0;
-                        lsName.X2 = 266;
-                        lsName.Y1 = 62;
-                        lsName.Y2 = 62;
-                        if (Convert.ToString(busqueda.Rows[i].ItemArray[3]) == "Maestro")
-                        {
-                            // 
-                            // lblNameIdentificador
-                            // 
-                            lblNameIdentificador.Font = Tipografia.fonts.fontawesome12;
-                            lblNameIdentificador.BackColor = System.Drawing.Color.Transparent;
-                            lblNameIdentificador.Name = "lblNameIdentificador" + i;
-                            lblNameIdentificador.Location = new Point(235, 10);
-                            lblNameIdentificador.Size = new System.Drawing.Size(23, 24);
-                            lblNameIdentificador.TabIndex = 0;
-                            lblNameIdentificador.Text = "";
-                            lblNameIdentificador.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
-                            lblNameIdentificador.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
-                            lblNameIdentificador.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
-                            lblNameIdentificador.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
-                        }
-                        void pnlName_MouseEnter(object sender, EventArgs e)
-                        {
-                            pnlName.BackColor = System.Drawing.SystemColors.Control;
-                        }
-                        void pnlName_MouseLeave(object sender, EventArgs e)
-                        {
-                            pnlName.BackColor = System.Drawing.Color.White;
-                        }
-                        void pnlName_MouseDown(object sender, MouseEventArgs e)
-                        {
-                            pnlName.BackColor = System.Drawing.Color.LightGray;
-                            if ((pnlAgregar.Visible == true && pnlBuscar.Visible == false) && pnlIntegrantes.Visible == true)
+                            if (busqueda.Rows.Count > 0)
                             {
+                                //deletethis n = new deletethis();
+                                //n.dataGridView1.DataSource = busqueda;
+                                //n.Show();
+                                id2 = Convert.ToInt32(busqueda.Rows[i].ItemArray[2]);
+                                string nombre = Convert.ToString(busqueda.Rows[i].ItemArray[0]) + " " + Convert.ToString(busqueda.Rows[i].ItemArray[1]);
+                                Panel pnlName = new System.Windows.Forms.Panel();
+                                circlepbx fotoPerfil = new circlepbx();
+                                Label lblName = new System.Windows.Forms.Label();
+                                Label lblNameIdentificador = new System.Windows.Forms.Label();
+                                Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+                                Microsoft.VisualBasic.PowerPacks.LineShape lsName = new Microsoft.VisualBasic.PowerPacks.LineShape();
+                                // 
+                                // pnlName
+                                // 
+                                pnlName.BackColor = System.Drawing.Color.Transparent;
+                                pnlName.Controls.Add(fotoPerfil);
+                                pnlName.Controls.Add(lblName);
+                                pnlName.Controls.Add(shapeContainer2);
+                                pnlName.Controls.Add(lblNameIdentificador);
+                                pnlName.Location = new System.Drawing.Point(0, 215);
+                                pnlName.Margin = new System.Windows.Forms.Padding(0);
+                                pnlName.Name = "pnlName" + i;
+                                pnlName.Size = new System.Drawing.Size(263, 63);
+                                pnlName.TabIndex = 0;
+                                pnlName.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
+                                pnlName.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
+                                pnlName.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
+                                pnlName.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
+                                // 
+                                // pbName
+                                // 
+                                var result = Database.archivos.recibirImg(Database.DBfunciones.urlImagenPerfil(id2));
+                                result.ContinueWith(task =>
+                                {
+                                    fotoPerfil.Image = task.Result;
+                                });
+                                fotoPerfil.SizeMode = PictureBoxSizeMode.StretchImage;
+                                fotoPerfil.BackColor = System.Drawing.SystemColors.Control;
+                                fotoPerfil.Location = new System.Drawing.Point(11, 8);
+                                fotoPerfil.Name = "pbName" + i;
+                                fotoPerfil.Size = new System.Drawing.Size(50, 50);
+                                fotoPerfil.TabIndex = 0;
+                                fotoPerfil.TabStop = false;
+                                fotoPerfil.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
+                                fotoPerfil.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
+                                fotoPerfil.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
+                                fotoPerfil.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
+                                // 
+                                // lblName
+                                // 
+                                lblName.AutoSize = true;
+                                lblName.BackColor = System.Drawing.Color.Transparent;
+                                lblName.Location = new System.Drawing.Point(81, 12);
+                                lblName.MaximumSize = new System.Drawing.Size(175, 0);
+                                lblName.Name = "lblName" + i;
+                                lblName.Size = new System.Drawing.Size(153, 38);
+                                lblName.TabIndex = 0;
+                                lblName.Text = nombre;
+                                lblName.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
+                                lblName.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
+                                lblName.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
+                                lblName.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
+                                // 
+                                // shapeContainer2
+                                // 
+                                shapeContainer2.Location = new System.Drawing.Point(0, 0);
+                                shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
+                                shapeContainer2.Name = "shapeContainer2" + i;
+                                shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] { lsName });
+                                shapeContainer2.Size = new System.Drawing.Size(266, 63);
+                                shapeContainer2.TabIndex = 1;
+                                shapeContainer2.TabStop = false;
+                                // 
+                                // lsName
+                                // 
+                                lsName.BorderColor = System.Drawing.Color.DarkGray;
+                                lsName.Name = "lsName" + i;
+                                lsName.SelectionColor = System.Drawing.Color.Transparent;
+                                lsName.X1 = 0;
+                                lsName.X2 = 266;
+                                lsName.Y1 = 62;
+                                lsName.Y2 = 62;
+                                if (Convert.ToString(busqueda.Rows[i].ItemArray[3]) == "Maestro")
+                                {
+                                    // 
+                                    // lblNameIdentificador
+                                    // 
+                                    lblNameIdentificador.Font = Tipografia.fonts.fontawesome12;
+                                    lblNameIdentificador.BackColor = System.Drawing.Color.Transparent;
+                                    lblNameIdentificador.Name = "lblNameIdentificador" + i;
+                                    lblNameIdentificador.Location = new Point(235, 10);
+                                    lblNameIdentificador.Size = new System.Drawing.Size(23, 24);
+                                    lblNameIdentificador.TabIndex = 0;
+                                    lblNameIdentificador.Text = "";
+                                    lblNameIdentificador.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
+                                    lblNameIdentificador.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
+                                    lblNameIdentificador.MouseLeave += new System.EventHandler(pnlName_MouseLeave);
+                                    lblNameIdentificador.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlName_MouseUp);
+                                }
+                                void pnlName_MouseEnter(object sender, EventArgs e)
+                                {
+                                    pnlName.BackColor = System.Drawing.SystemColors.Control;
+                                }
+                                void pnlName_MouseLeave(object sender, EventArgs e)
+                                {
+                                    pnlName.BackColor = System.Drawing.Color.White;
+                                }
+                                void pnlName_MouseDown(object sender, MouseEventArgs e)
+                                {
+                                    pnlName.BackColor = System.Drawing.Color.LightGray;
+                                    if ((pnlAgregar.Visible == true && pnlBuscar.Visible == false) && pnlIntegrantes.Visible == true)
+                                    {
+                                    }
+                                    Conversacion(id2);
+                                }
+                                void pnlName_MouseUp(object sender, MouseEventArgs e)
+                                {
+                                    pnlName.BackColor = System.Drawing.SystemColors.Control;
+                                }
+                                if (pnlBuscar.Visible == true && pnlAgregar.Visible == false) { flpBusqueda.Controls.Add(pnlName); } else { flpAgregar.Controls.Add(pnlName); }
                             }
-                            Conversacion(id2);
+                            else { }
                         }
-                        void pnlName_MouseUp(object sender, MouseEventArgs e)
-                        {
-                            pnlName.BackColor = System.Drawing.SystemColors.Control;
-                        }
-                        if (pnlBuscar.Visible == true && pnlAgregar.Visible == false) { flpBusqueda.Controls.Add(pnlName); } else { flpAgregar.Controls.Add(pnlName); }
                     }
-                    else { }
                 }
             }
             else
             {
-                DataTable Default = funcionesCRUD.mostrarContactosBuscar(Nivel,idUsuarioActual);
-                //deletethis n = new deletethis();
-                //n.dataGridView1.DataSource = Default;
-                //n.Show();
-                for (int i = 0; i < Default.Rows.Count; i++)
+                DataTable niveles = Database.funcionesCRUD.nivelUsuario(idUsuarioActual);
+                for (int o = 0; o < niveles.Rows.Count; o++)
+                {
+                    Label lblNivel = new Label();
+                    string nombreNivel = Convert.ToString(niveles.Rows[o].ItemArray[2]);
+                    lblNivel.AutoSize = false;
+                    lblNivel.BackColor = System.Drawing.Color.Transparent;
+                    lblNivel.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    lblNivel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+                    lblNivel.Location = new System.Drawing.Point(0, 0);
+                    /*lblNivel.Margin = new System.Windows.Forms.Padding(0, 0, 700, 0);*/
+                    lblNivel.Name = "lblNivel" + o;
+                    lblNivel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+                    lblNivel.TabIndex = 0 + o;
+                    //lblNivel.Text = nombreNivel;
+
+                    if (pnlBuscar.Visible == true && pnlAgregar.Visible == false) { flpBusqueda.Controls.Add(lblNivel); } else { flpAgregar.Controls.Add(lblNivel); }
+
+                    int Nivel = Convert.ToInt32(niveles.Rows[o].ItemArray[0]);
+                    DataTable Default = funcionesCRUD.mostrarContactosBuscar(Nivel, idUsuarioActual);
+                    for (int i = 0; i < Default.Rows.Count; i++)
                 {
                     int id2 = Convert.ToInt32(Default.Rows[i].ItemArray[0]);
                     string nombre = Convert.ToString(Default.Rows[i].ItemArray[1]) + " " + Convert.ToString(Default.Rows[i].ItemArray[2]);
@@ -921,10 +1001,10 @@ namespace LoginForm.User
                     pnlName.Controls.Add(lblName);
                     pnlName.Controls.Add(shapeContainer2);
                     pnlName.Controls.Add(lblNameIdentificador);
-                    pnlName.Location = new System.Drawing.Point(14, 215);
+                    pnlName.Location = new System.Drawing.Point(0, 215);
                     pnlName.Margin = new System.Windows.Forms.Padding(0);
-                    pnlName.Name = "pnlName"+i;
-                    pnlName.Size = new System.Drawing.Size(266, 63);
+                    pnlName.Name = "pnlName" + i;
+                    pnlName.Size = new System.Drawing.Size(263, 63);
                     pnlName.TabIndex = 0;
                     pnlName.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlName_MouseDown);
                     pnlName.MouseEnter += new System.EventHandler(pnlName_MouseEnter);
@@ -941,7 +1021,7 @@ namespace LoginForm.User
                     fotoPerfilBusqueda.BackColor = System.Drawing.SystemColors.Control;
                     fotoPerfilBusqueda.SizeMode = PictureBoxSizeMode.StretchImage;
                     fotoPerfilBusqueda.Location = new System.Drawing.Point(11, 8);
-                    fotoPerfilBusqueda.Name = "pbName"+i;
+                    fotoPerfilBusqueda.Name = "pbName" + i;
                     fotoPerfilBusqueda.Size = new System.Drawing.Size(50, 50);
                     fotoPerfilBusqueda.TabIndex = 0;
                     fotoPerfilBusqueda.TabStop = false;
@@ -956,7 +1036,7 @@ namespace LoginForm.User
                     lblName.BackColor = System.Drawing.Color.Transparent;
                     lblName.Location = new System.Drawing.Point(81, 12);
                     lblName.MaximumSize = new System.Drawing.Size(175, 0);
-                    lblName.Name = "lblName"+i;
+                    lblName.Name = "lblName" + i;
                     lblName.Size = new System.Drawing.Size(153, 38);
                     lblName.TabIndex = 0;
                     lblName.Text = nombre;
@@ -969,7 +1049,7 @@ namespace LoginForm.User
                     // 
                     shapeContainer2.Location = new System.Drawing.Point(0, 0);
                     shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-                    shapeContainer2.Name = "shapeContainer2"+i;
+                    shapeContainer2.Name = "shapeContainer2" + i;
                     shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
                     lsName});
                     shapeContainer2.Size = new System.Drawing.Size(266, 63);
@@ -979,7 +1059,7 @@ namespace LoginForm.User
                     // lsName
                     // 
                     lsName.BorderColor = System.Drawing.Color.DarkGray;
-                    lsName.Name = "lsName"+i;
+                    lsName.Name = "lsName" + i;
                     lsName.SelectionColor = System.Drawing.Color.Transparent;
                     lsName.X1 = 0;
                     lsName.X2 = 266;
@@ -1020,6 +1100,7 @@ namespace LoginForm.User
                         pnlName.BackColor = System.Drawing.SystemColors.Control;
                     }
                     if (pnlBuscar.Visible == true && pnlAgregar.Visible == false) { flpBusqueda.Controls.Add(pnlName); } else { flpAgregar.Controls.Add(pnlName); }
+                    }
                 }
             }
         }

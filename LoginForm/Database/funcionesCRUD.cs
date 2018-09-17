@@ -220,6 +220,15 @@ namespace LoginForm.Database
             adapter.Fill(datos);
             return datos;
         }
+        public static DataTable datosUsuarioConversacion(int idConversacion)
+        {
+            DataTable usuariosConversacion = new DataTable();
+            MySqlCommand command = new MySqlCommand("SELECT u.id, u.nombres, u.apellidos FROM usuario u INNER JOIN conversacionintegrantes ci ON ci.id_usuario = u.id WHERE ci.id_conversacion = @idConversacion;", Database.conexion.obtenerconexion());
+            command.Parameters.Add("@idConversacion", MySqlDbType.Int32).Value = idConversacion;
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(usuariosConversacion);
+            return usuariosConversacion;
+        }
         public static DataTable ultimoMensaje(int idConversacion)
         {
             DataTable datos = new DataTable();
@@ -408,5 +417,14 @@ namespace LoginForm.Database
             return datos;
         }
         //FIN BUSCAR
+        //GRAFICAS
+        public static DataTable EnviarDatos(string consulta)
+        {
+            DataTable datos = new DataTable();
+            MySqlCommand comando = new MySqlCommand(consulta, conexion.obtenerconexion());
+            MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
+            adapter.Fill(datos);
+            return datos;
+        }
     }
 }

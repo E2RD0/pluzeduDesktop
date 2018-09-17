@@ -115,6 +115,7 @@
             // cbx_Estado
             // 
             this.cbx_Estado.BackColor = System.Drawing.Color.DarkGray;
+            this.cbx_Estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_Estado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbx_Estado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_Estado.ForeColor = System.Drawing.Color.White;
@@ -127,6 +128,7 @@
             // cbx_Tipo
             // 
             this.cbx_Tipo.BackColor = System.Drawing.Color.DarkGray;
+            this.cbx_Tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_Tipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbx_Tipo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_Tipo.ForeColor = System.Drawing.Color.White;

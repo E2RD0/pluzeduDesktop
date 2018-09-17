@@ -39,6 +39,7 @@
             // 
             // cbxTipo
             // 
+            this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxTipo.FormattingEnabled = true;
             this.cbxTipo.Location = new System.Drawing.Point(20, 30);

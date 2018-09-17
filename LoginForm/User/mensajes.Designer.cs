@@ -370,9 +370,9 @@
             // flpBusqueda
             // 
             this.flpBusqueda.AutoScroll = true;
-            this.flpBusqueda.Location = new System.Drawing.Point(7, 43);
+            this.flpBusqueda.Location = new System.Drawing.Point(0, 43);
             this.flpBusqueda.Name = "flpBusqueda";
-            this.flpBusqueda.Size = new System.Drawing.Size(266, 466);
+            this.flpBusqueda.Size = new System.Drawing.Size(280, 466);
             this.flpBusqueda.TabIndex = 20;
             // 
             // txtBuscar

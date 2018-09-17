@@ -40,10 +40,18 @@
             this.pnlAdministradores = new System.Windows.Forms.Panel();
             this.lblIconUser = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pnlGraficas = new System.Windows.Forms.Panel();
+            this.lblconChart = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pnlReportes = new System.Windows.Forms.Panel();
+            this.lblIconReport = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.pnlNiveles.SuspendLayout();
             this.pnlEstudiantes.SuspendLayout();
             this.pnlMaestros.SuspendLayout();
             this.pnlAdministradores.SuspendLayout();
+            this.pnlGraficas.SuspendLayout();
+            this.pnlReportes.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlNiveles
@@ -98,6 +106,7 @@
             this.pnlEstudiantes.Size = new System.Drawing.Size(200, 200);
             this.pnlEstudiantes.TabIndex = 1;
             this.pnlEstudiantes.Click += new System.EventHandler(this.pnlEstudiantes_Click);
+            this.pnlEstudiantes.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlEstudiantes_Paint);
             this.pnlEstudiantes.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
             this.pnlEstudiantes.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
             // 
@@ -206,10 +215,76 @@
             this.label8.MouseEnter += new System.EventHandler(this.pnlAdministradores_MouseEnter);
             this.label8.MouseLeave += new System.EventHandler(this.label8_MouseLeave);
             // 
+            // pnlGraficas
+            // 
+            this.pnlGraficas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.pnlGraficas.Controls.Add(this.lblconChart);
+            this.pnlGraficas.Controls.Add(this.label3);
+            this.pnlGraficas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlGraficas.ForeColor = System.Drawing.Color.White;
+            this.pnlGraficas.Location = new System.Drawing.Point(365, 275);
+            this.pnlGraficas.Name = "pnlGraficas";
+            this.pnlGraficas.Size = new System.Drawing.Size(200, 200);
+            this.pnlGraficas.TabIndex = 8;
+            this.pnlGraficas.Click += new System.EventHandler(this.pnlGraficas_Click);
+            // 
+            // lblconChart
+            // 
+            this.lblconChart.AutoSize = true;
+            this.lblconChart.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblconChart.Location = new System.Drawing.Point(50, 45);
+            this.lblconChart.Name = "lblconChart";
+            this.lblconChart.Size = new System.Drawing.Size(105, 83);
+            this.lblconChart.TabIndex = 7;
+            this.lblconChart.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(63, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 19);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Gráficas";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlReportes
+            // 
+            this.pnlReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.pnlReportes.Controls.Add(this.lblIconReport);
+            this.pnlReportes.Controls.Add(this.label7);
+            this.pnlReportes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlReportes.ForeColor = System.Drawing.Color.White;
+            this.pnlReportes.Location = new System.Drawing.Point(630, 275);
+            this.pnlReportes.Name = "pnlReportes";
+            this.pnlReportes.Size = new System.Drawing.Size(200, 200);
+            this.pnlReportes.TabIndex = 8;
+            // 
+            // lblIconReport
+            // 
+            this.lblIconReport.AutoSize = true;
+            this.lblIconReport.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconReport.Location = new System.Drawing.Point(50, 45);
+            this.lblIconReport.Name = "lblIconReport";
+            this.lblIconReport.Size = new System.Drawing.Size(105, 83);
+            this.lblIconReport.TabIndex = 7;
+            this.lblIconReport.Text = "";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(60, 151);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 19);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Reportes";
+            // 
             // principal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(920, 520);
+            this.Controls.Add(this.pnlReportes);
+            this.Controls.Add(this.pnlGraficas);
             this.Controls.Add(this.pnlAdministradores);
             this.Controls.Add(this.pnlMaestros);
             this.Controls.Add(this.pnlEstudiantes);
@@ -227,6 +302,10 @@
             this.pnlMaestros.PerformLayout();
             this.pnlAdministradores.ResumeLayout(false);
             this.pnlAdministradores.PerformLayout();
+            this.pnlGraficas.ResumeLayout(false);
+            this.pnlGraficas.PerformLayout();
+            this.pnlReportes.ResumeLayout(false);
+            this.pnlReportes.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -245,5 +324,11 @@
         private System.Windows.Forms.Label lblIconChalkboardTeacher;
         private System.Windows.Forms.Label lblIconUser;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel pnlGraficas;
+        private System.Windows.Forms.Label lblconChart;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel pnlReportes;
+        private System.Windows.Forms.Label lblIconReport;
+        private System.Windows.Forms.Label label7;
     }
 }

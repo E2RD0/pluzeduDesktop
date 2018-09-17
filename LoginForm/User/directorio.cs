@@ -96,9 +96,15 @@ namespace LoginForm.User
                     pbxFoto.BackColor = System.Drawing.Color.White;
                     pbxFoto.Location = new System.Drawing.Point(0, 0);
                     pbxFoto.Name = "pbxFoto" + i;
-                    pbxFoto.Size = new System.Drawing.Size(175, 145);
+                    pbxFoto.Size = new System.Drawing.Size(175, 175);
                     pbxFoto.TabIndex = 1 + i;
                     pbxFoto.TabStop = false;
+                    pbxFoto.SizeMode = PictureBoxSizeMode.Zoom;
+                    var result = Database.archivos.recibirImg(Database.DBfunciones.urlImagenPerfil(id));
+                    result.ContinueWith(task =>
+                    {
+                        pbxFoto.Image = task.Result;
+                    });
                     // 
                     // lblIconChat
                     // 
