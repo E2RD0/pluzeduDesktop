@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFE95C27-5B69-40F9-8AC2-740BB64EEB70}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoginForm</RootNamespace>
+    <AssemblyName>LoginForm</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.5073.29922, Culture=neutral, PublicKeyToken=6bcd409ee6bc9292, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>C:\Users\Omnisport\Desktop\Jason\PLUZEDU\pluzeduDesktop-master\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\configuracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\configuracion.Designer.cs">
+      <DependentUpon>configuracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\configuracion_autenticacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\configuracion_autenticacion.Designer.cs">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\graficas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\graficas.Designer.cs">
+      <DependentUpon>graficas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\reportes.Designer.cs">
+      <DependentUpon>reportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\usuario_editar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\usuario_editar.Designer.cs">
+      <DependentUpon>usuario_editar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\niveles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\niveles.Designer.cs">
+      <DependentUpon>niveles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\niveles_editar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\niveles_editar.Designer.cs">
+      <DependentUpon>niveles_editar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\niveles_nivelAgregarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\niveles_nivelAgregarUsuario.Designer.cs">
+      <DependentUpon>niveles_nivelAgregarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\usuarios.Designer.cs">
+      <DependentUpon>usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\niveles_nivel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\niveles_nivel.Designer.cs">
+      <DependentUpon>niveles_nivel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\niveles_nuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\niveles_nuevo.Designer.cs">
+      <DependentUpon>niveles_nuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\principal.Designer.cs">
+      <DependentUpon>principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cambiarClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cambiarClave.Designer.cs">
+      <DependentUpon>cambiarClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="circlepbx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database\archivos.cs" />
+    <Compile Include="Database\conexion.cs" />
+    <Compile Include="Database\constructor.cs" />
+    <Compile Include="Database\funcionesCRUD.cs" />
+    <Compile Include="Database\hashing.cs" />
+    <Compile Include="Database\usuarioActual.cs" />
+    <Compile Include="Database\UsuarioItem.cs" />
+    <Compile Include="Database\validaciones.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GradientUpBottom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Admin\menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\menu.Designer.cs">
+      <DependentUpon>menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tipografia\fonts.cs" />
+    <Compile Include="User\configuracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\configuracion.Designer.cs">
+      <DependentUpon>configuracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\configuracion_autenticacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\configuracion_autenticacion.Designer.cs">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\directorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\directorio.Designer.cs">
+      <DependentUpon>directorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\grupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\grupo.Designer.cs">
+      <DependentUpon>grupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\mensajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\mensajes.Designer.cs">
+      <DependentUpon>mensajes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\menuUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\menuUsuario.Designer.cs">
+      <DependentUpon>menuUsuario.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin\configuracion.resx">
+      <DependentUpon>configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\configuracion_autenticacion.resx">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\graficas.resx">
+      <DependentUpon>graficas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\reportes.resx">
+      <DependentUpon>reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\usuario_editar.resx">
+      <DependentUpon>usuario_editar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\niveles.resx">
+      <DependentUpon>niveles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\niveles_editar.resx">
+      <DependentUpon>niveles_editar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\niveles_nivelAgregarUsuario.resx">
+      <DependentUpon>niveles_nivelAgregarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\usuarios.resx">
+      <DependentUpon>usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\niveles_nivel.resx">
+      <DependentUpon>niveles_nivel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\niveles_nuevo.resx">
+      <DependentUpon>niveles_nuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\principal.resx">
+      <DependentUpon>principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cambiarClave.resx">
+      <DependentUpon>cambiarClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\menu.resx">
+      <DependentUpon>menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="User\configuracion.resx">
+      <DependentUpon>configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\configuracion_autenticacion.resx">
+      <DependentUpon>configuracion_autenticacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\directorio.resx">
+      <DependentUpon>directorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\mensajes.resx">
+      <DependentUpon>mensajes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\menuUsuario.resx">
+      <DependentUpon>menuUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Admin\DataSet.xsc">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Admin\DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Admin\DataSet.xss">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Resources\fa-solid-900.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
