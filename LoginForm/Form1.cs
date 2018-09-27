@@ -283,7 +283,7 @@ namespace LoginForm
             lblEmailValidacion.Text = "";
             btnComprobar.Location = new Point(169, 323);
             btnComprobar.Visible = false;
-            btnCancelRecovery.Location = new Point(67, 282);
+            btnCancelRecovery.Location = new Point(44, 282);
         }
         private void btnSendRec_Click(object sender, EventArgs e) //INGRESAR CORREO
         {
@@ -345,6 +345,7 @@ namespace LoginForm
                         btnComprobar.Visible = false;
 
                         lblEmailValidacion.Text = "";
+                        txtCorreo.UseSystemPasswordChar = true;
                         txtCorreo.Text = "";
                         lblIcon.Text = "";
                         lblCorreo.Text = "Ingresa tu nueva contraseña: ";
@@ -352,6 +353,7 @@ namespace LoginForm
                         lblRepite.Visible = true;
                         pnlContra.Visible = true;
                         txtContrarep.Visible = true;
+                        txtContrarep.UseSystemPasswordChar = true;
                         lblIcon2.Visible = true;
                         lblContraseñaConfirmacion.Visible = true;
 
@@ -395,19 +397,20 @@ namespace LoginForm
                             }
 
                             pnlContra.Visible = false;
-                            txtContrarep.Visible = false;
-                            lblIcon2.Visible = false;
                             lblContraseñaConfirmacion.Visible = false;
                             lblRepite.Visible = false;
 
                             lblCorreo.Text = "Ingresa tu correo electrónico: ";
                             lblIcon.Text = "";
                             txtCorreo.Text = "";
+                            txtCorreo.UseSystemPasswordChar = false;
                             btnSendRec.Visible = true;
                             lblEmailValidacion.Text = "";
-                            btnComprobar.Location = new Point(169, 323);
+                            btnComprobar.Location = new Point(146, 323);
                             btnComprobar.Visible = false;
-                            btnCancelRecovery.Location = new Point(67, 282);
+                            btnCancelRecovery.Location = new Point(44, 282);
+                            btnCancelRecovery.Visible = true;
+                            btnCambiar.Visible = false;
                             recovery.Visible = false;
                         }
                         else

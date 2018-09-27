@@ -122,7 +122,7 @@ namespace LoginForm.Database
         public static DataTable mostrarUsuarios(int tipo)
         {
             DataTable datos = new DataTable();
-            string instrucciones = "SELECT u.id AS ID, u.nombres AS Nombres, u.apellidos AS Apellidos, u.username AS Usuario, u.email AS Email, u.clave AS Clave, u.codigo AS Codigo, t.nombre AS Tipo, e.nombre AS Estado FROM ((usuario u INNER JOIN usuarioestado e ON u.id_usuarioestado = e.id) INNER JOIN usuariotipo t ON u.id_usuariotipo = t.id) WHERE u.id_usuariotipo = " + tipo;
+            string instrucciones = "SELECT u.id AS ID, u.nombres AS Nombres, u.apellidos AS Apellidos, u.username AS Usuario, u.email AS Email, u.clave AS Clave, u.codigo AS Codigo, t.nombre AS Tipo, e.nombre AS Estado FROM ((usuario u INNER JOIN usuarioestado e ON u.id_usuarioestado = e.id) INNER JOIN usuariotipo t ON u.id_usuariotipo = t.id) WHERE u.id_usuariotipo = " + tipo + " AND u.id <> " + usuarioActual.idUsuario;
             MySqlCommand comando = new MySqlCommand(instrucciones, conexion.obtenerconexion());
             MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
             adapter.Fill(datos);
@@ -208,8 +208,17 @@ namespace LoginForm.Database
         public static DataTable mostrarConversaciones(int idUsuario)
         {
             DataTable datos = new DataTable();
-            MySqlCommand comando = new MySqlCommand("SELECT c.id, c.titulo, c.es_grupo FROM conversacion c INNER JOIN conversacionintegrantes ci ON ci.id_conversacion = c.id WHERE ci.id_usuario = @idUsuario;", conexion.obtenerconexion());
+            MySqlCommand comando = new MySqlCommand("SELECT c.id, c.titulo, c.es_grupo, c.descripcion FROM conversacion c INNER JOIN conversacionintegrantes ci ON ci.id_conversacion = c.id WHERE ci.id_usuario = @idUsuario;", conexion.obtenerconexion());
             comando.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = idUsuario;
+            MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
+            adapter.Fill(datos);
+            return datos;
+        }
+        public static DataTable integrantesGrupo(int idConversacion)
+        {
+            DataTable datos = new DataTable();
+            MySqlCommand comando = new MySqlCommand("SELECT u.nombres, u.apellidos FROM conversacion c INNER JOIN conversacionintegrantes ci ON ci.id_conversacion = c.id INNER JOIN usuario u ON u.id = ci.id_usuario WHERE c.id = @idConversacion;", conexion.obtenerconexion());
+            comando.Parameters.Add("@idConversacion", MySqlDbType.Int32).Value = idConversacion;
             MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
             adapter.Fill(datos);
             return datos;

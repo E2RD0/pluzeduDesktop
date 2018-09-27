@@ -135,8 +135,8 @@
             this.pbxFoto.Image = ((System.Drawing.Image)(resources.GetObject("pbxFoto.Image")));
             this.pbxFoto.Location = new System.Drawing.Point(49, 70);
             this.pbxFoto.Name = "pbxFoto";
-            this.pbxFoto.Size = new System.Drawing.Size(172, 163);
-            this.pbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxFoto.Size = new System.Drawing.Size(163, 163);
+            this.pbxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxFoto.TabIndex = 27;
             this.pbxFoto.TabStop = false;
             // 

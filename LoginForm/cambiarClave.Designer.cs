@@ -36,6 +36,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.lblValidacionClave = new System.Windows.Forms.Label();
             this.barra.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -80,6 +81,7 @@
             this.txtClave.Size = new System.Drawing.Size(412, 26);
             this.txtClave.TabIndex = 14;
             this.txtClave.UseSystemPasswordChar = true;
+            this.txtClave.TextChanged += new System.EventHandler(this.txtClave_TextChanged);
             // 
             // panel1
             // 
@@ -102,6 +104,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.lblValidacionClave);
             this.panel2.Controls.Add(this.btnActualizar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -127,6 +130,15 @@
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click_1);
             // 
+            // lblValidacionClave
+            // 
+            this.lblValidacionClave.AutoSize = true;
+            this.lblValidacionClave.ForeColor = System.Drawing.Color.Red;
+            this.lblValidacionClave.Location = new System.Drawing.Point(12, 96);
+            this.lblValidacionClave.Name = "lblValidacionClave";
+            this.lblValidacionClave.Size = new System.Drawing.Size(0, 19);
+            this.lblValidacionClave.TabIndex = 35;
+            // 
             // cambiarClave
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -146,6 +158,7 @@
             this.barra.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +174,6 @@
         public System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.Label lblValidacionClave;
     }
 }

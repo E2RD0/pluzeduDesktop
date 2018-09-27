@@ -48,6 +48,7 @@
             this.btnMin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.barra = new LoginForm.GradientPanel();
             this.recovery = new System.Windows.Forms.Panel();
             this.btnCambiar = new System.Windows.Forms.Button();
             this.lblContraseñaConfirmacion = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.lblIcon = new System.Windows.Forms.Label();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.barra = new LoginForm.GradientPanel();
             this.gradientPanel1 = new LoginForm.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -74,6 +74,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblIconSend = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.login.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -101,6 +106,8 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.linkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.AppWorkspace;
             this.linkLabel1.Location = new System.Drawing.Point(22, 323);
             this.linkLabel1.Name = "linkLabel1";
@@ -113,6 +120,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.label11.Location = new System.Drawing.Point(22, 92);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(151, 24);
@@ -137,12 +145,12 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.lblIconLock);
             this.panel1.Controls.Add(this.txtUser);
             this.panel1.Controls.Add(this.lblIconUser);
             this.panel1.Controls.Add(this.shapeContainer1);
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.panel1.Location = new System.Drawing.Point(22, 132);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(268, 100);
@@ -151,6 +159,7 @@
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.txtPassword.Location = new System.Drawing.Point(47, 65);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(216, 22);
@@ -163,6 +172,7 @@
             // 
             this.lblIconLock.AutoSize = true;
             this.lblIconLock.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconLock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.lblIconLock.Location = new System.Drawing.Point(3, 65);
             this.lblIconLock.Name = "lblIconLock";
             this.lblIconLock.Size = new System.Drawing.Size(26, 20);
@@ -172,6 +182,7 @@
             // txtUser
             // 
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.txtUser.Location = new System.Drawing.Point(47, 10);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(216, 22);
@@ -184,6 +195,7 @@
             // 
             this.lblIconUser.AutoSize = true;
             this.lblIconUser.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIconUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.lblIconUser.Location = new System.Drawing.Point(3, 10);
             this.lblIconUser.Name = "lblIconUser";
             this.lblIconUser.Size = new System.Drawing.Size(26, 20);
@@ -196,13 +208,15 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape2,
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(266, 98);
+            this.shapeContainer1.Size = new System.Drawing.Size(268, 100);
             this.shapeContainer1.TabIndex = 4;
             this.shapeContainer1.TabStop = false;
             // 
             // lineShape1
             // 
+            this.lineShape1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = 0;
             this.lineShape1.X2 = 268;
@@ -308,6 +322,16 @@
             this.button3.Text = "";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // barra
+            // 
+            this.barra.ColorLeft = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
+            this.barra.ColorRight = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
+            this.barra.Location = new System.Drawing.Point(0, 0);
+            this.barra.Name = "barra";
+            this.barra.Size = new System.Drawing.Size(680, 30);
+            this.barra.TabIndex = 9;
+            this.barra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
+            // 
             // recovery
             // 
             this.recovery.BackColor = System.Drawing.Color.White;
@@ -321,9 +345,9 @@
             this.recovery.Controls.Add(this.lblCorreo);
             this.recovery.Controls.Add(this.btnSendRec);
             this.recovery.Controls.Add(this.panel6);
-            this.recovery.Location = new System.Drawing.Point(655, 30);
+            this.recovery.Location = new System.Drawing.Point(680, 30);
             this.recovery.Name = "recovery";
-            this.recovery.Size = new System.Drawing.Size(345, 520);
+            this.recovery.Size = new System.Drawing.Size(320, 520);
             this.recovery.TabIndex = 5;
             this.recovery.Visible = false;
             // 
@@ -335,7 +359,7 @@
             this.btnCambiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.btnCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCambiar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCambiar.Location = new System.Drawing.Point(209, 380);
+            this.btnCambiar.Location = new System.Drawing.Point(172, 380);
             this.btnCambiar.Name = "btnCambiar";
             this.btnCambiar.Size = new System.Drawing.Size(99, 35);
             this.btnCambiar.TabIndex = 47;
@@ -358,7 +382,8 @@
             // lblRepite
             // 
             this.lblRepite.AutoSize = true;
-            this.lblRepite.Location = new System.Drawing.Point(35, 271);
+            this.lblRepite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.lblRepite.Location = new System.Drawing.Point(27, 271);
             this.lblRepite.Name = "lblRepite";
             this.lblRepite.Size = new System.Drawing.Size(192, 24);
             this.lblRepite.TabIndex = 45;
@@ -367,10 +392,10 @@
             // 
             // pnlContra
             // 
-            this.pnlContra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlContra.Controls.Add(this.txtContrarep);
             this.pnlContra.Controls.Add(this.lblIcon2);
-            this.pnlContra.Location = new System.Drawing.Point(32, 297);
+            this.pnlContra.Controls.Add(this.shapeContainer3);
+            this.pnlContra.Location = new System.Drawing.Point(24, 297);
             this.pnlContra.Name = "pnlContra";
             this.pnlContra.Size = new System.Drawing.Size(286, 46);
             this.pnlContra.TabIndex = 44;
@@ -379,6 +404,7 @@
             // txtContrarep
             // 
             this.txtContrarep.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtContrarep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.txtContrarep.Location = new System.Drawing.Point(35, 10);
             this.txtContrarep.Name = "txtContrarep";
             this.txtContrarep.Size = new System.Drawing.Size(228, 22);
@@ -389,6 +415,7 @@
             // 
             this.lblIcon2.AutoSize = true;
             this.lblIcon2.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIcon2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.lblIcon2.Location = new System.Drawing.Point(3, 13);
             this.lblIcon2.Name = "lblIcon2";
             this.lblIcon2.Size = new System.Drawing.Size(26, 20);
@@ -403,7 +430,7 @@
             this.btnComprobar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.btnComprobar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComprobar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnComprobar.Location = new System.Drawing.Point(183, 323);
+            this.btnComprobar.Location = new System.Drawing.Point(146, 323);
             this.btnComprobar.Name = "btnComprobar";
             this.btnComprobar.Size = new System.Drawing.Size(125, 35);
             this.btnComprobar.TabIndex = 43;
@@ -430,7 +457,7 @@
             this.btnCancelRecovery.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnCancelRecovery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelRecovery.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancelRecovery.Location = new System.Drawing.Point(81, 282);
+            this.btnCancelRecovery.Location = new System.Drawing.Point(44, 282);
             this.btnCancelRecovery.Name = "btnCancelRecovery";
             this.btnCancelRecovery.Size = new System.Drawing.Size(122, 35);
             this.btnCancelRecovery.TabIndex = 5;
@@ -441,7 +468,8 @@
             // lblCorreo
             // 
             this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Location = new System.Drawing.Point(30, 169);
+            this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.lblCorreo.Location = new System.Drawing.Point(22, 169);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(255, 24);
             this.lblCorreo.TabIndex = 3;
@@ -455,7 +483,7 @@
             this.btnSendRec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
             this.btnSendRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendRec.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSendRec.Location = new System.Drawing.Point(209, 282);
+            this.btnSendRec.Location = new System.Drawing.Point(172, 282);
             this.btnSendRec.Name = "btnSendRec";
             this.btnSendRec.Size = new System.Drawing.Size(99, 35);
             this.btnSendRec.TabIndex = 2;
@@ -465,10 +493,10 @@
             // 
             // panel6
             // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.txtCorreo);
             this.panel6.Controls.Add(this.lblIcon);
-            this.panel6.Location = new System.Drawing.Point(34, 195);
+            this.panel6.Controls.Add(this.shapeContainer2);
+            this.panel6.Location = new System.Drawing.Point(26, 195);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(284, 46);
             this.panel6.TabIndex = 1;
@@ -476,6 +504,7 @@
             // txtCorreo
             // 
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.txtCorreo.Location = new System.Drawing.Point(35, 10);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(228, 22);
@@ -485,21 +514,12 @@
             // 
             this.lblIcon.AutoSize = true;
             this.lblIcon.Font = new System.Drawing.Font("Font Awesome 5 Free Solid", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.lblIcon.Location = new System.Drawing.Point(3, 13);
             this.lblIcon.Name = "lblIcon";
             this.lblIcon.Size = new System.Drawing.Size(28, 20);
             this.lblIcon.TabIndex = 0;
             this.lblIcon.Text = "";
-            // 
-            // barra
-            // 
-            this.barra.ColorLeft = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(173)))), ((int)(((byte)(221)))));
-            this.barra.ColorRight = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(152)))), ((int)(((byte)(213)))));
-            this.barra.Location = new System.Drawing.Point(0, 0);
-            this.barra.Name = "barra";
-            this.barra.Size = new System.Drawing.Size(680, 30);
-            this.barra.TabIndex = 9;
-            this.barra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_MouseDown);
             // 
             // gradientPanel1
             // 
@@ -612,6 +632,55 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Comunicación para la educación hecha simple.";
             // 
+            // lineShape2
+            // 
+            this.lineShape2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 0;
+            this.lineShape2.X2 = 268;
+            this.lineShape2.Y1 = 97;
+            this.lineShape2.Y2 = 97;
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.X1 = 8;
+            this.lineShape3.X2 = 276;
+            this.lineShape3.Y1 = 43;
+            this.lineShape3.Y2 = 43;
+            // 
+            // shapeContainer2
+            // 
+            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer2.Name = "shapeContainer2";
+            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape3});
+            this.shapeContainer2.Size = new System.Drawing.Size(284, 46);
+            this.shapeContainer2.TabIndex = 2;
+            this.shapeContainer2.TabStop = false;
+            // 
+            // lineShape4
+            // 
+            this.lineShape4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.lineShape4.Name = "lineShape4";
+            this.lineShape4.X1 = 9;
+            this.lineShape4.X2 = 277;
+            this.lineShape4.Y1 = 43;
+            this.lineShape4.Y2 = 43;
+            // 
+            // shapeContainer3
+            // 
+            this.shapeContainer3.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer3.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer3.Name = "shapeContainer3";
+            this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape4});
+            this.shapeContainer3.Size = new System.Drawing.Size(286, 46);
+            this.shapeContainer3.TabIndex = 2;
+            this.shapeContainer3.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -619,8 +688,8 @@
             this.ClientSize = new System.Drawing.Size(1000, 550);
             this.Controls.Add(this.recovery);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.login);
             this.Controls.Add(this.gradientPanel1);
+            this.Controls.Add(this.login);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -695,6 +764,11 @@
         private System.Windows.Forms.Label lblIcon2;
         private System.Windows.Forms.Button btnCambiar;
         private System.Windows.Forms.ToolTip ttMensaje;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer3;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
     }
 }
 

@@ -22,16 +22,23 @@ namespace LoginForm.Admin
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         public void abrirFormEnPanel(Form fh)
         {
-            if (this.panelContenedor.Controls.Count > 0)
+            try
             {
-                this.panelContenedor.Controls.RemoveAt(0);
+                if (this.panelContenedor.Controls.Count > 0)
+                {
+                    this.panelContenedor.Controls.RemoveAt(0);
+                }
+                fh.TopLevel = false;
+                fh.FormBorderStyle = FormBorderStyle.None;
+                fh.Dock = DockStyle.Fill;
+                this.panelContenedor.Controls.Add(fh);
+                this.panelContenedor.Tag = fh;
+                fh.Show();
             }
-            fh.TopLevel = false;
-            fh.FormBorderStyle = FormBorderStyle.None;
-            fh.Dock = DockStyle.Fill;
-            this.panelContenedor.Controls.Add(fh);
-            this.panelContenedor.Tag = fh;
-            fh.Show();
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public menu()
         {
@@ -44,17 +51,31 @@ namespace LoginForm.Admin
         }
         public void cargarImagenPerfil()
         {
-            var result = Database.archivos.recibirImg(Database.DBfunciones.urlImagenPerfil(Database.usuarioActual.idUsuario));
-            result.ContinueWith(task =>
+            try
             {
-                cpbxFoto.Image = task.Result;
-            });
+                var result = Database.archivos.recibirImg(Database.DBfunciones.urlImagenPerfil(Database.usuarioActual.idUsuario));
+                result.ContinueWith(task =>
+                {
+                    cpbxFoto.Image = task.Result;
+                });
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void barra_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            try
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0x112, 0xf012, 0);
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -69,51 +90,86 @@ namespace LoginForm.Admin
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            this.btnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
-            this.btnNivel.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
-            abrirFormEnPanel(new Admin.principal());
+            try
+            {
+                this.btnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
+                this.btnNivel.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
+                abrirFormEnPanel(new Admin.principal());
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnNivel_Click(object sender, EventArgs e)
         {
-            this.btnInicio.BackColor = System.Drawing.Color.Transparent;
-            this.btnNivel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
-            this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
-            abrirFormEnPanel(new Admin.niveles());
+            try
+            {
+                this.btnInicio.BackColor = System.Drawing.Color.Transparent;
+                this.btnNivel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
+                this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
+                abrirFormEnPanel(new Admin.niveles());
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnConfigurarUsuarios_Click(object sender, EventArgs e)
         {
-            this.btnInicio.BackColor = System.Drawing.Color.Transparent;
-            this.btnNivel.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
-            this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
-            Admin.usuarios usuarios = new Admin.usuarios();
-            usuarios.tipo = 0;
-            abrirFormEnPanel(usuarios);
+            try
+            {
+                this.btnInicio.BackColor = System.Drawing.Color.Transparent;
+                this.btnNivel.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
+                this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
+                Admin.usuarios usuarios = new Admin.usuarios();
+                usuarios.tipo = 0;
+                abrirFormEnPanel(usuarios);
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void menu_Load(object sender, EventArgs e)
         {
-            cargarImagenPerfil();
-            this.btnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
-            this.btnNivel.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
-            abrirFormEnPanel(new Admin.principal());
+            try
+            {
+                cargarImagenPerfil();
+                this.btnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
+                this.btnNivel.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfiguracion.BackColor = System.Drawing.Color.Transparent;
+                abrirFormEnPanel(new Admin.principal());
 
-            btnInicio.Font = btnConfiguracion.Font = btnConfigurarUsuarios.Font = btnNivel.Font = btnSignout.Font = Tipografia.fonts.fontawesome20;
-            btnMin.Font = btnClose.Font = Tipografia.fonts.fontawesome12;
+                btnInicio.Font = btnConfiguracion.Font = btnConfigurarUsuarios.Font = btnNivel.Font = btnSignout.Font = Tipografia.fonts.fontawesome20;
+                btnMin.Font = btnClose.Font = Tipografia.fonts.fontawesome12;
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSignout_Click(object sender, EventArgs e)
         {
-            this.Close();
-            th = new Thread(opennewform);
-            th.SetApartmentState(ApartmentState.STA);
-            th.Start();
+            try
+            {
+                this.Close();
+                th = new Thread(opennewform);
+                th.SetApartmentState(ApartmentState.STA);
+                th.Start();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void opennewform(object obj)
         {
@@ -122,11 +178,18 @@ namespace LoginForm.Admin
 
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
-            this.btnInicio.BackColor = System.Drawing.Color.Transparent;
-            this.btnNivel.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
-            abrirFormEnPanel(new Admin.configuracion());
+            try
+            {
+                this.btnInicio.BackColor = System.Drawing.Color.Transparent;
+                this.btnNivel.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfigurarUsuarios.BackColor = System.Drawing.Color.Transparent;
+                this.btnConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(105)))), ((int)(((byte)(142)))));
+                abrirFormEnPanel(new Admin.configuracion());
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

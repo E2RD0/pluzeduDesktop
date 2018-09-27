@@ -19,8 +19,16 @@ namespace LoginForm.Admin
         public string nombreNivel { get; set; }
         private void mostrarUsuarios()
         {
-            dgvUsuarios.DataSource = Database.funcionesCRUD.mostrarUsuariosNivel(Convert.ToInt32(cbxTipo.SelectedValue), idNivel);
-            dgvUsuarios.Columns[0].Visible = false;
+            try
+            {
+                dgvUsuarios.DataSource = Database.funcionesCRUD.mostrarUsuariosNivel(Convert.ToInt32(cbxTipo.SelectedValue), idNivel);
+                dgvUsuarios.Columns[0].Visible = false;
+                dgvUsuarios.Columns[5].Visible = false;
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public niveles_nivel()
         {
@@ -36,32 +44,53 @@ namespace LoginForm.Admin
 
         private void cbxTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblTitulo.Text = cbxTipo.Text + ": " + nombreNivel;
-            lblTitulo.Left = (this.Width - lblTitulo.Width) / 2;
-            mostrarUsuarios();
+            try
+            {
+                lblTitulo.Text = cbxTipo.Text + ": " + nombreNivel;
+                lblTitulo.Left = (this.Width - lblTitulo.Width) / 2;
+                mostrarUsuarios();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void niveles_nivel_Load(object sender, EventArgs e)
         {
-            cbxTipo.DisplayMember = "nombre";
-            cbxTipo.ValueMember = "id";
-            cbxTipo.DataSource = funcionesCRUD.mostrarTipoUsuarioNivel();
-            lblTitulo.Text = cbxTipo.Text + ": " + nombreNivel;
-            lblTitulo.Left = (this.Width - lblTitulo.Width) / 2;
-            dgvUsuarios.DataSource = Database.funcionesCRUD.mostrarUsuariosNivel(tipoUsuario, idNivel);
-            cbxTipo.SelectedValue = tipoUsuario; 
-            dgvUsuarios.Columns[0].Visible = false;
+            try
+            {
+                cbxTipo.DisplayMember = "nombre";
+                cbxTipo.ValueMember = "id";
+                cbxTipo.DataSource = funcionesCRUD.mostrarTipoUsuarioNivel();
+                lblTitulo.Text = cbxTipo.Text + ": " + nombreNivel;
+                lblTitulo.Left = (this.Width - lblTitulo.Width) / 2;
+                dgvUsuarios.DataSource = Database.funcionesCRUD.mostrarUsuariosNivel(tipoUsuario, idNivel);
+                cbxTipo.SelectedValue = tipoUsuario;
+                dgvUsuarios.Columns[0].Visible = false;
 
-            btnActualizar.Font = btnAgregar.Font = Tipografia.fonts.fontawesome20;
+                btnActualizar.Font = btnAgregar.Font = Tipografia.fonts.fontawesome20;
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
-            Admin.niveles_nivelAgregarUsuario nivelAgregar = new Admin.niveles_nivelAgregarUsuario();
-            nivelAgregar.idNivel = this.idNivel;
-            nivelAgregar.tipoUsuario = Convert.ToInt32(cbxTipo.SelectedValue);
-            nivelAgregar.StartPosition = FormStartPosition.CenterParent;
-            this.Close();
-            (Application.OpenForms["menu"] as menu).abrirFormEnPanel(nivelAgregar);
+            try
+            {
+                Admin.niveles_nivelAgregarUsuario nivelAgregar = new Admin.niveles_nivelAgregarUsuario();
+                nivelAgregar.idNivel = this.idNivel;
+                nivelAgregar.tipoUsuario = Convert.ToInt32(cbxTipo.SelectedValue);
+                nivelAgregar.StartPosition = FormStartPosition.CenterParent;
+                this.Close();
+                (Application.OpenForms["menu"] as menu).abrirFormEnPanel(nivelAgregar);
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

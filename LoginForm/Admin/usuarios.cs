@@ -21,11 +21,18 @@ namespace LoginForm.Admin
         public int tipo{get;set;}
         public void mostrarUsuarios()
         {
-            dgvUsuarios.DataSource = Database.funcionesCRUD.mostrarUsuarios(Convert.ToInt32(cbxTipo.SelectedValue));
-            dgvUsuarios.Columns[0].Visible = false;
-            dgvUsuarios.Columns[5].Visible = false;
-            dgvReporte.DataSource = Database.funcionesCRUD.reporteUsuarios(Convert.ToInt32(cbxTipo.SelectedValue));
-            dgvReporte.Columns[0].Visible = false;
+            try
+            {
+                dgvUsuarios.DataSource = Database.funcionesCRUD.mostrarUsuarios(Convert.ToInt32(cbxTipo.SelectedValue));
+                dgvUsuarios.Columns[0].Visible = false;
+                dgvUsuarios.Columns[5].Visible = false;
+                dgvReporte.DataSource = Database.funcionesCRUD.reporteUsuarios(Convert.ToInt32(cbxTipo.SelectedValue));
+                dgvReporte.Columns[0].Visible = false;
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public usuarios()
         {
@@ -39,41 +46,55 @@ namespace LoginForm.Admin
         }
         public void Eliminar()
         {
-            if (dgvUsuarios.SelectedRows.Count == 1 || dgvUsuarios.SelectedCells.Count == 1)
+            try
             {
-                int id = Convert.ToInt32(dgvUsuarios.CurrentRow.Cells[0].Value);
-                constructor eliminar = new constructor();
-                int datos = funcionesCRUD.eliminarUsuarios(id);
-                if (datos > 0)
+                if (dgvUsuarios.SelectedRows.Count == 1 || dgvUsuarios.SelectedCells.Count == 1)
                 {
-                    MessageBox.Show("El usuario se elimino correctamente.", "Usuario Eliminado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    int id = Convert.ToInt32(dgvUsuarios.CurrentRow.Cells[0].Value);
+                    constructor eliminar = new constructor();
+                    int datos = funcionesCRUD.eliminarUsuarios(id);
+                    if (datos > 0)
+                    {
+                        MessageBox.Show("El usuario se elimino correctamente.", "Usuario Eliminado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El usuario no se ha eliminado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("El usuario no se ha eliminado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    MessageBox.Show("Tienes que seleccionar una fila");
                 }
             }
-            else
+            catch (Exception e1)
             {
-                MessageBox.Show("Tienes que seleccionar una fila");
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void usuarios_Load(object sender, EventArgs e)
         {
-            Database.funcionesCRUD mostrar = new Database.funcionesCRUD();
-            cbxTipo.DisplayMember = "nombre";
-            cbxTipo.ValueMember = "id";
-            cbxTipo.DataSource = mostrar.mostrarTipoUsuario();
-            lblTitulo.Left = (this.Width - lblTitulo.Width) / 2;
-            lblTitulo.Text = cbxTipo.Text;
-            if (tipo != -1)
+            try
             {
-                cbxTipo.SelectedIndex = tipo;
-            }
-            mostrarUsuarios();
+                Database.funcionesCRUD mostrar = new Database.funcionesCRUD();
+                cbxTipo.DisplayMember = "nombre";
+                cbxTipo.ValueMember = "id";
+                cbxTipo.DataSource = mostrar.mostrarTipoUsuario();
+                lblTitulo.Left = (this.Width - lblTitulo.Width) / 2;
+                lblTitulo.Text = cbxTipo.Text;
+                if (tipo != -1)
+                {
+                    cbxTipo.SelectedIndex = tipo;
+                }
+                mostrarUsuarios();
 
-            btnAgregar.Font = btnEditar.Font = btnEliminar.Font = Tipografia.fonts.fontawesome20;
+                btnAgregar.Font = btnEditar.Font = btnEliminar.Font = Tipografia.fonts.fontawesome20;
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -166,81 +187,95 @@ namespace LoginForm.Admin
         }
         public void reporte(Document document)
         {
-            DataTable reporteDT = Database.funcionesCRUD.reporteUsuarios(Convert.ToInt32(cbxTipo.SelectedValue));
-            int i, j;
-            PdfPTable datos = new PdfPTable(reporteDT.Columns.Count);
-            datos.DefaultCell.Padding = 3;
-            float[] margenAncho = columnasdatagrid(dgvReporte);
-            datos.SetWidths(margenAncho);
-            datos.WidthPercentage = 100;
-            datos.DefaultCell.BorderWidth = 1;
-            datos.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            for (i = 0; i < reporteDT.Columns.Count; i++)
+            try
             {
-                datos.AddCell(reporteDT.Columns[i].ColumnName);
-            }
-            datos.HeaderRows = 1;
-            datos.DefaultCell.BorderWidth = 1;
-            for (i = 0; i < reporteDT.Rows.Count; i++)
-            {
-                for (j = 0; j < reporteDT.Columns.Count; j++)
+                DataTable reporteDT = Database.funcionesCRUD.reporteUsuarios(Convert.ToInt32(cbxTipo.SelectedValue));
+                int i, j;
+                PdfPTable datos = new PdfPTable(reporteDT.Columns.Count);
+                datos.DefaultCell.Padding = 3;
+                float[] margenAncho = columnasdatagrid(dgvReporte);
+                datos.SetWidths(margenAncho);
+                datos.WidthPercentage = 100;
+                datos.DefaultCell.BorderWidth = 1;
+                datos.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                for (i = 0; i < reporteDT.Columns.Count; i++)
                 {
-                    if (reporteDT.Rows[i].ItemArray[j] != null)
-                    {
-                        datos.AddCell(new Phrase(reporteDT.Rows[i].ItemArray[j].ToString()));
-                    }
+                    datos.AddCell(reporteDT.Columns[i].ColumnName);
                 }
-                datos.CompleteRow();
+                datos.HeaderRows = 1;
+                datos.DefaultCell.BorderWidth = 1;
+                for (i = 0; i < reporteDT.Rows.Count; i++)
+                {
+                    for (j = 0; j < reporteDT.Columns.Count; j++)
+                    {
+                        if (reporteDT.Rows[i].ItemArray[j] != null)
+                        {
+                            datos.AddCell(new Phrase(reporteDT.Rows[i].ItemArray[j].ToString()));
+                        }
+                    }
+                    datos.CompleteRow();
+                }
+                document.Add(datos);
             }
-            document.Add(datos);
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         
         private void crearPDF()
         {
-            Document doc = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 10);
-            SaveFileDialog save = new SaveFileDialog();
-            save.InitialDirectory = "@C";
-            save.Title = "Guardar Reporte";
-            save.DefaultExt = "pdf";
-            save.Filter = "Archivos pdf (*.pdf)|*.pdf";
-            save.FileName = "reporte.pdf";
-            save.RestoreDirectory = true;
-            string nombreArchivo = "";
-            if (save.ShowDialog() == DialogResult.OK)
+            try
             {
-                nombreArchivo = save.FileName;
-            }
-            if (nombreArchivo.Trim() != "")
-            {
-                FileStream file = new FileStream(nombreArchivo,
-                                                FileMode.OpenOrCreate,
-                                                FileAccess.ReadWrite,
-                                                FileShare.ReadWrite);
-                PdfWriter.GetInstance(doc, file);
-                doc.Open();
-                string remitente = "Pluzedu";
-                string envio = "Fecha: " + DateTime.Now.ToString();
+                Document doc = new Document(PageSize.LETTER.Rotate(), 10, 10, 10, 10);
+                SaveFileDialog save = new SaveFileDialog();
+                save.InitialDirectory = "@C";
+                save.Title = "Guardar Reporte";
+                save.DefaultExt = "pdf";
+                save.Filter = "Archivos pdf (*.pdf)|*.pdf";
+                save.FileName = "reporte.pdf";
+                save.RestoreDirectory = true;
+                string nombreArchivo = "";
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    nombreArchivo = save.FileName;
+                }
+                if (nombreArchivo.Trim() != "")
+                {
+                    FileStream file = new FileStream(nombreArchivo,
+                                                    FileMode.OpenOrCreate,
+                                                    FileAccess.ReadWrite,
+                                                    FileShare.ReadWrite);
+                    PdfWriter.GetInstance(doc, file);
+                    doc.Open();
+                    string remitente = "Pluzedu";
+                    string envio = "Fecha: " + DateTime.Now.ToString();
 
-                Chunk chunk = new Chunk("Reporte General de "+lblTitulo.Text,
-                    FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD));
-                doc.Add(new Paragraph(chunk));
-                doc.Add(new Paragraph("             "));
-                doc.Add(new Paragraph("             "));
-                //doc.Add(new Paragraph("---------------------------------------------------------"));
-                doc.Add(new Paragraph(""));
-                doc.Add(new Paragraph(remitente));
-                doc.Add(new Paragraph(envio));
-                //doc.Add(new Paragraph("---------------------------------------------------------"));
-                doc.Add(new Paragraph("             "));
-                doc.Add(new Paragraph("             "));
-                reporte(doc);
-                doc.AddCreationDate();
-                doc.Add(new Paragraph("Reporte General de "+ lblTitulo.Text,
-                    FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD)));
-                doc.Add(new Paragraph("Generado por: " + Database.usuarioActual.nombresUsuario + " " + Database.usuarioActual.apellidosUsuario,
-                    FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD)));
-                doc.Close();
-                Process.Start(nombreArchivo);
+                    Chunk chunk = new Chunk("Reporte General de " + lblTitulo.Text,
+                        FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD));
+                    doc.Add(new Paragraph(chunk));
+                    doc.Add(new Paragraph("             "));
+                    doc.Add(new Paragraph("             "));
+                    //doc.Add(new Paragraph("---------------------------------------------------------"));
+                    doc.Add(new Paragraph(""));
+                    doc.Add(new Paragraph(remitente));
+                    doc.Add(new Paragraph(envio));
+                    //doc.Add(new Paragraph("---------------------------------------------------------"));
+                    doc.Add(new Paragraph("             "));
+                    doc.Add(new Paragraph("             "));
+                    reporte(doc);
+                    doc.AddCreationDate();
+                    doc.Add(new Paragraph("Reporte General de " + lblTitulo.Text,
+                        FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD)));
+                    doc.Add(new Paragraph("Generado por: " + Database.usuarioActual.nombresUsuario + " " + Database.usuarioActual.apellidosUsuario,
+                        FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD)));
+                    doc.Close();
+                    Process.Start(nombreArchivo);
+                }
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

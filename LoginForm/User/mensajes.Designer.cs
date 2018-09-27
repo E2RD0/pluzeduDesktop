@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mensajes));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlBarraTexto = new System.Windows.Forms.Panel();
             this.lblEnviar = new System.Windows.Forms.Label();
             this.txtMensaje = new System.Windows.Forms.TextBox();
             this.lblIconEmojis = new System.Windows.Forms.Label();
@@ -46,9 +46,9 @@
             this.lblIconPlus = new System.Windows.Forms.Label();
             this.lblIconSearch = new System.Windows.Forms.Label();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.labelSecciones = new System.Windows.Forms.Label();
+            this.lblInfoConversacion = new System.Windows.Forms.Label();
             this.lblNombreInfo = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pbxFotoInfo = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.pnlBuscar = new System.Windows.Forms.Panel();
             this.lblBusqueda1 = new System.Windows.Forms.Label();
@@ -60,29 +60,31 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1.SuspendLayout();
+            this.imgGrupo = new System.Windows.Forms.PictureBox();
+            this.pnlBarraTexto.SuspendLayout();
             this.flpConversaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoInfo)).BeginInit();
             this.pnlBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgGrupo)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlBarraTexto
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.panel1.Controls.Add(this.lblEnviar);
-            this.panel1.Controls.Add(this.txtMensaje);
-            this.panel1.Controls.Add(this.lblIconEmojis);
-            this.panel1.Controls.Add(this.lblIconArchivos);
-            this.panel1.Location = new System.Drawing.Point(280, 480);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 40);
-            this.panel1.TabIndex = 15;
+            this.pnlBarraTexto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.pnlBarraTexto.Controls.Add(this.lblEnviar);
+            this.pnlBarraTexto.Controls.Add(this.txtMensaje);
+            this.pnlBarraTexto.Controls.Add(this.lblIconEmojis);
+            this.pnlBarraTexto.Controls.Add(this.lblIconArchivos);
+            this.pnlBarraTexto.Location = new System.Drawing.Point(259, 480);
+            this.pnlBarraTexto.Name = "pnlBarraTexto";
+            this.pnlBarraTexto.Size = new System.Drawing.Size(661, 40);
+            this.pnlBarraTexto.TabIndex = 15;
             // 
             // lblEnviar
             // 
@@ -116,7 +118,7 @@
             this.lblIconEmojis.Location = new System.Drawing.Point(53, 0);
             this.lblIconEmojis.Margin = new System.Windows.Forms.Padding(0);
             this.lblIconEmojis.Name = "lblIconEmojis";
-            this.lblIconEmojis.Size = new System.Drawing.Size(45, 40);
+            this.lblIconEmojis.Size = new System.Drawing.Size(66, 40);
             this.lblIconEmojis.TabIndex = 18;
             this.lblIconEmojis.Text = "";
             this.lblIconEmojis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,7 +133,7 @@
             this.lblIconArchivos.Location = new System.Drawing.Point(3, 0);
             this.lblIconArchivos.Margin = new System.Windows.Forms.Padding(0);
             this.lblIconArchivos.Name = "lblIconArchivos";
-            this.lblIconArchivos.Size = new System.Drawing.Size(45, 40);
+            this.lblIconArchivos.Size = new System.Drawing.Size(66, 40);
             this.lblIconArchivos.TabIndex = 17;
             this.lblIconArchivos.Text = "";
             this.lblIconArchivos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -140,7 +142,7 @@
             // flpConversaciones
             // 
             this.flpConversaciones.AutoScroll = true;
-            this.flpConversaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.flpConversaciones.BackColor = System.Drawing.SystemColors.Control;
             this.flpConversaciones.Controls.Add(this.pictureBox3);
             this.flpConversaciones.Location = new System.Drawing.Point(0, 40);
             this.flpConversaciones.Margin = new System.Windows.Forms.Padding(0);
@@ -263,9 +265,10 @@
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.Color.White;
-            this.pnlInfo.Controls.Add(this.labelSecciones);
+            this.pnlInfo.Controls.Add(this.imgGrupo);
+            this.pnlInfo.Controls.Add(this.lblInfoConversacion);
             this.pnlInfo.Controls.Add(this.lblNombreInfo);
-            this.pnlInfo.Controls.Add(this.pictureBox8);
+            this.pnlInfo.Controls.Add(this.pbxFotoInfo);
             this.pnlInfo.Controls.Add(this.btnCerrar);
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlInfo.Location = new System.Drawing.Point(660, 0);
@@ -274,15 +277,16 @@
             this.pnlInfo.TabIndex = 20;
             this.pnlInfo.Visible = false;
             // 
-            // labelSecciones
+            // lblInfoConversacion
             // 
-            this.labelSecciones.AutoSize = true;
-            this.labelSecciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelSecciones.Location = new System.Drawing.Point(4, 185);
-            this.labelSecciones.Name = "labelSecciones";
-            this.labelSecciones.Size = new System.Drawing.Size(97, 20);
-            this.labelSecciones.TabIndex = 18;
-            this.labelSecciones.Text = "Sección(es):";
+            this.lblInfoConversacion.AutoSize = true;
+            this.lblInfoConversacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblInfoConversacion.Location = new System.Drawing.Point(23, 186);
+            this.lblInfoConversacion.MaximumSize = new System.Drawing.Size(250, 0);
+            this.lblInfoConversacion.Name = "lblInfoConversacion";
+            this.lblInfoConversacion.Size = new System.Drawing.Size(83, 20);
+            this.lblInfoConversacion.TabIndex = 18;
+            this.lblInfoConversacion.Text = "Secciones";
             // 
             // lblNombreInfo
             // 
@@ -294,16 +298,16 @@
             this.lblNombreInfo.TabIndex = 17;
             this.lblNombreInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox8
+            // pbxFotoInfo
             // 
-            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(89, 40);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(85, 85);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 16;
-            this.pictureBox8.TabStop = false;
+            this.pbxFotoInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbxFotoInfo.Image = ((System.Drawing.Image)(resources.GetObject("pbxFotoInfo.Image")));
+            this.pbxFotoInfo.Location = new System.Drawing.Point(89, 40);
+            this.pbxFotoInfo.Name = "pbxFotoInfo";
+            this.pbxFotoInfo.Size = new System.Drawing.Size(85, 85);
+            this.pbxFotoInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxFotoInfo.TabIndex = 16;
+            this.pbxFotoInfo.TabStop = false;
             // 
             // btnCerrar
             // 
@@ -417,6 +421,17 @@
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
             // 
+            // imgGrupo
+            // 
+            this.imgGrupo.Image = ((System.Drawing.Image)(resources.GetObject("imgGrupo.Image")));
+            this.imgGrupo.Location = new System.Drawing.Point(89, 40);
+            this.imgGrupo.Name = "imgGrupo";
+            this.imgGrupo.Size = new System.Drawing.Size(85, 85);
+            this.imgGrupo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgGrupo.TabIndex = 19;
+            this.imgGrupo.TabStop = false;
+            this.imgGrupo.Visible = false;
+            // 
             // mensajes
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -426,15 +441,15 @@
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flpConversaciones);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlBarraTexto);
             this.Controls.Add(this.pnlMensajes);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mensajes";
             this.Text = "mensajes";
             this.Load += new System.EventHandler(this.mensajes_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlBarraTexto.ResumeLayout(false);
+            this.pnlBarraTexto.PerformLayout();
             this.flpConversaciones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -442,17 +457,18 @@
             this.panel4.ResumeLayout(false);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoInfo)).EndInit();
             this.pnlBuscar.ResumeLayout(false);
             this.pnlBuscar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgGrupo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlBarraTexto;
         private System.Windows.Forms.Label lblEnviar;
         private System.Windows.Forms.TextBox txtMensaje;
         private System.Windows.Forms.Label lblIconEmojis;
@@ -468,9 +484,9 @@
         private System.Windows.Forms.Label lblIconPlus;
         private System.Windows.Forms.Label lblIconSearch;
         private System.Windows.Forms.Panel pnlInfo;
-        private System.Windows.Forms.Label labelSecciones;
+        private System.Windows.Forms.Label lblInfoConversacion;
         private System.Windows.Forms.Label lblNombreInfo;
-        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pbxFotoInfo;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Panel pnlBuscar;
         private System.Windows.Forms.Button btnIconRegresar;
@@ -483,5 +499,6 @@
         private System.Windows.Forms.Label lblNameIdentificador;
         private System.Windows.Forms.Label lblBusqueda1;
         private System.Windows.Forms.ToolTip ttMensaje;
+        private System.Windows.Forms.PictureBox imgGrupo;
     }
 }

@@ -181,6 +181,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Tipografia\fonts.cs" />
     <Compile Include="User\configuracion.cs">
       <SubType>Form</SubType>
@@ -284,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\directorio.resx">
       <DependentUpon>directorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\grupo.resx">
+      <DependentUpon>grupo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\mensajes.resx">
       <DependentUpon>mensajes.cs</DependentUpon>

@@ -13,6 +13,7 @@ namespace LoginForm
 {
     public partial class cambiarClave : Form
     {
+        bool validacionClave = true;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -47,14 +48,38 @@ namespace LoginForm
             }
             else
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (validacionClave)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("La contraseña no tiene el formato adecuado.");
+                }
             }
         }
         private void barra_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void txtClave_TextChanged(object sender, EventArgs e)
+        {
+            string ErrorMessage = "";
+            string claveNueva = txtClave.Text;
+
+            if (!Database.validaciones.claveEsValida(claveNueva, out ErrorMessage))
+            {
+                validacionClave = false;
+                lblValidacionClave.Text = ErrorMessage;
+            }
+            else
+            {
+                lblValidacionClave.Text = "";
+                validacionClave = true;
+            }
         }
     }
 }

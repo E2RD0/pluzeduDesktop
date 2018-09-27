@@ -52,7 +52,14 @@ namespace LoginForm.Admin
                 }
                 else
                 {
-                    update.claveUsuario = hashing.HashPassword(txt_Password.Text);
+                    if (txt_Password.Text == "pluzedu")
+                    {
+                        update.claveUsuario = txt_Password.Text;
+                    }
+                    else
+                    {
+                        update.claveUsuario = hashing.HashPassword(txt_Password.Text);
+                    }
                 }
                 update.codigoUsuario = Convert.ToInt32(txt_Codigo.Text);
                 update.id_usuarioestadoUsuario = Convert.ToInt32(cbx_Estado.SelectedValue);
@@ -277,15 +284,23 @@ namespace LoginForm.Admin
             string claveNueva = txt_Password.Text;
             if (!string.IsNullOrEmpty(txt_Password.Text.Trim()))
             {
-                if (!Database.validaciones.claveEsValida(claveNueva, out ErrorMessage))
+                if (claveNueva != "pluzedu")
                 {
-                    validacionClave = false;
-                    lblValidacionClave.Text = ErrorMessage;
+                    if (!Database.validaciones.claveEsValida(claveNueva, out ErrorMessage))
+                    {
+                        validacionClave = false;
+                        lblValidacionClave.Text = ErrorMessage;
+                    }
+                    else
+                    {
+                        lblValidacionClave.Text = "";
+                        validacionClave = true;
+                    }
                 }
                 else
                 {
-                    lblValidacionClave.Text = "";
                     validacionClave = true;
+                    lblValidacionClave.Text = "";
                 }
             }
         }

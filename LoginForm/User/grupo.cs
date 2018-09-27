@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using LoginForm.Database;
-using LoginForm.Admin;
 
 namespace LoginForm.User
 {
@@ -18,10 +17,12 @@ namespace LoginForm.User
         public int idUsuarioActual = usuarioActual.idUsuario;
         List<int> idUsuarios = new List<int>();
         List<int> idUsuariosAdd = new List<int>();
+        List<int> Comprobacion = new List<int>();
+        List<int> UsuariosFinales = new List<int>();
         List<UsuarioItem> selectedUsers = new List<UsuarioItem>();
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        [DllImport("user32.DLL", EntryPoint = "Send")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         private void barra_MouseDown(object sender, MouseEventArgs e)
         {
@@ -34,6 +35,7 @@ namespace LoginForm.User
         }
         public void MostrarUsuario()
         {
+            Comprobacion.Clear();
             clbUsuarios.Items.Clear();
             DataTable niveles = Database.funcionesCRUD.nivelUsuario(idUsuarioActual);
             for (int o = 0; o < niveles.Rows.Count; o++)
@@ -45,14 +47,18 @@ namespace LoginForm.User
                 for (int i = 0; i < usuarios.Rows.Count; i++)
                 {
                     int idUsuario = Convert.ToInt32(usuarios.Rows[i].ItemArray[0]);
-                    string nombresUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[1]);
-                    string apellidosUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[2]);
-                    clbUsuarios.Items.Add(new UsuarioItem
+                    if (!Comprobacion.Contains(idUsuario))
                     {
-                        id = idUsuario,
-                        nombre = nombresUsuario + " " + apellidosUsuario
-                    });
-                    idUsuarios.Add(idUsuario);
+                        Comprobacion.Add(idUsuario);
+                        string nombresUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[1]);
+                        string apellidosUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[2]);
+                        clbUsuarios.Items.Add(new UsuarioItem
+                        {
+                            id = idUsuario,
+                            nombre = nombresUsuario + " " + apellidosUsuario
+                        });
+                        idUsuarios.Add(idUsuario);
+                    }
                 }
             }
             for (int z = 0; z < clbUsuarios.Items.Count; z++)
@@ -64,6 +70,7 @@ namespace LoginForm.User
         }
         public void BuscarUsuario()
         {
+            Comprobacion.Clear();
             string busqueda = txtBuscar.Text;
             clbUsuarios.Items.Clear();
             DataTable niveles = Database.funcionesCRUD.nivelUsuario(idUsuarioActual);
@@ -76,14 +83,18 @@ namespace LoginForm.User
                 for (int i = 0; i < usuarios.Rows.Count; i++)
                 {
                     int idUsuario = Convert.ToInt32(usuarios.Rows[i].ItemArray[2]);
-                    string nombresUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[0]);
-                    string apellidosUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[1]);
-                    clbUsuarios.Items.Add(new UsuarioItem
+                    if (!Comprobacion.Contains(idUsuario))
                     {
-                        id = idUsuario,
-                        nombre = nombresUsuario + " " + apellidosUsuario
-                    });
-                    idUsuarios.Add(idUsuario);
+                        Comprobacion.Add(idUsuario);
+                        string nombresUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[0]);
+                        string apellidosUsuario = Convert.ToString(usuarios.Rows[i].ItemArray[1]);
+                        clbUsuarios.Items.Add(new UsuarioItem
+                        {
+                            id = idUsuario,
+                            nombre = nombresUsuario + " " + apellidosUsuario
+                        });
+                        idUsuarios.Add(idUsuario);
+                    }
                 }
             }
             for (int z = 0; z < clbUsuarios.Items.Count; z++)
@@ -107,7 +118,7 @@ namespace LoginForm.User
         }
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(selectedUsers.Count.ToString());
+            //MessageBox.Show(UsuariosFinales.Count.ToString());
             ComprobarUsuarios();
             CrearGrupo();
         }
@@ -143,7 +154,7 @@ namespace LoginForm.User
                     {
                         if (idUsuariosAdd.Count > 2)
                         {
-                            int comprobar = funcionesCRUD.crearConversacionGrupal(idUsuarioActual, idUsuarios, descripcion, titulo);
+                            int comprobar = funcionesCRUD.crearConversacionGrupal(idUsuarioActual, UsuariosFinales, descripcion, titulo);
                             if (comprobar > 0)
                             {
                                 MessageBox.Show("El grupo ha sido creado con éxito.", "Grupo creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -179,10 +190,25 @@ namespace LoginForm.User
         }
         private void clbUsuarios_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            UsuarioItem u = clbUsuarios.Items[e.Index] as UsuarioItem;
+            int idUsuarioCBL = u.id;
             if (e.NewValue == CheckState.Checked)
+            {
                 selectedUsers.Add(clbUsuarios.Items[e.Index] as UsuarioItem);
-            else
+                for (int i = 0; i < selectedUsers.Count; i++)
+                {
+                    if (!UsuariosFinales.Contains(selectedUsers[i].id))
+                        UsuariosFinales.Add(selectedUsers[i].id);
+                }
+            }
+            else if (e.NewValue == CheckState.Unchecked && selectedUsers.Contains(clbUsuarios.Items[e.Index] as UsuarioItem))
+            {
                 selectedUsers.Remove(clbUsuarios.Items[e.Index] as UsuarioItem);
+            }
+            if (e.NewValue == CheckState.Unchecked && UsuariosFinales.Contains(idUsuarioCBL))
+            {
+                UsuariosFinales.Remove(idUsuarioCBL);
+            }
         }
     }
 }

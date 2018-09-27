@@ -112,14 +112,22 @@ namespace LoginForm.User
                     });
                     // 
                     // lblIconChat
-                    // 
+                    //
+                    lblIconChat.BringToFront();
                     lblIconChat.AutoSize = true;
+                    lblIconChat.Cursor = Cursors.Hand;
                     lblIconChat.Font = Tipografia.fonts.fontawesome12;
                     lblIconChat.Location = new System.Drawing.Point(137, 11);
                     lblIconChat.Name = "lblIconChat" + i;
                     lblIconChat.Size = new System.Drawing.Size(13, 13);
                     lblIconChat.TabIndex = 1 + i;
                     lblIconChat.Text = "";
+                    lblIconChat.Click += (s, ev) =>
+                    {
+                        mensajes a = new mensajes();
+                        (Application.OpenForms["menuUsuario"] as menuUsuario).abrirFormEnPanel(a);
+                        a.Conversacion(id);
+                    };
                     ttMensaje.SetToolTip(lblIconChat,"Chat");
                     flowLayoutPanel1.Controls.Add(pnlContacto);
 

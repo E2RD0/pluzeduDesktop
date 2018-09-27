@@ -12,6 +12,10 @@ namespace LoginForm.Database
     {
         public static MySqlConnection obtenerconexion()
         {
+            //string server = "138.68.15.62";
+            //string database = "pluzedu";
+            //string Uid = "app";
+            //string pwd = "PLuz3d7MYsq!";
             string server = "127.0.0.1";
             string database = "pluzeduv2.0";
             string Uid = "root";
@@ -21,9 +25,9 @@ namespace LoginForm.Database
             {
                 con.Open();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("No se ha podido conectar a la base de datos: " + ex.Message, "Error de conexión");
+                MessageBox.Show("No se ha podido conectar con el servidor. Revisa tu conexión de internet." , "Error de conexión");
             }
             return con;
         }
