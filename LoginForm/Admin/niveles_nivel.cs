@@ -100,7 +100,7 @@ namespace LoginForm.Admin
             exportar.tipo = Convert.ToInt32(cbxTipo.SelectedValue);
             exportar.cbx_Tipo.DisplayMember = "nombre";
             exportar.cbx_Tipo.ValueMember = "id";
-            exportar.cbx_Tipo.DataSource = Database.funcionesCRUD.mostrarTipoUsuarioNivel();
+            exportar.cbx_Tipo.DataSource = funciones.mostrarTipoUsuario();
             exportar.cbx_Tipo.SelectedValue = tipo;
 
             exportar.cbx_Estado.DisplayMember = "nombre";
@@ -113,7 +113,7 @@ namespace LoginForm.Admin
                 exportar.txt_Apellidos.Text = this.dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
                 exportar.txt_Usuario.Text = this.dgvUsuarios.CurrentRow.Cells[3].Value.ToString();
                 exportar.txt_Email.Text = this.dgvUsuarios.CurrentRow.Cells[4].Value.ToString();
-                exportar.txt_Password.Text = this.dgvUsuarios.CurrentRow.Cells[5].Value.ToString();
+                exportar.txt_Password.Text = "";
                 exportar.txt_Codigo.Text = this.dgvUsuarios.CurrentRow.Cells[6].Value.ToString();
                 exportar.cbx_Tipo.Text = this.dgvUsuarios.CurrentRow.Cells[7].Value.ToString();
                 exportar.cbx_Estado.Text = this.dgvUsuarios.CurrentRow.Cells[8].Value.ToString();
